@@ -146,8 +146,8 @@ import { beautifierConf, titleCase } from '@/utils/index'
 import { makeUpHtml, vueTemplate, vueScript, cssStyle } from '@/utils/generator/html'
 import { makeUpJs } from '@/utils/generator/js'
 import { makeUpCss } from '@/utils/generator/css'
-import drawingDefalut from '@/utils/generator/drawingDefalut'
-import logo from '@/assets/logo/logo.png'
+import drawingDefault from '@/utils/generator/drawingDefault'
+import logo from '@/assets/logo/logo.gif'
 import CodeTypeDialog from './CodeTypeDialog'
 import DraggableItem from './DraggableItem'
 
@@ -171,15 +171,15 @@ export default {
       selectComponents,
       layoutComponents,
       labelWidth: 100,
-      drawingList: drawingDefalut,
+      drawingList: drawingDefault,
       drawingData: {},
-      activeId: drawingDefalut[0].formId,
+      activeId: drawingDefault[0].formId,
       drawerVisible: false,
       formData: {},
       dialogVisible: false,
       generateConf: null,
       showFileName: false,
-      activeData: drawingDefalut[0]
+      activeData: drawingDefault[0]
     }
   },
   created() {
