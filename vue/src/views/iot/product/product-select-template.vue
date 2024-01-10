@@ -25,14 +25,24 @@
                 <dict-tag :options="dict.type.iot_things_type" :value="scope.row.type" />
             </template>
         </el-table-column>
-        <el-table-column label="首页显示" align="center" prop="isTop">
+        <el-table-column label="图表展示" align="center" prop="isChart" width="75">
             <template slot-scope="scope">
-                <dict-tag :options="dict.type.iot_yes_no" :value="scope.row.isTop" />
+                <dict-tag :options="dict.type.iot_yes_no" :value="scope.row.isChart" />
             </template>
         </el-table-column>
-        <el-table-column label="监测值" align="center" prop="isMonitor">
+        <el-table-column label="实时监测" align="center" prop="isMonitor" width="75">
             <template slot-scope="scope">
                 <dict-tag :options="dict.type.iot_yes_no" :value="scope.row.isMonitor" />
+            </template>
+        </el-table-column>
+        <el-table-column label="只读" align="center" prop="isReadonly" width="75">
+            <template slot-scope="scope">
+                <dict-tag :options="dict.type.iot_yes_no" :value="scope.row.isReadonly" />
+            </template>
+        </el-table-column>
+        <el-table-column label="历史存储" align="center" prop="isHistory" width="75">
+            <template slot-scope="scope">
+                <dict-tag :options="dict.type.iot_yes_no" :value="scope.row.isHistory" />
             </template>
         </el-table-column>
         <el-table-column label="数据类型" align="center" prop="datatype">
