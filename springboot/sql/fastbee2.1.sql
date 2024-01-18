@@ -165,13 +165,13 @@ CREATE TABLE `iot_device`  (
 -- ----------------------------
 -- Records of iot_device
 -- ----------------------------
-INSERT INTO `iot_device` VALUES (108, '温湿度开关', 41, '智能开关', 1, 'admin', 1, 'admin', 'D1ELV3A5TOJS', NULL, 1.00, 3, -51, 1, 1, '[{\"id\": \"irc\", \"name\": \"射频遥控\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"switch\", \"name\": \"设备开关\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"report_monitor\", \"name\": \"上报数据\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"humidity\", \"name\": \"空气湿度\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"co2\", \"name\": \"二氧化碳\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"light_color\", \"name\": \"灯光色值\", \"value\": \" , , , \", \"shadow\": \" , , , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"gear\", \"name\": \"运行档位\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"reset\", \"name\": \"设备重启\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"status\", \"name\": \"上报状态\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"temperature\", \"name\": \"空气温度\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"message\", \"name\": \"屏显消息\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"brightness\", \"name\": \"室内亮度\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}]', ' 本机地址', '127.0.0.1', 113.128512, 23.027759, '2023-02-26 00:00:00', '{\"chip\": \"esp8266\", \"name\": \"wumei-smart\", \"author\": \"kerwincui\", \"create\": \"2022-06-06\", \"version\": 1.6}', NULL, '0', '', '2025-02-25 23:15:56', '', '2023-09-22 15:08:07', NULL, NULL, NULL);
-INSERT INTO `iot_device` VALUES (109, '网关设备', 96, '网关产品', 1, 'admin', 1, 'admin', 'D1PGLPG58KZ2', NULL, 1.00, 4, -73, 1, 3, '[{\"id\": \"category_gear\", \"name\": \"运行档位\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"switch\", \"name\": \"设备开关\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_switch\", \"name\": \"设备开关\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_light\", \"ts\": \"2023-09-25 17:56:08.848\", \"name\": \"光照\", \"value\": \"68\", \"shadow\": \"68\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_report_monitor\", \"name\": \"上报监测数据\", \"value\": \" , , , , , , \", \"shadow\": \" , , , , , , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"light_color\", \"name\": \"灯光色值\", \"value\": \" , , , \", \"shadow\": \" , , , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"gear\", \"name\": \"运行档位\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"message\", \"name\": \"屏显消息\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"temperature\", \"ts\": \"2023-09-25 17:56:08.582\", \"name\": \"空气温度\", \"value\": \"23.69\", \"shadow\": \"23.69\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_irc\", \"name\": \"射频遥控\", \"value\": \" , , , , , , \", \"shadow\": \" , , , , , , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"brightness\", \"ts\": \"2023-09-25 17:56:08.671\", \"name\": \"室内亮度\", \"value\": \"5387\", \"shadow\": \"5387\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"report_monitor\", \"name\": \"上报监测数据\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_switch\", \"ts\": \"2023-09-25 17:56:26.188\", \"name\": \"设备开关\", \"value\": \"1,1,1, ,1,1, \", \"shadow\": \"1,1,1, ,1,1, \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_temperature\", \"ts\": \"2023-09-25 17:56:09.203\", \"name\": \"空气温度-只读\", \"value\": \"95\", \"shadow\": \"95\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_co2\", \"ts\": \"2023-09-25 17:56:11.229\", \"name\": \"二氧化碳\", \"value\": \"3780,2612,2145,3988,5697, , \", \"shadow\": \"3780,2612,2145,3988,5697, , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_gear\", \"ts\": \"2023-09-25 17:56:28.066\", \"name\": \"运行档位\", \"value\": \"0,0,0, ,0,0, \", \"shadow\": \"0,0,0, ,0,0, \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_humidity\", \"ts\": \"2023-09-25 17:56:09.025\", \"name\": \"空气湿度\", \"value\": \"90\", \"shadow\": \"90\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_report_monitor\", \"name\": \"上报监测数据\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_irc\", \"name\": \"射频遥控\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"reset\", \"name\": \"设备重启\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_temperature\", \"ts\": \"2023-09-25 17:56:11.45\", \"name\": \"空气温度-只读\", \"value\": \"86,39,4,80,52, , \", \"shadow\": \"86,39,4,80,52, , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}]', '云南省曲靖市 移通', '183.225.206.92', 104.802435, 26.496407, '2023-02-26 00:00:00', '{\"chip\": \"esp8266\", \"name\": \"wumei-smart\", \"author\": \"kerwincui\", \"create\": \"2022-06-06\", \"version\": 1.6}', NULL, '0', '', '2025-02-25 23:17:31', '', '2023-09-25 23:14:52', NULL, NULL, NULL);
-INSERT INTO `iot_device` VALUES (118, 'MODBUS网关设备', 112, 'modbus协议组产品', 1, 'admin', 1, 'admin', 'D4AD203F3A1C', NULL, 1.00, 4, 0, 0, 1, '[{\"id\": \"6#11\", \"name\": \"A相无功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"31#11\", \"name\": \"三相视在功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"53#11\", \"name\": \"正向无功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"0#11\", \"name\": \"相电压Ua\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"55#11\", \"name\": \"负向无功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"789#11\", \"name\": \"缺相电压值\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"37#11\", \"name\": \"正向无功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"17#11\", \"name\": \"线电压Ubc\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"12#11\", \"name\": \"B相有功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"769#11\", \"name\": \"被测系统负载接线方式\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"40#11\", \"name\": \"负向无功电能累加值低高字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"50#11\", \"name\": \"正向有功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"26#11\", \"name\": \"三相平均相电流 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"771#11\", \"name\": \"校验位\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"16#11\", \"name\": \"相电压Uc \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"34#11\", \"name\": \"正向有功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"0#1\", \"name\": \"漏水值\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"15#11\", \"name\": \"B相视在功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"33#11\", \"name\": \"正向有功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"24#11\", \"name\": \"三相平均相电压 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"0#2\", \"name\": \"温度\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"2#11\", \"name\": \"A相电流 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"23#11\", \"name\": \"C相视在功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"1#2\", \"name\": \"湿度\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"29#11\", \"name\": \"三相总功率因数 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"9#11\", \"name\": \"线电压Uab\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"13#11\", \"name\": \"B相功率因数\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"11#11\", \"name\": \"D0开出状态检测 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"56#11\", \"name\": \"负向无功电能累加值低高字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"775#11\", \"name\": \"PT\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"20#11\", \"name\": \"C相有功功率\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"38#11\", \"name\": \"正向无功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"22#11\", \"name\": \"C相无功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"35#11\", \"name\": \"负向有功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"18#11\", \"name\": \"C相电流\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"51#11\", \"name\": \"负向有功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"3#11\", \"name\": \"D1开入状态检测 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"54#11\", \"name\": \"正向无功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"21#11\", \"name\": \"C相功率因数\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"19#11\", \"name\": \"零地电压\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"49#11\", \"name\": \"正向有功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"10#11\", \"name\": \"B相电流 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"7#11\", \"name\": \"A相视在功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"14#11\", \"name\": \"B相无功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"4#11\", \"name\": \"A相有功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"52#11\", \"name\": \"负向有功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"8#11\", \"name\": \"相电压Ub\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"28#11\", \"name\": \"三相有功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"32#11\", \"name\": \"零序电流 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"36#11\", \"name\": \"负向有功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"772#11\", \"name\": \"波特率\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"39#11\", \"name\": \"负向无功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"25#11\", \"name\": \"三相平均线电压 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"5#11\", \"name\": \"A相功率因数\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"27#11\", \"name\": \"频率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"773#11\", \"name\": \"电压范围\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"777#11\", \"name\": \"CT\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"30#11\", \"name\": \"三相无功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"1#11\", \"name\": \"线电压Uca\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"768#11\", \"name\": \"本机地址\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}]', ' 本机地址', '127.0.0.1', 103.802435, 25.496407, '2023-03-23 00:00:00', NULL, NULL, '0', '', '2025-02-28 16:49:17', '', '2023-09-25 16:19:30', NULL, NULL, 1);
-INSERT INTO `iot_device` VALUES (119, '漏水器', 112, 'modbus协议组产品', 1, 'admin', 1, 'admin', 'D4AD203F3A1C_1', 'D4AD203F3A1C', 1.00, 4, 0, 0, 1, NULL, ' 本机地址', '127.0.0.1', 103.802435, 25.496407, '2023-03-23 00:00:00', NULL, NULL, '0', '', '2023-02-28 16:49:17', '', '2023-09-25 16:19:30', NULL, NULL, 1);
-INSERT INTO `iot_device` VALUES (120, '温湿度计', 112, 'modbus协议组产品', 1, 'admin', 1, 'admin', 'D4AD203F3A1C_2', 'D4AD203F3A1C', 1.00, 4, 0, 0, 1, NULL, ' 本机地址', '127.0.0.1', 103.802435, 25.496407, '2023-03-23 00:00:00', NULL, NULL, '0', '', '2023-02-28 16:49:17', '', '2023-09-25 16:19:30', NULL, NULL, 2);
-INSERT INTO `iot_device` VALUES (121, '电量仪', 112, 'modbus协议组产品', 1, 'admin', 1, 'admin', 'D4AD203F3A1C_11', 'D4AD203F3A1C', 1.00, 4, 0, 0, 1, NULL, ' 本机地址', '127.0.0.1', 103.802435, 25.496407, '2023-03-23 00:00:00', NULL, NULL, '0', '', '2023-02-28 16:49:17', '', '2023-09-25 16:19:30', NULL, NULL, 11);
-INSERT INTO `iot_device` VALUES (140, '★视频监控', 118, '★视频监控产品', 1, 'admin', 1, 'admin', '11010200001320000001', NULL, 1.00, 3, 0, 0, 1, NULL, '广东省 移通', '120.231.214.134', NULL, NULL, '2023-04-11 21:14:16', '{\"port\": 5060, \"firmware\": \"V5.7.4\", \"transport\": \"UDP\", \"streammode\": \"UDP\", \"hostaddress\": \"192.168.2.119:5060\", \"manufacturer\": \"Hikvision\"}', NULL, '0', '', '2023-04-11 21:12:35', '', '2023-04-11 22:11:01', NULL, 0, NULL);
+INSERT INTO `iot_device` VALUES (108, '★温湿度开关', 41, '★智能开关产品', 1, 'admin', 1, 'admin', 'D1ELV3A5TOJS', NULL, 1.00, 3, -51, 1, 1, '[{\"id\": \"irc\", \"name\": \"射频遥控\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"switch\", \"name\": \"设备开关\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"report_monitor\", \"name\": \"上报数据\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"humidity\", \"name\": \"空气湿度\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"co2\", \"name\": \"二氧化碳\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"light_color\", \"name\": \"灯光色值\", \"value\": \" , , , \", \"shadow\": \" , , , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"gear\", \"name\": \"运行档位\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"reset\", \"name\": \"设备重启\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"status\", \"name\": \"上报状态\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"temperature\", \"name\": \"空气温度\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"message\", \"name\": \"屏显消息\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"brightness\", \"name\": \"室内亮度\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}]', ' 本机地址', '127.0.0.1', 113.128512, 23.027759, '2023-02-26 00:00:00', '{\"chip\": \"esp8266\", \"name\": \"wumei-smart\", \"author\": \"kerwincui\", \"create\": \"2022-06-06\", \"version\": 1.6}', NULL, '0', '', '2025-02-25 23:15:56', '', '2023-09-22 15:08:07', NULL, NULL, NULL);
+INSERT INTO `iot_device` VALUES (109, '★网关设备', 96, '★网关产品', 1, 'admin', 1, 'admin', 'D1PGLPG58KZ2', NULL, 1.00, 4, -73, 1, 3, '[{\"id\": \"category_gear\", \"name\": \"运行档位\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"switch\", \"name\": \"设备开关\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_switch\", \"name\": \"设备开关\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_light\", \"ts\": \"2023-09-25 17:56:08.848\", \"name\": \"光照\", \"value\": \"68\", \"shadow\": \"68\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_report_monitor\", \"name\": \"上报监测数据\", \"value\": \" , , , , , , \", \"shadow\": \" , , , , , , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"light_color\", \"name\": \"灯光色值\", \"value\": \" , , , \", \"shadow\": \" , , , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"gear\", \"name\": \"运行档位\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"message\", \"name\": \"屏显消息\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"temperature\", \"ts\": \"2023-09-25 17:56:08.582\", \"name\": \"空气温度\", \"value\": \"23.69\", \"shadow\": \"23.69\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_irc\", \"name\": \"射频遥控\", \"value\": \" , , , , , , \", \"shadow\": \" , , , , , , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"brightness\", \"ts\": \"2023-09-25 17:56:08.671\", \"name\": \"室内亮度\", \"value\": \"5387\", \"shadow\": \"5387\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"report_monitor\", \"name\": \"上报监测数据\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_switch\", \"ts\": \"2023-09-25 17:56:26.188\", \"name\": \"设备开关\", \"value\": \"1,1,1, ,1,1, \", \"shadow\": \"1,1,1, ,1,1, \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_temperature\", \"ts\": \"2023-09-25 17:56:09.203\", \"name\": \"空气温度-只读\", \"value\": \"95\", \"shadow\": \"95\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_co2\", \"ts\": \"2023-09-25 17:56:11.229\", \"name\": \"二氧化碳\", \"value\": \"3780,2612,2145,3988,5697, , \", \"shadow\": \"3780,2612,2145,3988,5697, , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_gear\", \"ts\": \"2023-09-25 17:56:28.066\", \"name\": \"运行档位\", \"value\": \"0,0,0, ,0,0, \", \"shadow\": \"0,0,0, ,0,0, \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_humidity\", \"ts\": \"2023-09-25 17:56:09.025\", \"name\": \"空气湿度\", \"value\": \"90\", \"shadow\": \"90\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_report_monitor\", \"name\": \"上报监测数据\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"category_irc\", \"name\": \"射频遥控\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"reset\", \"name\": \"设备重启\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device_temperature\", \"ts\": \"2023-09-25 17:56:11.45\", \"name\": \"空气温度-只读\", \"value\": \"86,39,4,80,52, , \", \"shadow\": \"86,39,4,80,52, , \", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}]', '云南省曲靖市 移通', '183.225.206.92', 104.802435, 26.496407, '2023-02-26 00:00:00', '{\"chip\": \"esp8266\", \"name\": \"wumei-smart\", \"author\": \"kerwincui\", \"create\": \"2022-06-06\", \"version\": 1.6}', NULL, '0', '', '2025-02-25 23:17:31', '', '2023-09-25 23:14:52', NULL, NULL, NULL);
+INSERT INTO `iot_device` VALUES (118, '￥MODBUS网关设备', 66, '￥MODBUS协议产品', 1, 'admin', 1, 'admin', 'D4AD203F3A1C', NULL, 1.00, 4, 0, 0, 1, '[{\"id\": \"6#11\", \"name\": \"A相无功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"31#11\", \"name\": \"三相视在功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"53#11\", \"name\": \"正向无功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"0#11\", \"name\": \"相电压Ua\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"55#11\", \"name\": \"负向无功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"789#11\", \"name\": \"缺相电压值\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"37#11\", \"name\": \"正向无功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"17#11\", \"name\": \"线电压Ubc\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"12#11\", \"name\": \"B相有功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"769#11\", \"name\": \"被测系统负载接线方式\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"40#11\", \"name\": \"负向无功电能累加值低高字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"50#11\", \"name\": \"正向有功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"26#11\", \"name\": \"三相平均相电流 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"771#11\", \"name\": \"校验位\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"16#11\", \"name\": \"相电压Uc \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"34#11\", \"name\": \"正向有功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"0#1\", \"name\": \"漏水值\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"15#11\", \"name\": \"B相视在功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"33#11\", \"name\": \"正向有功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"24#11\", \"name\": \"三相平均相电压 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"0#2\", \"name\": \"温度\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"2#11\", \"name\": \"A相电流 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"23#11\", \"name\": \"C相视在功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"1#2\", \"name\": \"湿度\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"29#11\", \"name\": \"三相总功率因数 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"9#11\", \"name\": \"线电压Uab\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"13#11\", \"name\": \"B相功率因数\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"11#11\", \"name\": \"D0开出状态检测 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"56#11\", \"name\": \"负向无功电能累加值低高字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"775#11\", \"name\": \"PT\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"20#11\", \"name\": \"C相有功功率\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"38#11\", \"name\": \"正向无功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"22#11\", \"name\": \"C相无功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"35#11\", \"name\": \"负向有功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"18#11\", \"name\": \"C相电流\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"51#11\", \"name\": \"负向有功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"3#11\", \"name\": \"D1开入状态检测 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"54#11\", \"name\": \"正向无功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"21#11\", \"name\": \"C相功率因数\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"19#11\", \"name\": \"零地电压\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"49#11\", \"name\": \"正向有功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"10#11\", \"name\": \"B相电流 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"7#11\", \"name\": \"A相视在功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"14#11\", \"name\": \"B相无功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"4#11\", \"name\": \"A相有功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"52#11\", \"name\": \"负向有功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"8#11\", \"name\": \"相电压Ub\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"28#11\", \"name\": \"三相有功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"32#11\", \"name\": \"零序电流 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"36#11\", \"name\": \"负向有功电能累加值高位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"772#11\", \"name\": \"波特率\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"39#11\", \"name\": \"负向无功电能累加值低位字\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"25#11\", \"name\": \"三相平均线电压 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"5#11\", \"name\": \"A相功率因数\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"27#11\", \"name\": \"频率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"773#11\", \"name\": \"电压范围\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"777#11\", \"name\": \"CT\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"30#11\", \"name\": \"三相无功功率 \", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"1#11\", \"name\": \"线电压Uca\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"768#11\", \"name\": \"本机地址\", \"value\": \"\", \"shadow\": \"\", \"isChart\": 0, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}]', ' 本机地址', '127.0.0.1', 103.802435, 25.496407, '2023-03-23 00:00:00', NULL, NULL, '0', '', '2025-02-28 16:49:17', '', '2023-09-25 16:19:30', NULL, NULL, 1);
+INSERT INTO `iot_device` VALUES (119, '￥漏水器', 66, '￥MODBUS协议产品', 1, 'admin', 1, 'admin', 'D4AD203F3A1C_1', 'D4AD203F3A1C', 1.00, 4, 0, 0, 1, NULL, ' 本机地址', '127.0.0.1', 103.802435, 25.496407, '2023-03-23 00:00:00', NULL, NULL, '0', '', '2023-02-28 16:49:17', '', '2023-09-25 16:19:30', NULL, NULL, 1);
+INSERT INTO `iot_device` VALUES (120, '￥温湿度计', 66, '￥MODBUS协议产品', 1, 'admin', 1, 'admin', 'D4AD203F3A1C_2', 'D4AD203F3A1C', 1.00, 4, 0, 0, 1, NULL, ' 本机地址', '127.0.0.1', 103.802435, 25.496407, '2023-03-23 00:00:00', NULL, NULL, '0', '', '2023-02-28 16:49:17', '', '2023-09-25 16:19:30', NULL, NULL, 2);
+INSERT INTO `iot_device` VALUES (121, '￥电量仪', 66, '￥MODBUS协议产品', 1, 'admin', 1, 'admin', 'D4AD203F3A1C_11', 'D4AD203F3A1C', 1.00, 4, 0, 0, 1, NULL, ' 本机地址', '127.0.0.1', 103.802435, 25.496407, '2023-03-23 00:00:00', NULL, NULL, '0', '', '2023-02-28 16:49:17', '', '2023-09-25 16:19:30', NULL, NULL, 11);
+INSERT INTO `iot_device` VALUES (140, '￥视频监控', 88, '￥视频监控产品', 1, 'admin', 1, 'admin', '11010200001320000001', NULL, 1.00, 3, 0, 0, 1, NULL, '广东省 移通', '120.231.214.134', NULL, NULL, '2023-04-11 21:14:16', '{\"port\": 5060, \"firmware\": \"V5.7.4\", \"transport\": \"UDP\", \"streammode\": \"UDP\", \"hostaddress\": \"192.168.2.119:5060\", \"manufacturer\": \"Hikvision\"}', NULL, '0', '', '2023-04-11 21:12:35', '', '2023-04-11 22:11:01', NULL, 0, NULL);
 
 -- ----------------------------
 -- Table structure for iot_device_group
@@ -318,13 +318,13 @@ CREATE TABLE `iot_device_user`  (
 -- ----------------------------
 -- Records of iot_device_user
 -- ----------------------------
-INSERT INTO `iot_device_user` VALUES (108, 1, 1, 'admin', '温湿度开关', '15888888888', 'admin', 1, NULL, '0', '', '2023-02-25 23:15:57', '', NULL, NULL);
-INSERT INTO `iot_device_user` VALUES (109, 1, 1, 'admin', '网关设备', '15888888888', 'admin', 1, NULL, '0', '', '2023-02-25 23:17:32', '', NULL, NULL);
+INSERT INTO `iot_device_user` VALUES (108, 1, 1, 'admin', '★温湿度开关', '15888888888', 'admin', 1, NULL, '0', '', '2023-02-25 23:15:57', '', NULL, NULL);
+INSERT INTO `iot_device_user` VALUES (109, 1, 1, 'admin', '★网关设备', '15888888888', 'admin', 1, NULL, '0', '', '2023-02-25 23:17:32', '', NULL, NULL);
 INSERT INTO `iot_device_user` VALUES (109, 3, 1, 'admin', '★网关设备', '15888888881', 'fastbee-t2', 0, 'ota,timer,log,monitor,statistic,reset,gear,switch', '0', '', '2023-09-03 01:17:03', '', '2023-09-03 11:05:06', NULL);
 INSERT INTO `iot_device_user` VALUES (109, 7, 1, 'admin', '★网关设备', '18257292958', 'shenzehui', 0, NULL, '0', '', '2023-08-24 08:26:34', '', NULL, NULL);
 INSERT INTO `iot_device_user` VALUES (109, 8, 1, 'admin', '★网关设备', '15752221201', 'shadow', 0, NULL, '0', '', '2023-08-24 08:25:44', '', NULL, NULL);
-INSERT INTO `iot_device_user` VALUES (118, 1, 1, 'admin', 'modbus测试-emq-0228', '15888888888', 'admin', 1, NULL, '0', '', '2023-02-28 16:49:18', '', NULL, NULL);
-INSERT INTO `iot_device_user` VALUES (140, 1, 1, 'admin', '监控测试', '15888888888', 'admin', 1, NULL, '0', '', '2023-04-11 21:12:37', '', NULL, NULL);
+INSERT INTO `iot_device_user` VALUES (118, 1, 1, 'admin', '￥MODBUS网关设备', '15888888888', 'admin', 1, NULL, '0', '', '2023-02-28 16:49:18', '', NULL, NULL);
+INSERT INTO `iot_device_user` VALUES (140, 1, 1, 'admin', '￥视频监控', '15888888888', 'admin', 1, NULL, '0', '', '2023-04-11 21:12:37', '', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for iot_event_log
@@ -354,95 +354,6 @@ CREATE TABLE `iot_event_log`  (
 -- ----------------------------
 -- Records of iot_event_log
 -- ----------------------------
-
--- ----------------------------
--- Table structure for iot_firmware
--- ----------------------------
-DROP TABLE IF EXISTS `iot_firmware`;
-CREATE TABLE `iot_firmware`  (
-  `firmware_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '固件ID',
-  `firmware_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '固件名称',
-  `product_id` bigint(20) NOT NULL COMMENT '产品ID',
-  `product_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '产品名称',
-  `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
-  `tenant_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '租户名称',
-  `is_sys` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否系统通用（0-否，1-是）',
-  `is_latest` tinyint(1) NOT NULL COMMENT '是否最新版本（0-否，1-是）',
-  `version` float(11, 2) NOT NULL DEFAULT 0.10 COMMENT '固件版本',
-  `file_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '文件路径',
-  `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
-  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`firmware_id`) USING BTREE,
-  INDEX `iot_firmware_index_product_id`(`product_id`) USING BTREE,
-  INDEX `iot_firmware_index_tenant_id`(`tenant_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '产品固件' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of iot_firmware
--- ----------------------------
-
--- ----------------------------
--- Table structure for iot_firmware_task
--- ----------------------------
-DROP TABLE IF EXISTS `iot_firmware_task`;
-CREATE TABLE `iot_firmware_task`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `task_name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '任务名称',
-  `firmware_id` bigint(20) UNSIGNED NOT NULL COMMENT '关联固件ID',
-  `upgrade_type` int(11) NOT NULL DEFAULT 1 COMMENT '1:指定设备 2:产品级别',
-  `task_desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-  `device_amount` int(11) NOT NULL DEFAULT 0 COMMENT '选中的设备总数',
-  `del_flag` int(11) NOT NULL DEFAULT 0,
-  `update_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
-  `create_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
-  `book_time` timestamp(0) NULL DEFAULT NULL COMMENT '预定时间升级',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '固件升级任务对象' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of iot_firmware_task
--- ----------------------------
-INSERT INTO `iot_firmware_task` VALUES (1, '测试任务0227', 1, 2, '测试', 1, 0, '2023-02-28 08:23:21', '2023-02-28 08:23:21', '2023-02-28 08:23:18');
-INSERT INTO `iot_firmware_task` VALUES (2, '测试任务227', 1, 2, '1', 1, 0, '2023-03-01 02:04:33', '2023-02-28 08:58:04', '2023-02-28 08:58:01');
-INSERT INTO `iot_firmware_task` VALUES (3, '111', 1, 1, '', 1, 0, '2023-09-25 09:02:23', '2023-09-25 09:02:23', '2023-09-25 09:02:17');
-INSERT INTO `iot_firmware_task` VALUES (4, '99888', 1, 1, '', 1, 0, '2023-09-25 09:02:45', '2023-09-25 09:02:45', '2023-09-29 09:02:17');
-
--- ----------------------------
--- Table structure for iot_firmware_task_detail
--- ----------------------------
-DROP TABLE IF EXISTS `iot_firmware_task_detail`;
-CREATE TABLE `iot_firmware_task_detail`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `task_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-  `serial_number` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '设备编码',
-  `upgrade_status` int(11) NOT NULL DEFAULT 0 COMMENT '0:等待升级 1:已发送设备 2:设备收到  3:升级成功 4:升级失败',
-  `detail_msg` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '描述',
-  `create_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
-  `message_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '消息ID',
-  `update_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '固件升级任务详细对象' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of iot_firmware_task_detail
--- ----------------------------
-INSERT INTO `iot_firmware_task_detail` VALUES (1, 1, 'D1ELV3A5TOJS', 0, '等待升级-未推送固件到设备', '2023-02-28 08:24:15', '', '2023-03-01 02:34:33');
-INSERT INTO `iot_firmware_task_detail` VALUES (2, 2, 'D1ELV3A5TOJH', 3, '升级成功', '2023-02-28 08:58:17', '1677550503', '2023-03-01 02:34:51');
-INSERT INTO `iot_firmware_task_detail` VALUES (3, 3, 'D1ELV3A5TOJH', 1, '已发送', '2023-03-01 02:09:49', '1677550501', '2023-03-01 02:34:38');
-INSERT INTO `iot_firmware_task_detail` VALUES (4, 3, 'D1ELV3A5TORG', 2, '设备OTA升级中', '2023-03-01 02:09:56', '1677550502', '2023-03-01 02:34:40');
-INSERT INTO `iot_firmware_task_detail` VALUES (5, 4, 'D1ELV3A5TOJS', 3, '升级成功', '2023-03-01 02:11:30', '1677550504', '2023-03-01 02:34:48');
-INSERT INTO `iot_firmware_task_detail` VALUES (6, 4, 'D1ELV3A523RG', 0, '等待升级-未推送固件到设备', '2023-03-01 02:11:34', '', '2023-03-01 02:34:31');
-INSERT INTO `iot_firmware_task_detail` VALUES (7, 4, 'D1ELV3A576RG', 2, '设备OTA升级中', '2023-03-01 02:11:40', '1677550505', '2023-03-01 02:34:06');
-INSERT INTO `iot_firmware_task_detail` VALUES (11, 5, 'D1ELV3A562RG', 4, '失败', '2023-03-01 02:12:14', '1677550509', '2023-03-01 02:33:53');
-INSERT INTO `iot_firmware_task_detail` VALUES (12, 9, 'D1ELV3A576RG', 1, '已发送', '2023-03-01 02:28:33', NULL, '2023-03-01 02:28:33');
-INSERT INTO `iot_firmware_task_detail` VALUES (17, 9, 'D1ELV3A5TORG', 5, '停止', '2023-03-01 02:28:33', NULL, '2023-03-01 02:33:49');
-INSERT INTO `iot_firmware_task_detail` VALUES (18, 10, 'D1ELV3A562RG', 0, '等待升级', '2023-03-29 16:29:23', NULL, '2023-03-29 16:30:23');
-INSERT INTO `iot_firmware_task_detail` VALUES (19, 3, 'D1ELV3A5TOJS', 0, '等待升级', '2023-09-25 09:02:23', NULL, '2023-09-25 09:02:23');
-INSERT INTO `iot_firmware_task_detail` VALUES (20, 4, 'D1ELV3A5TOJS', 0, '等待升级', '2023-09-25 09:02:45', NULL, '2023-09-25 09:02:45');
 
 -- ----------------------------
 -- Table structure for iot_function_log
@@ -542,9 +453,9 @@ CREATE TABLE `iot_product`  (
 -- Records of iot_product
 -- ----------------------------
 INSERT INTO `iot_product` VALUES (41, '★智能开关产品', 'JSON', 1, '电工照明', 1, 'admin', 1, 0, 'FastBee', 'P47T6OD5IPFWHUM6', 'KX3TSH4Q4OS835DO', 2, '{\"events\": [{\"id\": \"exception\", \"name\": \"设备发生异常\", \"type\": 3, \"order\": 0, \"regId\": \"exception\", \"isChart\": 0, \"datatype\": {\"type\": \"string\", \"maxLength\": 1024}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"height_temperature\", \"name\": \"环境温度过高\", \"type\": 3, \"order\": 0, \"regId\": \"height_temperature\", \"isChart\": 0, \"datatype\": {\"max\": 100, \"min\": 0, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"℃\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}], \"functions\": [{\"id\": \"report_monitor\", \"name\": \"上报数据\", \"type\": 2, \"order\": 10, \"regId\": \"report_monitor\", \"isChart\": 0, \"datatype\": {\"max\": 10, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"次数\"}, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"message\", \"name\": \"屏显消息\", \"type\": 2, \"order\": 7, \"regId\": \"message\", \"isChart\": 0, \"datatype\": {\"type\": \"string\", \"maxLength\": 1024}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"light_color\", \"name\": \"灯光色值\", \"type\": 2, \"order\": 5, \"regId\": \"light_color\", \"isChart\": 0, \"datatype\": {\"type\": \"array\", \"arrayType\": \"integer\", \"arrayCount\": \"3\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"switch\", \"name\": \"设备开关\", \"type\": 2, \"order\": 9, \"regId\": \"switch\", \"isChart\": 0, \"datatype\": {\"type\": \"bool\", \"trueText\": \"打开\", \"falseText\": \"关闭\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"reset\", \"name\": \"设备重启\", \"type\": 2, \"order\": 6, \"regId\": \"reset\", \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"button\", \"enumList\": [{\"text\": \"重启\", \"value\": \"restart\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"irc\", \"name\": \"射频遥控\", \"type\": 2, \"order\": 11, \"regId\": \"irc\", \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"button\", \"enumList\": [{\"text\": \"遥控学习\", \"value\": \"FFXX01\"}, {\"text\": \"遥控清码\", \"value\": \"FFXX02\"}, {\"text\": \"打开开关\", \"value\": \"FFXX03\"}, {\"text\": \"关闭开关\", \"value\": \"FFXX04\"}, {\"text\": \"暂停\", \"value\": \"FFXX05\"}, {\"text\": \"锁定\", \"value\": \"FFXX06\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"gear\", \"name\": \"运行档位\", \"type\": 2, \"order\": 8, \"regId\": \"gear\", \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"select\", \"enumList\": [{\"text\": \"低速档位\", \"value\": \"0\"}, {\"text\": \"中速档位\", \"value\": \"1\"}, {\"text\": \"中高速档位\", \"value\": \"2\"}, {\"text\": \"高速档位\", \"value\": \"3\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"status\", \"name\": \"上报状态\", \"type\": 2, \"order\": 12, \"regId\": \"status\", \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"button\", \"enumList\": [{\"text\": \"更新状态\", \"value\": \"update_status\"}]}, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}], \"properties\": [{\"id\": \"co2\", \"name\": \"二氧化碳\", \"type\": 1, \"order\": 2, \"regId\": \"co2\", \"isChart\": 1, \"datatype\": {\"max\": 6000, \"min\": 100, \"step\": 1, \"type\": \"integer\", \"unit\": \"ppm\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"brightness\", \"name\": \"室内亮度\", \"type\": 1, \"order\": 4, \"regId\": \"brightness\", \"isChart\": 1, \"datatype\": {\"max\": 10000, \"min\": 0, \"step\": 1, \"type\": \"integer\", \"unit\": \"cd/m2\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"temperature\", \"name\": \"空气温度\", \"type\": 1, \"order\": 1, \"regId\": \"temperature\", \"isChart\": 1, \"datatype\": {\"max\": 120, \"min\": -20, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"℃\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"humidity\", \"name\": \"空气湿度\", \"type\": 1, \"order\": 3, \"regId\": \"humidity\", \"isChart\": 1, \"datatype\": {\"max\": 100, \"min\": 0, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"%\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1}]}', 1, 1, 3, NULL, '0', '', '2025-08-14 00:06:33', '', '2023-09-25 22:58:17', NULL, 'MQTT');
-INSERT INTO `iot_product` VALUES (96, '★网关产品', 'JSON', 1, '电工照明', 1, 'admin', 1, 0, 'FastBee', 'P467433O1MT8MXS2', 'KWF32S3H95LH14LO', 2, '{\"events\": [{\"id\": \"exception\", \"name\": \"设备发生异常\", \"type\": 3, \"order\": 0, \"regId\": \"exception\", \"isChart\": 0, \"datatype\": {\"type\": \"string\", \"maxLength\": 1024}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"height_temperature\", \"name\": \"环境温度过高\", \"type\": 3, \"order\": 0, \"regId\": \"height_temperature\", \"isChart\": 0, \"datatype\": {\"max\": 100, \"min\": 0, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"℃\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}], \"functions\": [{\"id\": \"report_monitor\", \"name\": \"上报监测数据\", \"type\": 2, \"order\": 11, \"regId\": \"report_monitor\", \"isChart\": 0, \"datatype\": {\"max\": 10, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"次数\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"reset\", \"name\": \"设备重启\", \"type\": 2, \"order\": 0, \"regId\": \"reset\", \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"button\", \"enumList\": [{\"text\": \"重启\", \"value\": \"restart\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"message\", \"name\": \"屏显消息\", \"type\": 2, \"order\": 0, \"regId\": \"message\", \"isChart\": 0, \"datatype\": {\"type\": \"string\", \"maxLength\": 1024}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"light_color\", \"name\": \"灯光色值\", \"type\": 2, \"order\": 0, \"regId\": \"light_color\", \"isChart\": 0, \"datatype\": {\"type\": \"array\", \"arrayType\": \"integer\", \"arrayCount\": \"3\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"gear\", \"name\": \"运行档位\", \"type\": 2, \"order\": 7, \"regId\": \"gear\", \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"select\", \"enumList\": [{\"text\": \"低速档位\", \"value\": \"0\"}, {\"text\": \"中速档位\", \"value\": \"1\"}, {\"text\": \"中高速档位\", \"value\": \"2\"}, {\"text\": \"高速档位\", \"value\": \"3\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"switch\", \"name\": \"设备开关\", \"type\": 2, \"order\": 8, \"regId\": \"switch\", \"isChart\": 0, \"datatype\": {\"type\": \"bool\", \"trueText\": \"打开\", \"falseText\": \"关闭\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}], \"properties\": [{\"id\": \"brightness\", \"name\": \"室内亮度\", \"type\": 1, \"order\": 0, \"regId\": \"brightness\", \"isChart\": 1, \"datatype\": {\"max\": 10000, \"min\": 0, \"step\": 1, \"type\": \"integer\", \"unit\": \"cd/m2\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"temperature\", \"name\": \"空气温度\", \"type\": 1, \"order\": 0, \"regId\": \"temperature\", \"isChart\": 1, \"datatype\": {\"max\": 120, \"min\": -20, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"℃\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"category\", \"name\": \"功能分组\", \"type\": 1, \"order\": 9, \"regId\": \"category\", \"isChart\": 0, \"datatype\": {\"type\": \"object\", \"params\": [{\"id\": \"category_light\", \"name\": \"光照\", \"order\": 1, \"isChart\": 1, \"datatype\": {\"max\": 100, \"min\": 0, \"step\": 1, \"type\": \"decimal\", \"unit\": \"mm\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"category_humidity\", \"name\": \"空气湿度\", \"order\": 2, \"isChart\": 1, \"datatype\": {\"max\": 100, \"min\": 0, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"%\"}, \"isHistory\": 0, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"category_temperature\", \"name\": \"空气温度-只读\", \"order\": 3, \"isChart\": 0, \"datatype\": {\"max\": 120, \"min\": -20, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"℃\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 1}, {\"id\": \"category_report_monitor\", \"name\": \"上报监测数据\", \"order\": 7, \"isChart\": 0, \"datatype\": {\"max\": 10, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"次数\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"category_gear\", \"name\": \"运行档位\", \"order\": 5, \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"enumList\": [{\"text\": \"低速档位\", \"value\": \"0\"}, {\"text\": \"中速档位\", \"value\": \"1\"}, {\"text\": \"中高速档位\", \"value\": \"2\"}, {\"text\": \"高速档位\", \"value\": \"3\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"category_switch\", \"name\": \"设备开关\", \"order\": 4, \"isChart\": 0, \"datatype\": {\"type\": \"bool\", \"trueText\": \"打开\", \"falseText\": \"关闭\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"category_irc\", \"name\": \"射频遥控\", \"order\": 6, \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"button\", \"enumList\": [{\"text\": \"遥控配对\", \"value\": \"FFXX01\"}, {\"text\": \"遥控清码\", \"value\": \"FFXX02\"}, {\"text\": \"打开开关\", \"value\": \"FFXX03\"}, {\"text\": \"关闭开关\", \"value\": \"FFXX04\"}, {\"text\": \"暂停\", \"value\": \"FFXX05\"}, {\"text\": \"锁定\", \"value\": \"FFXX06\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}]}, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device\", \"name\": \"子设备\", \"type\": 1, \"order\": 10, \"regId\": \"device\", \"isChart\": 0, \"datatype\": {\"type\": \"array\", \"params\": [{\"id\": \"device_co2\", \"name\": \"二氧化碳\", \"order\": 0, \"isChart\": 1, \"datatype\": {\"max\": 6000, \"min\": 100, \"step\": 1, \"type\": \"integer\", \"unit\": \"ppm\", \"enumList\": [{\"text\": \"\", \"value\": \"\"}], \"arrayType\": \"int\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1, \"isSharePerm\": 0}, {\"id\": \"device_temperature\", \"name\": \"空气温度-只读\", \"order\": 4, \"datatype\": {\"max\": 120, \"min\": -20, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"℃\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 1}, {\"id\": \"device_gear\", \"name\": \"运行档位\", \"order\": 6, \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"enumList\": [{\"text\": \"低速档位\", \"value\": \"0\"}, {\"text\": \"中速档位\", \"value\": \"1\"}, {\"text\": \"中高速档位\", \"value\": \"2\"}, {\"text\": \"高速档位\", \"value\": \"3\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"device_switch\", \"name\": \"设备开关\", \"order\": 5, \"isChart\": 0, \"datatype\": {\"type\": \"bool\", \"trueText\": \"打开\", \"falseText\": \"关闭\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"device_report_monitor\", \"name\": \"上报监测数据\", \"order\": 9, \"isChart\": 0, \"datatype\": {\"max\": 10, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"次数\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"device_irc\", \"name\": \"射频遥控\", \"order\": 1, \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"button\", \"enumList\": [{\"text\": \"遥控学习\", \"value\": \"FFXX01\"}, {\"text\": \"遥控清码\", \"value\": \"FFXX02\"}, {\"text\": \"打开开关\", \"value\": \"FFXX03\"}, {\"text\": \"关闭开关\", \"value\": \"FFXX04\"}, {\"text\": \"暂停\", \"value\": \"FFXX05\"}, {\"text\": \"锁定\", \"value\": \"FFXX06\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}], \"arrayType\": \"object\", \"arrayCount\": \"5\"}, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}]}', 2, 2, 3, NULL, '0', '', '2025-02-25 22:51:39', '', '2023-09-16 11:46:43', NULL, 'MQTT');
-INSERT INTO `iot_product` VALUES (112, '★MODBUS协议产品', 'MODBUS-RTU', 1, '电工照明', 1, 'admin', 1, 0, 'FastBee', 'P6JPN3V4PRZA91W8', 'KJVHI708452TMIS0', 2, '{\"properties\": [{\"id\": \"1\", \"code\": \"3\", \"name\": \"电量\", \"type\": 1, \"order\": 0, \"regId\": \"1#11\", \"isChart\": 0, \"datatype\": {\"max\": 100, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"\"}, \"quantity\": 1, \"isHistory\": 1, \"isMonitor\": 0, \"parseType\": \"ushort\", \"isReadonly\": 0, \"tempSlaveId\": 11}, {\"id\": \"0\", \"code\": \"3\", \"name\": \"漏水值\", \"type\": 1, \"order\": 0, \"regId\": \"0#1\", \"isChart\": 0, \"datatype\": {\"max\": 100, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"度\"}, \"quantity\": 1, \"isHistory\": 1, \"isMonitor\": 0, \"parseType\": \"ushort\", \"isReadonly\": 0, \"tempSlaveId\": 1}, {\"id\": \"0\", \"code\": \"3\", \"name\": \"温度\", \"type\": 1, \"order\": 0, \"regId\": \"0#2\", \"isChart\": 0, \"datatype\": {\"max\": 100, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"°\"}, \"quantity\": 1, \"isHistory\": 1, \"isMonitor\": 0, \"parseType\": \"ushort\", \"isReadonly\": 0, \"tempSlaveId\": 2}]}', 2, 1, 3, NULL, '0', '', '2023-02-28 16:40:13', '', NULL, NULL, 'MQTT');
-INSERT INTO `iot_product` VALUES (118, '★视频监控产品', NULL, 2, '家居安防', 1, 'admin', 1, 0, 'FastBee', 'P0IB9M8A7J4R056V', 'K69914VL8175ZY21', 2, '{}', 3, 1, 3, NULL, '0', '', '2023-04-11 21:11:54', '', NULL, NULL, 'GB28181');
+INSERT INTO `iot_product` VALUES (55, '★网关产品', 'JSON', 1, '电工照明', 1, 'admin', 1, 0, 'FastBee', 'P467433O1MT8MXS2', 'KWF32S3H95LH14LO', 2, '{\"events\": [{\"id\": \"exception\", \"name\": \"设备发生异常\", \"type\": 3, \"order\": 0, \"regId\": \"exception\", \"isChart\": 0, \"datatype\": {\"type\": \"string\", \"maxLength\": 1024}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"height_temperature\", \"name\": \"环境温度过高\", \"type\": 3, \"order\": 0, \"regId\": \"height_temperature\", \"isChart\": 0, \"datatype\": {\"max\": 100, \"min\": 0, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"℃\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}], \"functions\": [{\"id\": \"report_monitor\", \"name\": \"上报监测数据\", \"type\": 2, \"order\": 11, \"regId\": \"report_monitor\", \"isChart\": 0, \"datatype\": {\"max\": 10, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"次数\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"reset\", \"name\": \"设备重启\", \"type\": 2, \"order\": 0, \"regId\": \"reset\", \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"button\", \"enumList\": [{\"text\": \"重启\", \"value\": \"restart\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"message\", \"name\": \"屏显消息\", \"type\": 2, \"order\": 0, \"regId\": \"message\", \"isChart\": 0, \"datatype\": {\"type\": \"string\", \"maxLength\": 1024}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"light_color\", \"name\": \"灯光色值\", \"type\": 2, \"order\": 0, \"regId\": \"light_color\", \"isChart\": 0, \"datatype\": {\"type\": \"array\", \"arrayType\": \"integer\", \"arrayCount\": \"3\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"gear\", \"name\": \"运行档位\", \"type\": 2, \"order\": 7, \"regId\": \"gear\", \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"select\", \"enumList\": [{\"text\": \"低速档位\", \"value\": \"0\"}, {\"text\": \"中速档位\", \"value\": \"1\"}, {\"text\": \"中高速档位\", \"value\": \"2\"}, {\"text\": \"高速档位\", \"value\": \"3\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"switch\", \"name\": \"设备开关\", \"type\": 2, \"order\": 8, \"regId\": \"switch\", \"isChart\": 0, \"datatype\": {\"type\": \"bool\", \"trueText\": \"打开\", \"falseText\": \"关闭\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0}], \"properties\": [{\"id\": \"brightness\", \"name\": \"室内亮度\", \"type\": 1, \"order\": 0, \"regId\": \"brightness\", \"isChart\": 1, \"datatype\": {\"max\": 10000, \"min\": 0, \"step\": 1, \"type\": \"integer\", \"unit\": \"cd/m2\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"temperature\", \"name\": \"空气温度\", \"type\": 1, \"order\": 0, \"regId\": \"temperature\", \"isChart\": 1, \"datatype\": {\"max\": 120, \"min\": -20, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"℃\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"category\", \"name\": \"功能分组\", \"type\": 1, \"order\": 9, \"regId\": \"category\", \"isChart\": 0, \"datatype\": {\"type\": \"object\", \"params\": [{\"id\": \"category_light\", \"name\": \"光照\", \"order\": 1, \"isChart\": 1, \"datatype\": {\"max\": 100, \"min\": 0, \"step\": 1, \"type\": \"decimal\", \"unit\": \"mm\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"category_humidity\", \"name\": \"空气湿度\", \"order\": 2, \"isChart\": 1, \"datatype\": {\"max\": 100, \"min\": 0, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"%\"}, \"isHistory\": 0, \"isMonitor\": 1, \"isReadonly\": 1}, {\"id\": \"category_temperature\", \"name\": \"空气温度-只读\", \"order\": 3, \"isChart\": 0, \"datatype\": {\"max\": 120, \"min\": -20, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"℃\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 1}, {\"id\": \"category_report_monitor\", \"name\": \"上报监测数据\", \"order\": 7, \"isChart\": 0, \"datatype\": {\"max\": 10, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"次数\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"category_gear\", \"name\": \"运行档位\", \"order\": 5, \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"enumList\": [{\"text\": \"低速档位\", \"value\": \"0\"}, {\"text\": \"中速档位\", \"value\": \"1\"}, {\"text\": \"中高速档位\", \"value\": \"2\"}, {\"text\": \"高速档位\", \"value\": \"3\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"category_switch\", \"name\": \"设备开关\", \"order\": 4, \"isChart\": 0, \"datatype\": {\"type\": \"bool\", \"trueText\": \"打开\", \"falseText\": \"关闭\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"category_irc\", \"name\": \"射频遥控\", \"order\": 6, \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"button\", \"enumList\": [{\"text\": \"遥控配对\", \"value\": \"FFXX01\"}, {\"text\": \"遥控清码\", \"value\": \"FFXX02\"}, {\"text\": \"打开开关\", \"value\": \"FFXX03\"}, {\"text\": \"关闭开关\", \"value\": \"FFXX04\"}, {\"text\": \"暂停\", \"value\": \"FFXX05\"}, {\"text\": \"锁定\", \"value\": \"FFXX06\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}]}, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}, {\"id\": \"device\", \"name\": \"子设备\", \"type\": 1, \"order\": 10, \"regId\": \"device\", \"isChart\": 0, \"datatype\": {\"type\": \"array\", \"params\": [{\"id\": \"device_co2\", \"name\": \"二氧化碳\", \"order\": 0, \"isChart\": 1, \"datatype\": {\"max\": 6000, \"min\": 100, \"step\": 1, \"type\": \"integer\", \"unit\": \"ppm\", \"enumList\": [{\"text\": \"\", \"value\": \"\"}], \"arrayType\": \"int\"}, \"isHistory\": 1, \"isMonitor\": 1, \"isReadonly\": 1, \"isSharePerm\": 0}, {\"id\": \"device_temperature\", \"name\": \"空气温度-只读\", \"order\": 4, \"datatype\": {\"max\": 120, \"min\": -20, \"step\": 0.1, \"type\": \"decimal\", \"unit\": \"℃\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 1}, {\"id\": \"device_gear\", \"name\": \"运行档位\", \"order\": 6, \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"enumList\": [{\"text\": \"低速档位\", \"value\": \"0\"}, {\"text\": \"中速档位\", \"value\": \"1\"}, {\"text\": \"中高速档位\", \"value\": \"2\"}, {\"text\": \"高速档位\", \"value\": \"3\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"device_switch\", \"name\": \"设备开关\", \"order\": 5, \"isChart\": 0, \"datatype\": {\"type\": \"bool\", \"trueText\": \"打开\", \"falseText\": \"关闭\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"device_report_monitor\", \"name\": \"上报监测数据\", \"order\": 9, \"isChart\": 0, \"datatype\": {\"max\": 10, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"次数\"}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}, {\"id\": \"device_irc\", \"name\": \"射频遥控\", \"order\": 1, \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"button\", \"enumList\": [{\"text\": \"遥控学习\", \"value\": \"FFXX01\"}, {\"text\": \"遥控清码\", \"value\": \"FFXX02\"}, {\"text\": \"打开开关\", \"value\": \"FFXX03\"}, {\"text\": \"关闭开关\", \"value\": \"FFXX04\"}, {\"text\": \"暂停\", \"value\": \"FFXX05\"}, {\"text\": \"锁定\", \"value\": \"FFXX06\"}]}, \"isHistory\": 1, \"isMonitor\": 0, \"isReadonly\": 0, \"isSharePerm\": 1}], \"arrayType\": \"object\", \"arrayCount\": \"5\"}, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}]}', 2, 2, 3, NULL, '0', '', '2025-02-25 22:51:39', '', '2023-09-16 11:46:43', NULL, 'MQTT');
+INSERT INTO `iot_product` VALUES (66, '￥MODBUS协议产品', 'MODBUS-RTU', 1, '电工照明', 1, 'admin', 1, 0, 'FastBee', 'P6JPN3V4PRZA91W8', 'KJVHI708452TMIS0', 2, '{\"properties\": [{\"id\": \"1\", \"code\": \"3\", \"name\": \"电量\", \"type\": 1, \"order\": 0, \"regId\": \"1#11\", \"isChart\": 0, \"datatype\": {\"max\": 100, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"\"}, \"quantity\": 1, \"isHistory\": 1, \"isMonitor\": 0, \"parseType\": \"ushort\", \"isReadonly\": 0, \"tempSlaveId\": 11}, {\"id\": \"0\", \"code\": \"3\", \"name\": \"漏水值\", \"type\": 1, \"order\": 0, \"regId\": \"0#1\", \"isChart\": 0, \"datatype\": {\"max\": 100, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"度\"}, \"quantity\": 1, \"isHistory\": 1, \"isMonitor\": 0, \"parseType\": \"ushort\", \"isReadonly\": 0, \"tempSlaveId\": 1}, {\"id\": \"0\", \"code\": \"3\", \"name\": \"温度\", \"type\": 1, \"order\": 0, \"regId\": \"0#2\", \"isChart\": 0, \"datatype\": {\"max\": 100, \"min\": 1, \"step\": 1, \"type\": \"integer\", \"unit\": \"°\"}, \"quantity\": 1, \"isHistory\": 1, \"isMonitor\": 0, \"parseType\": \"ushort\", \"isReadonly\": 0, \"tempSlaveId\": 2}]}', 2, 1, 3, NULL, '0', '', '2023-02-28 16:40:13', '', NULL, NULL, 'MQTT');
+INSERT INTO `iot_product` VALUES (88, '￥视频监控产品', NULL, 2, '家居安防', 1, 'admin', 1, 0, 'FastBee', 'P0IB9M8A7J4R056V', 'K69914VL8175ZY21', 2, '{}', 3, 1, 3, NULL, '0', '', '2023-04-11 21:11:54', '', NULL, NULL, 'GB28181');
 INSERT INTO `iot_product` VALUES (130, 'TCP测试设备', 'JSON', 1, '电工照明', 1, 'admin', 1, 0, 'FastBee', 'P385PS3059I8S5EL', 'KHP44MH2X75GLGA8', 2, '{\"functions\": [{\"id\": \"status\", \"name\": \"上报状态\", \"type\": 2, \"order\": 0, \"regId\": \"status\", \"isChart\": 0, \"datatype\": {\"type\": \"enum\", \"showWay\": \"button\", \"enumList\": [{\"text\": \"更新状态\", \"value\": \"update_status\"}]}, \"isHistory\": 0, \"isMonitor\": 0, \"isReadonly\": 0}]}', 1, 1, 3, '', '0', '', '2023-09-19 11:22:44', '', NULL, NULL, 'TCP');
 
 -- ----------------------------
@@ -599,33 +510,11 @@ CREATE TABLE `iot_protocol`  (
 -- ----------------------------
 -- Records of iot_protocol
 -- ----------------------------
-INSERT INTO `iot_protocol` VALUES (1, 'JSON', 'JSON解析协议', '/', 0, '系统内置JSON解析协议', '2023-03-01 05:46:43', '2023-04-10 14:42:12', 1, 0);
-INSERT INTO `iot_protocol` VALUES (2, 'MODBUS-RTU', 'ModbusRtu协议', '/', 0, '系统内置ModbusRtu解析协议', '2023-03-01 05:52:33', '2023-04-09 15:58:59', 1, 0);
-INSERT INTO `iot_protocol` VALUES (3, 'MODBUS-RTU-PAK', '包装Modbus-rtu协议', '/', 0, '系统内置包装后的modbus-rtu协议', '2023-03-01 05:53:10', '2023-03-01 08:10:47', 1, 0);
-INSERT INTO `iot_protocol` VALUES (4, 'JSONOBJECT-CHENYI', 'JSON-Data解析协议', '', 0, '系统内置JSONObject解析协议', '2023-08-23 01:31:39', '2023-08-23 01:31:39', 1, 0);
-INSERT INTO `iot_protocol` VALUES (5, 'RJ45', 'RJ45解析协议', '', 0, '系统内置RJ45解析协议', '2023-08-23 01:31:39', '2023-08-23 01:31:39', 1, 0);
-INSERT INTO `iot_protocol` VALUES (6, 'FlowMeter', '流量计解析协议', '', 0, '流量计解析协议', '2023-08-23 01:31:39', '2023-08-23 01:31:39', 1, 0);
-INSERT INTO `iot_protocol` VALUES (7, 'JSONOBJECT', 'JSONObject解析协议', '', 0, '系统内置JSONObject解析协议', '2023-08-23 01:31:39', '2023-08-23 01:31:39', 1, 0);
-INSERT INTO `iot_protocol` VALUES (8, 'MODBUS-JSON', 'Modbus转Json解析协议', '', 0, 'modbus转json解析协议', '2023-08-23 01:31:39', '2023-08-23 01:31:39', 1, 0);
-INSERT INTO `iot_protocol` VALUES (9, 'YinErDa', 'YinErDa解析协议', '', 0, 'YinErDa解析协议', '2023-08-23 01:31:39', '2023-08-23 01:31:39', 1, 0);
-INSERT INTO `iot_protocol` VALUES (10, 'MODBUS-JSON-FY', 'Modbus转Json解析协议-繁易', '', 0, 'modbus转json解析协议-繁易', '2023-08-23 01:33:03', '2023-08-23 01:33:03', 1, 0);
-
--- ----------------------------
--- Table structure for iot_simulate_log
--- ----------------------------
-DROP TABLE IF EXISTS `iot_simulate_log`;
-CREATE TABLE `iot_simulate_log`  (
-  `log_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '设备模拟日志ID',
-  `send_data` json NULL COMMENT '云端发送指令',
-  `callback_data` json NULL COMMENT '设备回复',
-  `device_id` bigint(20) NULL DEFAULT NULL COMMENT '设备ID',
-  `device_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备名称',
-  `serial_number` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '设备编号',
-  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `remark` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '模拟设备日志' ROW_FORMAT = Dynamic;
+INSERT INTO `iot_protocol` VALUES (1, 'JSON', 'JSON协议', '/', 0, '系统内置JSON编解码协议', '2023-03-01 05:46:43', '2023-04-10 14:42:12', 1, 0);
+INSERT INTO `iot_protocol` VALUES (2, 'MODBUS-RTU', 'ModbusRtu协议', '/', 0, '系统内置ModbusRtu编解码协议(商业版本支持更多非标协议)', '2023-03-01 05:52:33', '2023-04-09 15:58:59', 1, 0);
+INSERT INTO `iot_protocol` VALUES (3, 'JSONOBJECT-CHENYI', 'JSON-Data协议', '', 0, '系统内置JSONObject编解码协议', '2023-08-23 01:31:39', '2023-08-23 01:31:39', 1, 0);
+INSERT INTO `iot_protocol` VALUES (4, 'JSONOBJECT', 'JSONObject协议', '', 0, '系统内置JSONObject编解码协议', '2023-08-23 01:31:39', '2023-08-23 01:31:39', 1, 0);
+INSERT INTO `iot_protocol` VALUES (5, '商业版非标协议', '商业版本支持更多非标协议', '', 0, '商业版本支持更多非标协议', '2023-08-23 01:31:39', '2023-08-23 01:31:39', 1, 0);
 
 -- ----------------------------
 -- Records of iot_simulate_log
@@ -1088,61 +977,6 @@ INSERT INTO `iot_things_model_template` VALUES (342, '图片', 1, 'admin', 'imag
 INSERT INTO `iot_things_model_template` VALUES (343, '状态', 1, 'admin', 'status', 1, 'integer', '{\"max\": 100, \"min\": 0, \"step\": 1, \"type\": \"integer\", \"unit\": \"\"}', 1, 0, 0, 1, 1, 0, 0, '0', '', '2023-08-30 23:28:00', '', '2023-08-30 23:28:17', NULL, '2#1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
--- Table structure for iot_var_temp
--- ----------------------------
-DROP TABLE IF EXISTS `iot_var_temp`;
-CREATE TABLE `iot_var_temp`  (
-  `template_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
-  `template_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '模板名称',
-  `type` tinyint(20) NULL DEFAULT NULL,
-  `polling_method` tinyint(20) NOT NULL COMMENT '采集方式 1.云端轮询 2.云端边缘计算',
-  `user_id` int(11) NULL DEFAULT NULL COMMENT '模板所属用户',
-  `slave_total` bigint(20) NULL DEFAULT NULL COMMENT '从机总数',
-  `point_total` bigint(20) NULL DEFAULT NULL COMMENT '总采集点数',
-  `share` tinyint(20) NULL DEFAULT NULL COMMENT '是否分享',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '创建用户',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '更新用户',
-  PRIMARY KEY (`template_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '设备采集变量模板对象' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of iot_var_temp
--- ----------------------------
-INSERT INTO `iot_var_temp` VALUES (1, 'modbus从机组', NULL, 0, NULL, NULL, NULL, NULL, '2023-02-28 14:20:29', NULL, NULL, NULL);
-INSERT INTO `iot_var_temp` VALUES (2, '边缘网关-MCU', NULL, 1, NULL, NULL, NULL, NULL, '2023-08-26 19:25:56', NULL, NULL, NULL);
-INSERT INTO `iot_var_temp` VALUES (3, '工程数据采集模板', NULL, 0, NULL, NULL, NULL, NULL, '2023-08-28 14:20:21', NULL, NULL, NULL);
-INSERT INTO `iot_var_temp` VALUES (4, '测试网关', NULL, 1, NULL, NULL, NULL, NULL, '2023-08-29 18:20:10', NULL, NULL, NULL);
-INSERT INTO `iot_var_temp` VALUES (6, '温湿度模板', NULL, 0, NULL, NULL, NULL, NULL, '2023-08-30 14:04:56', NULL, NULL, NULL);
-
--- ----------------------------
--- Table structure for iot_var_temp_salve
--- ----------------------------
-DROP TABLE IF EXISTS `iot_var_temp_salve`;
-CREATE TABLE `iot_var_temp_salve`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
-  `device_temp_id` bigint(20) NOT NULL COMMENT '关联的模板id',
-  `slave_addr` int(20) NULL DEFAULT NULL COMMENT '从机编号',
-  `slave_index` int(20) NULL DEFAULT NULL,
-  `slave_ip` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '从机ip地址',
-  `slave_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '从机名称',
-  `slave_port` int(20) NULL DEFAULT NULL COMMENT '从机端口',
-  `addr_start` bigint(20) NULL DEFAULT NULL COMMENT '寄存器起始地址(10进制)',
-  `addr_end` bigint(20) NULL DEFAULT NULL COMMENT '寄存器结束地址(10进制)',
-  `packet_length` int(20) NULL DEFAULT 32 COMMENT '寄存器批量读取个数',
-  `timer` bigint(20) NULL DEFAULT NULL COMMENT '批量获取轮询时间(默认5分钟)',
-  `status` tinyint(20) NOT NULL COMMENT '状态 0-启动 1-失效',
-  `code` int(20) NULL DEFAULT NULL COMMENT '功能编码',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '创建用户',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '更新用户',
-  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '变量模板设备从机对象' ROW_FORMAT = Dynamic;
-
--- ----------------------------
 -- Records of iot_var_temp_salve
 -- ----------------------------
 INSERT INTO `iot_var_temp_salve` VALUES (1, 1, 1, NULL, NULL, '漏水器', NULL, 0, 0, 1, 300, 0, 4, '2023-02-28 14:43:24', NULL, '2023-04-11 19:02:06', NULL, NULL);
@@ -1154,46 +988,6 @@ INSERT INTO `iot_var_temp_salve` VALUES (7, 3, 1, NULL, NULL, '计件传感器',
 INSERT INTO `iot_var_temp_salve` VALUES (8, 3, 2, NULL, NULL, '机器参数传感器', NULL, 0, 10, 10, 60, 0, NULL, '2023-08-28 15:06:32', NULL, NULL, NULL, NULL);
 INSERT INTO `iot_var_temp_salve` VALUES (13, 6, 1, NULL, NULL, '温湿度传感器', NULL, 0, 1, 2, 60, 0, NULL, '2023-08-30 14:05:26', NULL, NULL, NULL, NULL);
 INSERT INTO `iot_var_temp_salve` VALUES (17, 2, 0, NULL, NULL, '采集设备', NULL, NULL, NULL, 32, NULL, 0, NULL, '2023-08-30 23:30:25', NULL, NULL, NULL, NULL);
-
--- ----------------------------
--- Table structure for media_server
--- ----------------------------
-DROP TABLE IF EXISTS `media_server`;
-CREATE TABLE `media_server`  (
-  `id` bigint(64) NOT NULL AUTO_INCREMENT COMMENT '流媒体配置ID',
-  `server_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '服务器标识',
-  `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
-  `tenant_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '租户名称',
-  `enabled` tinyint(1) NULL DEFAULT NULL COMMENT '使能开关',
-  `protocol` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '默认播放协议',
-  `ip` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '服务器ip',
-  `domain` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '服务器域名',
-  `hookurl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '回调服务器地址',
-  `secret` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '流媒体密钥',
-  `port_http` int(11) NOT NULL DEFAULT 0 COMMENT 'http端口',
-  `port_https` int(11) NOT NULL DEFAULT 0 COMMENT 'https端口',
-  `port_rtmp` int(11) NOT NULL DEFAULT 0 COMMENT 'rtmp端口',
-  `port_rtsp` int(11) NOT NULL DEFAULT 0 COMMENT 'rtsp端口',
-  `rtp_proxy_port` int(11) NOT NULL DEFAULT 0 COMMENT 'RTP收流端口',
-  `rtp_enable` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否使用多端口模式',
-  `rtp_port_range` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT 'rtp端口范围',
-  `record_port` int(11) NOT NULL DEFAULT 0 COMMENT '录像服务端口',
-  `auto_config` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否自动同步配置ZLM',
-  `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '状态',
-  `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
-  `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NOT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `port_ws` int(11) NULL DEFAULT NULL COMMENT 'ws端口',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '流媒体服务器配置' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of media_server
--- ----------------------------
-INSERT INTO `media_server` VALUES (7, 'fastbee', 1, 'admin', 1, 'http', '81.71.97.58', '', 'java:8080', '035c73f7-bb6b-4889-a715-d9eb2d192xxx', 8082, 8443, 1935, 554, 0, 1, '30000,30100', 18081, 1, 0, '0', '', '2023-09-26 21:11:43', '', '2023-09-26 21:23:40', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for news
@@ -2271,41 +2065,42 @@ INSERT INTO `sys_menu` VALUES (1059, '预览代码', 115, 4, '#', '', '', 1, 0, 
 INSERT INTO `sys_menu` VALUES (1060, '生成代码', 115, 5, '#', '', '', 1, 0, 'F', '0', '0', 'tool:gen:code', '#', 'admin', '2021-12-15 21:36:18', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1065, '账户解锁', 501, 4, '#', '', '', 1, 0, 'F', '0', '0', 'monitor:logininfor:unlock', '#', 'admin', '2023-03-10 23:23:04', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2000, '设备管理', 0, 0, 'iot', NULL, NULL, 1, 0, 'M', '0', '0', '', 'iot', 'admin', '2021-12-15 23:57:06', 'admin', '2021-12-26 23:55:54', '');
-INSERT INTO `sys_menu` VALUES (2001, '产品分类', 2000, 2, 'category', 'iot/category/index', NULL, 1, 0, 'C', '0', '0', 'iot:category:list', 'category', 'admin', '2021-12-16 00:40:02', 'admin', '2021-12-26 23:56:20', '产品分类菜单');
-INSERT INTO `sys_menu` VALUES (2002, '产品分类查询', 2001, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:category:query', '#', 'admin', '2021-12-16 00:40:02', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2003, '产品分类新增', 2001, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:category:add', '#', 'admin', '2021-12-16 00:40:02', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2004, '产品分类修改', 2001, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:category:edit', '#', 'admin', '2021-12-16 00:40:02', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2005, '产品分类删除', 2001, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:category:remove', '#', 'admin', '2021-12-16 00:40:02', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2006, '产品分类导出', 2001, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:category:export', '#', 'admin', '2021-12-16 00:40:02', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2007, '设备管理', 2000, 6, 'device', 'iot/device/index', NULL, 1, 0, 'C', '0', '0', 'iot:device:list', 'device', 'admin', '2021-12-16 00:40:12', 'admin', '2022-01-08 15:47:14', '设备菜单');
-INSERT INTO `sys_menu` VALUES (2008, '设备查询', 2007, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:device:query', '#', 'admin', '2021-12-16 00:40:12', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2009, '设备新增', 2007, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:device:add', '#', 'admin', '2021-12-16 00:40:12', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2010, '设备修改', 2007, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:device:edit', '#', 'admin', '2021-12-16 00:40:12', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2011, '设备删除', 2007, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:device:remove', '#', 'admin', '2021-12-16 00:40:12', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2012, '设备导出', 2007, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:device:export', '#', 'admin', '2021-12-16 00:40:12', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2019, '设备分组', 2000, 5, 'group', 'iot/group/index', NULL, 1, 0, 'C', '0', '0', 'iot:group:list', 'group', 'admin', '2021-12-16 00:40:31', 'admin', '2021-12-26 23:56:54', '设备分组菜单');
-INSERT INTO `sys_menu` VALUES (2020, '设备分组查询', 2019, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:group:query', '#', 'admin', '2021-12-16 00:40:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2021, '设备分组新增', 2019, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:group:add', '#', 'admin', '2021-12-16 00:40:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2022, '设备分组修改', 2019, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:group:edit', '#', 'admin', '2021-12-16 00:40:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2023, '设备分组删除', 2019, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:group:remove', '#', 'admin', '2021-12-16 00:40:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2024, '设备分组导出', 2019, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:group:export', '#', 'admin', '2021-12-16 00:40:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2043, '产品管理', 2000, 3, 'product', 'iot/product/index', NULL, 1, 0, 'C', '0', '0', 'iot:product:list', 'product', 'admin', '2021-12-16 00:41:18', 'admin', '2021-12-26 23:58:44', '产品菜单');
-INSERT INTO `sys_menu` VALUES (2044, '产品查询', 2043, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:product:query', '#', 'admin', '2021-12-16 00:41:18', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2045, '产品新增', 2043, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:product:add', '#', 'admin', '2021-12-16 00:41:18', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2046, '产品修改', 2043, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:product:edit', '#', 'admin', '2021-12-16 00:41:18', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2047, '产品删除', 2043, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:product:remove', '#', 'admin', '2021-12-16 00:41:18', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2048, '产品导出', 2043, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:product:export', '#', 'admin', '2021-12-16 00:41:18', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2049, '通用物模型', 2000, 1, 'template', 'iot/template/index', NULL, 1, 0, 'C', '0', '0', 'iot:template:list', 'model', 'admin', '2021-12-16 00:41:28', 'admin', '2021-12-26 23:56:09', '通用物模型菜单');
 INSERT INTO `sys_menu` VALUES (2050, '通用物模型查询', 2049, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:template:query', '#', 'admin', '2021-12-16 00:41:28', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2051, '通用物模型新增', 2049, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:template:add', '#', 'admin', '2021-12-16 00:41:28', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2052, '通用物模型修改', 2049, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:template:edit', '#', 'admin', '2021-12-16 00:41:28', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2053, '通用物模型删除', 2049, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:template:remove', '#', 'admin', '2021-12-16 00:41:28', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2054, '通用物模型导出', 2049, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:template:export', '#', 'admin', '2021-12-16 00:41:28', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2099, '云云对接查询', 2098, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:clientDetails:query', '#', 'admin', '2022-02-07 22:08:59', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2100, '云云对接新增', 2098, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:clientDetails:add', '#', 'admin', '2022-02-07 22:08:59', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2101, '云云对接修改', 2098, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:clientDetails:edit', '#', 'admin', '2022-02-07 22:08:59', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2102, '云云对接删除', 2098, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:clientDetails:remove', '#', 'admin', '2022-02-07 22:08:59', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2103, '云云对接导出', 2098, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:clientDetails:export', '#', 'admin', '2022-02-07 22:08:59', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2001, '产品分类', 2000, 2, 'category', 'iot/category/index', NULL, 1, 0, 'C', '0', '0', 'iot:category:list', 'category', 'admin', '2021-12-16 00:40:02', 'admin', '2021-12-26 23:56:20', '产品分类菜单');
+INSERT INTO `sys_menu` VALUES (2002, '产品分类查询', 2001, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:category:query', '#', 'admin', '2021-12-16 00:40:02', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2003, '产品分类新增', 2001, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:category:add', '#', 'admin', '2021-12-16 00:40:02', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2004, '产品分类修改', 2001, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:category:edit', '#', 'admin', '2021-12-16 00:40:02', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2005, '产品分类删除', 2001, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:category:remove', '#', 'admin', '2021-12-16 00:40:02', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2006, '产品分类导出', 2001, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:category:export', '#', 'admin', '2021-12-16 00:40:02', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2043, '产品管理', 2000, 3, 'product', 'iot/product/index', NULL, 1, 0, 'C', '0', '0', 'iot:product:list', 'product', 'admin', '2021-12-16 00:41:18', 'admin', '2021-12-26 23:58:44', '产品菜单');
+INSERT INTO `sys_menu` VALUES (2044, '产品查询', 2043, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:product:query', '#', 'admin', '2021-12-16 00:41:18', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2045, '产品新增', 2043, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:product:add', '#', 'admin', '2021-12-16 00:41:18', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2046, '产品修改', 2043, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:product:edit', '#', 'admin', '2021-12-16 00:41:18', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2047, '产品删除', 2043, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:product:remove', '#', 'admin', '2021-12-16 00:41:18', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2048, '产品导出', 2043, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:product:export', '#', 'admin', '2021-12-16 00:41:18', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2019, '设备分组', 2000, 4, 'group', 'iot/group/index', NULL, 1, 0, 'C', '0', '0', 'iot:group:list', 'group', 'admin', '2021-12-16 00:40:31', 'admin', '2021-12-26 23:56:54', '设备分组菜单');
+INSERT INTO `sys_menu` VALUES (2020, '设备分组查询', 2019, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:group:query', '#', 'admin', '2021-12-16 00:40:31', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2021, '设备分组新增', 2019, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:group:add', '#', 'admin', '2021-12-16 00:40:31', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2022, '设备分组修改', 2019, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:group:edit', '#', 'admin', '2021-12-16 00:40:31', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2023, '设备分组删除', 2019, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:group:remove', '#', 'admin', '2021-12-16 00:40:31', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2024, '设备分组导出', 2019, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:group:export', '#', 'admin', '2021-12-16 00:40:31', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2007, '设备管理', 2000, 5, 'device', 'iot/device/index', NULL, 1, 0, 'C', '0', '0', 'iot:device:list', 'device', 'admin', '2021-12-16 00:40:12', 'admin', '2022-01-08 15:47:14', '设备菜单');
+INSERT INTO `sys_menu` VALUES (2008, '设备查询', 2007, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:device:query', '#', 'admin', '2021-12-16 00:40:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2009, '设备新增', 2007, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:device:add', '#', 'admin', '2021-12-16 00:40:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2010, '设备修改', 2007, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:device:edit', '#', 'admin', '2021-12-16 00:40:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2011, '设备删除', 2007, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:device:remove', '#', 'admin', '2021-12-16 00:40:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2012, '设备导出', 2007, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:device:export', '#', 'admin', '2021-12-16 00:40:12', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (3007, '协议管理', 2000, 6, 'protocol', 'iot/protocol/index', NULL, 1, 0, 'C', '0', '0', 'iot:protocol:list', 'connect', 'admin', '2023-02-28 11:26:54', 'admin', '2023-04-12 22:02:14', '协议菜单');
+INSERT INTO `sys_menu` VALUES (3008, '协议查询', 3007, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:protocol:query', '#', 'admin', '2023-02-28 11:26:54', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (3009, '协议新增', 3007, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:protocol:add', '#', 'admin', '2023-02-28 11:26:54', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (3010, '协议修改', 3007, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:protocol:edit', '#', 'admin', '2023-02-28 11:26:54', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (3011, '协议删除', 3007, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:protocol:remove', '#', 'admin', '2023-02-28 11:26:54', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (3012, '协议导出', 3007, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:protocol:export', '#', 'admin', '2023-02-28 11:26:55', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2104, 'EMQ管理', 0, 8, 'http://81.71.97.58:18083/', NULL, NULL, 0, 0, 'M', '0', '0', '', 'mq', 'admin', '2022-02-26 00:42:12', 'admin', '2023-09-26 00:07:24', '');
 INSERT INTO `sys_menu` VALUES (2123, '新闻分类', 1, 10, 'newsCategory', 'iot/newsCategory/index', NULL, 1, 0, 'C', '0', '0', 'iot:newsCategory:list', 'category', 'admin', '2022-04-11 16:47:27', 'admin', '2022-05-12 17:20:51', '新闻分类菜单');
 INSERT INTO `sys_menu` VALUES (2124, '新闻分类查询', 2123, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:newsCategory:query', '#', 'admin', '2022-04-11 16:47:27', '', NULL, '');
@@ -2329,30 +2124,6 @@ INSERT INTO `sys_menu` VALUES (2142, '平台查询', 2142, 1, '', NULL, NULL, 1,
 INSERT INTO `sys_menu` VALUES (2147, '设备分享', 2007, 6, '', NULL, NULL, 1, 0, 'F', '0', '0', 'iot:device:share', '#', 'admin', '2022-06-10 01:08:40', 'admin', '2022-06-10 01:10:46', '');
 INSERT INTO `sys_menu` VALUES (2148, '设备定时', 2007, 7, '', NULL, NULL, 1, 0, 'F', '0', '0', 'iot:device:timer', '#', 'admin', '2022-06-10 01:10:30', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2149, '大屏展示', 3047, 5, 'https://iot.fastbee.cn/bigScreen', NULL, NULL, 0, 0, 'M', '0', '0', '', 'monitor-a', 'admin', '2022-08-13 22:32:11', 'admin', '2023-08-23 23:11:11', '');
-INSERT INTO `sys_menu` VALUES (3007, '协议管理', 3000, 1, 'protocol', 'iot/protocol/index', NULL, 1, 0, 'C', '0', '0', 'iot:protocol:list', 'connect', 'admin', '2023-02-28 11:26:54', 'admin', '2023-04-12 22:02:14', '协议菜单');
-INSERT INTO `sys_menu` VALUES (3008, '协议查询', 3007, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:protocol:query', '#', 'admin', '2023-02-28 11:26:54', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3009, '协议新增', 3007, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:protocol:add', '#', 'admin', '2023-02-28 11:26:54', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3010, '协议修改', 3007, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:protocol:edit', '#', 'admin', '2023-02-28 11:26:54', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3011, '协议删除', 3007, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:protocol:remove', '#', 'admin', '2023-02-28 11:26:54', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3012, '协议导出', 3007, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:protocol:export', '#', 'admin', '2023-02-28 11:26:55', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3013, '变量模板设备从机', 3000, 1, 'salve', '', NULL, 1, 0, 'F', '0', '0', 'iot:salve:list', '#', 'admin', '2023-02-28 11:28:29', '', NULL, '变量模板设备从机菜单');
-INSERT INTO `sys_menu` VALUES (3014, '变量模板设备从机查询', 3013, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:salve:query', '#', 'admin', '2023-02-28 11:28:29', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3015, '变量模板设备从机新增', 3013, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:salve:add', '#', 'admin', '2023-02-28 11:28:29', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3016, '变量模板设备从机修改', 3013, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:salve:edit', '#', 'admin', '2023-02-28 11:28:29', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3017, '变量模板设备从机删除', 3013, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:salve:remove', '#', 'admin', '2023-02-28 11:28:29', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3018, '变量模板设备从机导出', 3013, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:salve:export', '#', 'admin', '2023-02-28 11:28:29', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3019, '变量模板从机采集点', 3000, 1, 'point', '', NULL, 1, 0, 'F', '0', '0', 'iot:point:list', '#', 'admin', '2023-02-28 11:30:19', '', NULL, '变量模板从机采集点菜单');
-INSERT INTO `sys_menu` VALUES (3020, '变量模板从机采集点查询', 3019, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:point:query', '#', 'admin', '2023-02-28 11:30:19', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3021, '变量模板从机采集点新增', 3019, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:point:add', '#', 'admin', '2023-02-28 11:30:19', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3022, '变量模板从机采集点修改', 3019, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:point:edit', '#', 'admin', '2023-02-28 11:30:19', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3023, '变量模板从机采集点删除', 3019, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:point:remove', '#', 'admin', '2023-02-28 11:30:19', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3024, '变量模板从机采集点导出', 3019, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:point:export', '#', 'admin', '2023-02-28 11:30:19', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (3025, '采集点模板', 3000, 2, 'template', 'iot/varTemp/temp', NULL, 1, 0, 'C', '0', '0', 'iot:temp:list', 'theme', 'admin', '2023-02-28 11:31:16', 'admin', '2023-04-12 22:02:24', '设备采集点模板关联菜单');
-INSERT INTO `sys_menu` VALUES (3026, '设备采集点模板关联查询', 3025, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:temp:query', '#', 'admin', '2023-02-28 11:31:16', 'admin', '2023-04-12 22:10:35', '');
-INSERT INTO `sys_menu` VALUES (3027, '设备采集点模板关联新增', 3025, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:temp:add', '#', 'admin', '2023-02-28 11:31:16', 'admin', '2023-04-12 22:10:44', '');
-INSERT INTO `sys_menu` VALUES (3028, '设备采集点模板关联修改', 3025, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:temp:edit', '#', 'admin', '2023-02-28 11:31:16', 'admin', '2023-04-12 22:10:58', '');
-INSERT INTO `sys_menu` VALUES (3029, '设备采集点模板关联删除', 3025, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:temp:remove', '#', 'admin', '2023-02-28 11:31:16', 'admin', '2023-04-12 22:11:06', '');
-INSERT INTO `sys_menu` VALUES (3030, '设备采集点模板关联导出', 3025, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'iot:temp:export', '#', 'admin', '2023-02-28 11:31:16', 'admin', '2023-04-12 22:11:14', '');
 INSERT INTO `sys_menu` VALUES (3031, 'Netty管理', 0, 3, 'netty', NULL, NULL, 1, 0, 'M', '0', '0', '', 'mq', 'admin', '2022-02-26 00:42:12', 'admin', '2023-09-26 00:11:57', '');
 INSERT INTO `sys_menu` VALUES (3032, '客户端', 3031, 1, 'client', 'iot/netty/clients', NULL, 1, 0, 'C', '0', '0', 'monitor:server:list', 'client', 'admin', '2022-02-26 00:45:39', 'admin', '2023-08-23 23:38:08', '');
 INSERT INTO `sys_menu` VALUES (3033, '事件日志', 2000, 1, 'log', 'iot/log/index', NULL, 1, 0, 'F', '0', '0', 'iot:event:list', '#', 'admin', '2023-03-28 14:23:52', '', NULL, '事件日志菜单');
@@ -2500,463 +2271,311 @@ CREATE TABLE `sys_role_menu`  (
 -- ----------------------------
 -- Records of sys_role_menu
 -- ----------------------------
-INSERT INTO `sys_role_menu` VALUES (2, 1);
-INSERT INTO `sys_role_menu` VALUES (2, 4);
-INSERT INTO `sys_role_menu` VALUES (2, 107);
-INSERT INTO `sys_role_menu` VALUES (2, 1036);
-INSERT INTO `sys_role_menu` VALUES (2, 2000);
-INSERT INTO `sys_role_menu` VALUES (2, 2001);
-INSERT INTO `sys_role_menu` VALUES (2, 2002);
-INSERT INTO `sys_role_menu` VALUES (2, 2003);
-INSERT INTO `sys_role_menu` VALUES (2, 2004);
-INSERT INTO `sys_role_menu` VALUES (2, 2005);
-INSERT INTO `sys_role_menu` VALUES (2, 2006);
-INSERT INTO `sys_role_menu` VALUES (2, 2007);
-INSERT INTO `sys_role_menu` VALUES (2, 2008);
-INSERT INTO `sys_role_menu` VALUES (2, 2009);
-INSERT INTO `sys_role_menu` VALUES (2, 2010);
-INSERT INTO `sys_role_menu` VALUES (2, 2011);
-INSERT INTO `sys_role_menu` VALUES (2, 2012);
-INSERT INTO `sys_role_menu` VALUES (2, 2013);
-INSERT INTO `sys_role_menu` VALUES (2, 2014);
-INSERT INTO `sys_role_menu` VALUES (2, 2015);
-INSERT INTO `sys_role_menu` VALUES (2, 2016);
-INSERT INTO `sys_role_menu` VALUES (2, 2017);
-INSERT INTO `sys_role_menu` VALUES (2, 2018);
-INSERT INTO `sys_role_menu` VALUES (2, 2019);
-INSERT INTO `sys_role_menu` VALUES (2, 2020);
-INSERT INTO `sys_role_menu` VALUES (2, 2021);
-INSERT INTO `sys_role_menu` VALUES (2, 2022);
-INSERT INTO `sys_role_menu` VALUES (2, 2023);
-INSERT INTO `sys_role_menu` VALUES (2, 2024);
-INSERT INTO `sys_role_menu` VALUES (2, 2043);
-INSERT INTO `sys_role_menu` VALUES (2, 2044);
-INSERT INTO `sys_role_menu` VALUES (2, 2045);
-INSERT INTO `sys_role_menu` VALUES (2, 2046);
-INSERT INTO `sys_role_menu` VALUES (2, 2047);
-INSERT INTO `sys_role_menu` VALUES (2, 2048);
-INSERT INTO `sys_role_menu` VALUES (2, 2049);
-INSERT INTO `sys_role_menu` VALUES (2, 2050);
-INSERT INTO `sys_role_menu` VALUES (2, 2051);
-INSERT INTO `sys_role_menu` VALUES (2, 2052);
-INSERT INTO `sys_role_menu` VALUES (2, 2053);
-INSERT INTO `sys_role_menu` VALUES (2, 2054);
-INSERT INTO `sys_role_menu` VALUES (2, 2067);
-INSERT INTO `sys_role_menu` VALUES (2, 2068);
-INSERT INTO `sys_role_menu` VALUES (2, 2069);
-INSERT INTO `sys_role_menu` VALUES (2, 2070);
-INSERT INTO `sys_role_menu` VALUES (2, 2071);
-INSERT INTO `sys_role_menu` VALUES (2, 2072);
-INSERT INTO `sys_role_menu` VALUES (2, 2085);
-INSERT INTO `sys_role_menu` VALUES (2, 2086);
-INSERT INTO `sys_role_menu` VALUES (2, 2087);
-INSERT INTO `sys_role_menu` VALUES (2, 2088);
-INSERT INTO `sys_role_menu` VALUES (2, 2089);
-INSERT INTO `sys_role_menu` VALUES (2, 2090);
-INSERT INTO `sys_role_menu` VALUES (2, 2098);
-INSERT INTO `sys_role_menu` VALUES (2, 2099);
-INSERT INTO `sys_role_menu` VALUES (2, 2100);
-INSERT INTO `sys_role_menu` VALUES (2, 2101);
-INSERT INTO `sys_role_menu` VALUES (2, 2102);
-INSERT INTO `sys_role_menu` VALUES (2, 2103);
-INSERT INTO `sys_role_menu` VALUES (2, 2129);
-INSERT INTO `sys_role_menu` VALUES (2, 2130);
-INSERT INTO `sys_role_menu` VALUES (2, 2136);
-INSERT INTO `sys_role_menu` VALUES (2, 2137);
-INSERT INTO `sys_role_menu` VALUES (2, 2138);
-INSERT INTO `sys_role_menu` VALUES (2, 2139);
-INSERT INTO `sys_role_menu` VALUES (2, 2140);
-INSERT INTO `sys_role_menu` VALUES (2, 2147);
-INSERT INTO `sys_role_menu` VALUES (2, 2148);
-INSERT INTO `sys_role_menu` VALUES (2, 2168);
-INSERT INTO `sys_role_menu` VALUES (2, 2169);
-INSERT INTO `sys_role_menu` VALUES (2, 2170);
-INSERT INTO `sys_role_menu` VALUES (2, 2171);
-INSERT INTO `sys_role_menu` VALUES (2, 2172);
-INSERT INTO `sys_role_menu` VALUES (2, 3000);
-INSERT INTO `sys_role_menu` VALUES (3, 1);
-INSERT INTO `sys_role_menu` VALUES (3, 4);
-INSERT INTO `sys_role_menu` VALUES (3, 107);
-INSERT INTO `sys_role_menu` VALUES (3, 1036);
-INSERT INTO `sys_role_menu` VALUES (3, 2000);
-INSERT INTO `sys_role_menu` VALUES (3, 2007);
-INSERT INTO `sys_role_menu` VALUES (3, 2008);
-INSERT INTO `sys_role_menu` VALUES (3, 2009);
-INSERT INTO `sys_role_menu` VALUES (3, 2010);
-INSERT INTO `sys_role_menu` VALUES (3, 2011);
-INSERT INTO `sys_role_menu` VALUES (3, 2012);
-INSERT INTO `sys_role_menu` VALUES (3, 2019);
-INSERT INTO `sys_role_menu` VALUES (3, 2020);
-INSERT INTO `sys_role_menu` VALUES (3, 2021);
-INSERT INTO `sys_role_menu` VALUES (3, 2022);
-INSERT INTO `sys_role_menu` VALUES (3, 2023);
-INSERT INTO `sys_role_menu` VALUES (3, 2024);
-INSERT INTO `sys_role_menu` VALUES (3, 2067);
-INSERT INTO `sys_role_menu` VALUES (3, 2068);
-INSERT INTO `sys_role_menu` VALUES (3, 2085);
-INSERT INTO `sys_role_menu` VALUES (3, 2086);
-INSERT INTO `sys_role_menu` VALUES (3, 2087);
-INSERT INTO `sys_role_menu` VALUES (3, 2088);
-INSERT INTO `sys_role_menu` VALUES (3, 2089);
-INSERT INTO `sys_role_menu` VALUES (3, 2090);
-INSERT INTO `sys_role_menu` VALUES (3, 2129);
-INSERT INTO `sys_role_menu` VALUES (3, 2130);
-INSERT INTO `sys_role_menu` VALUES (3, 2147);
-INSERT INTO `sys_role_menu` VALUES (3, 2148);
-INSERT INTO `sys_role_menu` VALUES (3, 2168);
-INSERT INTO `sys_role_menu` VALUES (3, 2169);
-INSERT INTO `sys_role_menu` VALUES (3, 2170);
-INSERT INTO `sys_role_menu` VALUES (3, 2171);
-INSERT INTO `sys_role_menu` VALUES (3, 2172);
-INSERT INTO `sys_role_menu` VALUES (4, 1);
-INSERT INTO `sys_role_menu` VALUES (4, 2);
-INSERT INTO `sys_role_menu` VALUES (4, 3);
-INSERT INTO `sys_role_menu` VALUES (4, 4);
-INSERT INTO `sys_role_menu` VALUES (4, 100);
-INSERT INTO `sys_role_menu` VALUES (4, 101);
-INSERT INTO `sys_role_menu` VALUES (4, 102);
-INSERT INTO `sys_role_menu` VALUES (4, 103);
-INSERT INTO `sys_role_menu` VALUES (4, 104);
-INSERT INTO `sys_role_menu` VALUES (4, 105);
-INSERT INTO `sys_role_menu` VALUES (4, 106);
-INSERT INTO `sys_role_menu` VALUES (4, 107);
-INSERT INTO `sys_role_menu` VALUES (4, 108);
-INSERT INTO `sys_role_menu` VALUES (4, 109);
-INSERT INTO `sys_role_menu` VALUES (4, 110);
-INSERT INTO `sys_role_menu` VALUES (4, 111);
-INSERT INTO `sys_role_menu` VALUES (4, 112);
-INSERT INTO `sys_role_menu` VALUES (4, 113);
-INSERT INTO `sys_role_menu` VALUES (4, 114);
-INSERT INTO `sys_role_menu` VALUES (4, 115);
-INSERT INTO `sys_role_menu` VALUES (4, 116);
-INSERT INTO `sys_role_menu` VALUES (4, 500);
-INSERT INTO `sys_role_menu` VALUES (4, 501);
-INSERT INTO `sys_role_menu` VALUES (4, 1001);
-INSERT INTO `sys_role_menu` VALUES (4, 1008);
-INSERT INTO `sys_role_menu` VALUES (4, 1013);
-INSERT INTO `sys_role_menu` VALUES (4, 1017);
-INSERT INTO `sys_role_menu` VALUES (4, 1021);
-INSERT INTO `sys_role_menu` VALUES (4, 1026);
-INSERT INTO `sys_role_menu` VALUES (4, 1031);
-INSERT INTO `sys_role_menu` VALUES (4, 1036);
-INSERT INTO `sys_role_menu` VALUES (4, 1040);
-INSERT INTO `sys_role_menu` VALUES (4, 1043);
-INSERT INTO `sys_role_menu` VALUES (4, 1046);
-INSERT INTO `sys_role_menu` VALUES (4, 1049);
-INSERT INTO `sys_role_menu` VALUES (4, 1055);
-INSERT INTO `sys_role_menu` VALUES (4, 2000);
-INSERT INTO `sys_role_menu` VALUES (4, 2001);
-INSERT INTO `sys_role_menu` VALUES (4, 2002);
-INSERT INTO `sys_role_menu` VALUES (4, 2003);
-INSERT INTO `sys_role_menu` VALUES (4, 2007);
-INSERT INTO `sys_role_menu` VALUES (4, 2008);
-INSERT INTO `sys_role_menu` VALUES (4, 2009);
-INSERT INTO `sys_role_menu` VALUES (4, 2013);
-INSERT INTO `sys_role_menu` VALUES (4, 2014);
-INSERT INTO `sys_role_menu` VALUES (4, 2015);
-INSERT INTO `sys_role_menu` VALUES (4, 2019);
-INSERT INTO `sys_role_menu` VALUES (4, 2020);
-INSERT INTO `sys_role_menu` VALUES (4, 2021);
-INSERT INTO `sys_role_menu` VALUES (4, 2043);
-INSERT INTO `sys_role_menu` VALUES (4, 2044);
-INSERT INTO `sys_role_menu` VALUES (4, 2045);
-INSERT INTO `sys_role_menu` VALUES (4, 2049);
-INSERT INTO `sys_role_menu` VALUES (4, 2050);
-INSERT INTO `sys_role_menu` VALUES (4, 2051);
-INSERT INTO `sys_role_menu` VALUES (4, 2067);
-INSERT INTO `sys_role_menu` VALUES (4, 2068);
-INSERT INTO `sys_role_menu` VALUES (4, 2069);
-INSERT INTO `sys_role_menu` VALUES (4, 2085);
-INSERT INTO `sys_role_menu` VALUES (4, 2086);
-INSERT INTO `sys_role_menu` VALUES (4, 2087);
-INSERT INTO `sys_role_menu` VALUES (4, 2098);
-INSERT INTO `sys_role_menu` VALUES (4, 2099);
-INSERT INTO `sys_role_menu` VALUES (4, 2100);
-INSERT INTO `sys_role_menu` VALUES (4, 2104);
-INSERT INTO `sys_role_menu` VALUES (4, 2105);
-INSERT INTO `sys_role_menu` VALUES (4, 2106);
-INSERT INTO `sys_role_menu` VALUES (4, 2107);
-INSERT INTO `sys_role_menu` VALUES (4, 2108);
-INSERT INTO `sys_role_menu` VALUES (4, 2109);
-INSERT INTO `sys_role_menu` VALUES (4, 2111);
-INSERT INTO `sys_role_menu` VALUES (4, 2112);
-INSERT INTO `sys_role_menu` VALUES (4, 2123);
-INSERT INTO `sys_role_menu` VALUES (4, 2124);
-INSERT INTO `sys_role_menu` VALUES (4, 2125);
-INSERT INTO `sys_role_menu` VALUES (4, 2129);
-INSERT INTO `sys_role_menu` VALUES (4, 2130);
-INSERT INTO `sys_role_menu` VALUES (4, 2131);
-INSERT INTO `sys_role_menu` VALUES (4, 2136);
-INSERT INTO `sys_role_menu` VALUES (4, 2137);
-INSERT INTO `sys_role_menu` VALUES (4, 2141);
-INSERT INTO `sys_role_menu` VALUES (4, 2143);
-INSERT INTO `sys_role_menu` VALUES (4, 2144);
-INSERT INTO `sys_role_menu` VALUES (4, 2147);
-INSERT INTO `sys_role_menu` VALUES (4, 2148);
-INSERT INTO `sys_role_menu` VALUES (4, 2149);
-INSERT INTO `sys_role_menu` VALUES (4, 2167);
-INSERT INTO `sys_role_menu` VALUES (4, 2168);
-INSERT INTO `sys_role_menu` VALUES (4, 2169);
-INSERT INTO `sys_role_menu` VALUES (4, 2170);
-INSERT INTO `sys_role_menu` VALUES (4, 2173);
-INSERT INTO `sys_role_menu` VALUES (4, 2174);
-INSERT INTO `sys_role_menu` VALUES (4, 2175);
-INSERT INTO `sys_role_menu` VALUES (4, 2179);
-INSERT INTO `sys_role_menu` VALUES (4, 2180);
-INSERT INTO `sys_role_menu` VALUES (4, 2181);
-INSERT INTO `sys_role_menu` VALUES (4, 3000);
-INSERT INTO `sys_role_menu` VALUES (4, 3001);
-INSERT INTO `sys_role_menu` VALUES (4, 3002);
-INSERT INTO `sys_role_menu` VALUES (4, 3003);
-INSERT INTO `sys_role_menu` VALUES (4, 3007);
-INSERT INTO `sys_role_menu` VALUES (4, 3008);
-INSERT INTO `sys_role_menu` VALUES (4, 3009);
-INSERT INTO `sys_role_menu` VALUES (4, 3013);
-INSERT INTO `sys_role_menu` VALUES (4, 3014);
-INSERT INTO `sys_role_menu` VALUES (4, 3015);
-INSERT INTO `sys_role_menu` VALUES (4, 3019);
-INSERT INTO `sys_role_menu` VALUES (4, 3020);
-INSERT INTO `sys_role_menu` VALUES (4, 3021);
-INSERT INTO `sys_role_menu` VALUES (4, 3025);
-INSERT INTO `sys_role_menu` VALUES (4, 3026);
-INSERT INTO `sys_role_menu` VALUES (4, 3027);
-INSERT INTO `sys_role_menu` VALUES (4, 3031);
-INSERT INTO `sys_role_menu` VALUES (4, 3032);
-INSERT INTO `sys_role_menu` VALUES (4, 3033);
-INSERT INTO `sys_role_menu` VALUES (4, 3034);
-INSERT INTO `sys_role_menu` VALUES (4, 3035);
-INSERT INTO `sys_role_menu` VALUES (4, 3039);
-INSERT INTO `sys_role_menu` VALUES (4, 3040);
-INSERT INTO `sys_role_menu` VALUES (4, 3041);
-INSERT INTO `sys_role_menu` VALUES (5, 1);
-INSERT INTO `sys_role_menu` VALUES (5, 2);
-INSERT INTO `sys_role_menu` VALUES (5, 3);
-INSERT INTO `sys_role_menu` VALUES (5, 4);
-INSERT INTO `sys_role_menu` VALUES (5, 100);
-INSERT INTO `sys_role_menu` VALUES (5, 101);
-INSERT INTO `sys_role_menu` VALUES (5, 102);
-INSERT INTO `sys_role_menu` VALUES (5, 103);
-INSERT INTO `sys_role_menu` VALUES (5, 104);
-INSERT INTO `sys_role_menu` VALUES (5, 105);
-INSERT INTO `sys_role_menu` VALUES (5, 106);
-INSERT INTO `sys_role_menu` VALUES (5, 107);
-INSERT INTO `sys_role_menu` VALUES (5, 108);
-INSERT INTO `sys_role_menu` VALUES (5, 109);
-INSERT INTO `sys_role_menu` VALUES (5, 110);
-INSERT INTO `sys_role_menu` VALUES (5, 111);
-INSERT INTO `sys_role_menu` VALUES (5, 112);
-INSERT INTO `sys_role_menu` VALUES (5, 113);
-INSERT INTO `sys_role_menu` VALUES (5, 114);
-INSERT INTO `sys_role_menu` VALUES (5, 115);
-INSERT INTO `sys_role_menu` VALUES (5, 116);
-INSERT INTO `sys_role_menu` VALUES (5, 124);
-INSERT INTO `sys_role_menu` VALUES (5, 500);
-INSERT INTO `sys_role_menu` VALUES (5, 501);
-INSERT INTO `sys_role_menu` VALUES (5, 1001);
-INSERT INTO `sys_role_menu` VALUES (5, 1002);
-INSERT INTO `sys_role_menu` VALUES (5, 1003);
-INSERT INTO `sys_role_menu` VALUES (5, 1004);
-INSERT INTO `sys_role_menu` VALUES (5, 1005);
-INSERT INTO `sys_role_menu` VALUES (5, 1006);
-INSERT INTO `sys_role_menu` VALUES (5, 1007);
-INSERT INTO `sys_role_menu` VALUES (5, 1008);
-INSERT INTO `sys_role_menu` VALUES (5, 1009);
-INSERT INTO `sys_role_menu` VALUES (5, 1010);
-INSERT INTO `sys_role_menu` VALUES (5, 1011);
-INSERT INTO `sys_role_menu` VALUES (5, 1012);
-INSERT INTO `sys_role_menu` VALUES (5, 1013);
-INSERT INTO `sys_role_menu` VALUES (5, 1014);
-INSERT INTO `sys_role_menu` VALUES (5, 1015);
-INSERT INTO `sys_role_menu` VALUES (5, 1016);
-INSERT INTO `sys_role_menu` VALUES (5, 1017);
-INSERT INTO `sys_role_menu` VALUES (5, 1018);
-INSERT INTO `sys_role_menu` VALUES (5, 1019);
-INSERT INTO `sys_role_menu` VALUES (5, 1020);
-INSERT INTO `sys_role_menu` VALUES (5, 1021);
-INSERT INTO `sys_role_menu` VALUES (5, 1022);
-INSERT INTO `sys_role_menu` VALUES (5, 1023);
-INSERT INTO `sys_role_menu` VALUES (5, 1024);
-INSERT INTO `sys_role_menu` VALUES (5, 1025);
-INSERT INTO `sys_role_menu` VALUES (5, 1026);
-INSERT INTO `sys_role_menu` VALUES (5, 1027);
-INSERT INTO `sys_role_menu` VALUES (5, 1028);
-INSERT INTO `sys_role_menu` VALUES (5, 1029);
-INSERT INTO `sys_role_menu` VALUES (5, 1030);
-INSERT INTO `sys_role_menu` VALUES (5, 1031);
-INSERT INTO `sys_role_menu` VALUES (5, 1032);
-INSERT INTO `sys_role_menu` VALUES (5, 1033);
-INSERT INTO `sys_role_menu` VALUES (5, 1034);
-INSERT INTO `sys_role_menu` VALUES (5, 1035);
-INSERT INTO `sys_role_menu` VALUES (5, 1036);
-INSERT INTO `sys_role_menu` VALUES (5, 1037);
-INSERT INTO `sys_role_menu` VALUES (5, 1038);
-INSERT INTO `sys_role_menu` VALUES (5, 1039);
-INSERT INTO `sys_role_menu` VALUES (5, 1040);
-INSERT INTO `sys_role_menu` VALUES (5, 1041);
-INSERT INTO `sys_role_menu` VALUES (5, 1042);
-INSERT INTO `sys_role_menu` VALUES (5, 1043);
-INSERT INTO `sys_role_menu` VALUES (5, 1044);
-INSERT INTO `sys_role_menu` VALUES (5, 1045);
-INSERT INTO `sys_role_menu` VALUES (5, 1046);
-INSERT INTO `sys_role_menu` VALUES (5, 1047);
-INSERT INTO `sys_role_menu` VALUES (5, 1048);
-INSERT INTO `sys_role_menu` VALUES (5, 1049);
-INSERT INTO `sys_role_menu` VALUES (5, 1050);
-INSERT INTO `sys_role_menu` VALUES (5, 1051);
-INSERT INTO `sys_role_menu` VALUES (5, 1052);
-INSERT INTO `sys_role_menu` VALUES (5, 1053);
-INSERT INTO `sys_role_menu` VALUES (5, 1054);
-INSERT INTO `sys_role_menu` VALUES (5, 1055);
-INSERT INTO `sys_role_menu` VALUES (5, 1056);
-INSERT INTO `sys_role_menu` VALUES (5, 1057);
-INSERT INTO `sys_role_menu` VALUES (5, 1058);
-INSERT INTO `sys_role_menu` VALUES (5, 1059);
-INSERT INTO `sys_role_menu` VALUES (5, 1060);
-INSERT INTO `sys_role_menu` VALUES (5, 1065);
-INSERT INTO `sys_role_menu` VALUES (5, 2000);
-INSERT INTO `sys_role_menu` VALUES (5, 2001);
-INSERT INTO `sys_role_menu` VALUES (5, 2002);
-INSERT INTO `sys_role_menu` VALUES (5, 2003);
-INSERT INTO `sys_role_menu` VALUES (5, 2004);
-INSERT INTO `sys_role_menu` VALUES (5, 2005);
-INSERT INTO `sys_role_menu` VALUES (5, 2006);
-INSERT INTO `sys_role_menu` VALUES (5, 2007);
-INSERT INTO `sys_role_menu` VALUES (5, 2008);
-INSERT INTO `sys_role_menu` VALUES (5, 2009);
-INSERT INTO `sys_role_menu` VALUES (5, 2010);
-INSERT INTO `sys_role_menu` VALUES (5, 2011);
-INSERT INTO `sys_role_menu` VALUES (5, 2012);
-INSERT INTO `sys_role_menu` VALUES (5, 2013);
-INSERT INTO `sys_role_menu` VALUES (5, 2014);
-INSERT INTO `sys_role_menu` VALUES (5, 2015);
-INSERT INTO `sys_role_menu` VALUES (5, 2016);
-INSERT INTO `sys_role_menu` VALUES (5, 2017);
-INSERT INTO `sys_role_menu` VALUES (5, 2018);
-INSERT INTO `sys_role_menu` VALUES (5, 2019);
-INSERT INTO `sys_role_menu` VALUES (5, 2020);
-INSERT INTO `sys_role_menu` VALUES (5, 2021);
-INSERT INTO `sys_role_menu` VALUES (5, 2022);
-INSERT INTO `sys_role_menu` VALUES (5, 2023);
-INSERT INTO `sys_role_menu` VALUES (5, 2024);
-INSERT INTO `sys_role_menu` VALUES (5, 2043);
-INSERT INTO `sys_role_menu` VALUES (5, 2044);
-INSERT INTO `sys_role_menu` VALUES (5, 2045);
-INSERT INTO `sys_role_menu` VALUES (5, 2046);
-INSERT INTO `sys_role_menu` VALUES (5, 2047);
-INSERT INTO `sys_role_menu` VALUES (5, 2048);
-INSERT INTO `sys_role_menu` VALUES (5, 2049);
-INSERT INTO `sys_role_menu` VALUES (5, 2050);
-INSERT INTO `sys_role_menu` VALUES (5, 2051);
-INSERT INTO `sys_role_menu` VALUES (5, 2052);
-INSERT INTO `sys_role_menu` VALUES (5, 2053);
-INSERT INTO `sys_role_menu` VALUES (5, 2054);
-INSERT INTO `sys_role_menu` VALUES (5, 2067);
-INSERT INTO `sys_role_menu` VALUES (5, 2068);
-INSERT INTO `sys_role_menu` VALUES (5, 2069);
-INSERT INTO `sys_role_menu` VALUES (5, 2070);
-INSERT INTO `sys_role_menu` VALUES (5, 2071);
-INSERT INTO `sys_role_menu` VALUES (5, 2072);
-INSERT INTO `sys_role_menu` VALUES (5, 2085);
-INSERT INTO `sys_role_menu` VALUES (5, 2086);
-INSERT INTO `sys_role_menu` VALUES (5, 2087);
-INSERT INTO `sys_role_menu` VALUES (5, 2088);
-INSERT INTO `sys_role_menu` VALUES (5, 2089);
-INSERT INTO `sys_role_menu` VALUES (5, 2090);
-INSERT INTO `sys_role_menu` VALUES (5, 2098);
-INSERT INTO `sys_role_menu` VALUES (5, 2099);
-INSERT INTO `sys_role_menu` VALUES (5, 2100);
-INSERT INTO `sys_role_menu` VALUES (5, 2101);
-INSERT INTO `sys_role_menu` VALUES (5, 2102);
-INSERT INTO `sys_role_menu` VALUES (5, 2103);
-INSERT INTO `sys_role_menu` VALUES (5, 2104);
-INSERT INTO `sys_role_menu` VALUES (5, 2105);
-INSERT INTO `sys_role_menu` VALUES (5, 2106);
-INSERT INTO `sys_role_menu` VALUES (5, 2107);
-INSERT INTO `sys_role_menu` VALUES (5, 2108);
-INSERT INTO `sys_role_menu` VALUES (5, 2109);
-INSERT INTO `sys_role_menu` VALUES (5, 2111);
-INSERT INTO `sys_role_menu` VALUES (5, 2112);
-INSERT INTO `sys_role_menu` VALUES (5, 2123);
-INSERT INTO `sys_role_menu` VALUES (5, 2124);
-INSERT INTO `sys_role_menu` VALUES (5, 2125);
-INSERT INTO `sys_role_menu` VALUES (5, 2126);
-INSERT INTO `sys_role_menu` VALUES (5, 2127);
-INSERT INTO `sys_role_menu` VALUES (5, 2128);
-INSERT INTO `sys_role_menu` VALUES (5, 2129);
-INSERT INTO `sys_role_menu` VALUES (5, 2130);
-INSERT INTO `sys_role_menu` VALUES (5, 2131);
-INSERT INTO `sys_role_menu` VALUES (5, 2132);
-INSERT INTO `sys_role_menu` VALUES (5, 2133);
-INSERT INTO `sys_role_menu` VALUES (5, 2134);
-INSERT INTO `sys_role_menu` VALUES (5, 2136);
-INSERT INTO `sys_role_menu` VALUES (5, 2137);
-INSERT INTO `sys_role_menu` VALUES (5, 2138);
-INSERT INTO `sys_role_menu` VALUES (5, 2139);
-INSERT INTO `sys_role_menu` VALUES (5, 2140);
-INSERT INTO `sys_role_menu` VALUES (5, 2141);
-INSERT INTO `sys_role_menu` VALUES (5, 2143);
-INSERT INTO `sys_role_menu` VALUES (5, 2144);
-INSERT INTO `sys_role_menu` VALUES (5, 2145);
-INSERT INTO `sys_role_menu` VALUES (5, 2146);
-INSERT INTO `sys_role_menu` VALUES (5, 2147);
-INSERT INTO `sys_role_menu` VALUES (5, 2148);
-INSERT INTO `sys_role_menu` VALUES (5, 2149);
-INSERT INTO `sys_role_menu` VALUES (5, 2167);
-INSERT INTO `sys_role_menu` VALUES (5, 2168);
-INSERT INTO `sys_role_menu` VALUES (5, 2169);
-INSERT INTO `sys_role_menu` VALUES (5, 2170);
-INSERT INTO `sys_role_menu` VALUES (5, 2171);
-INSERT INTO `sys_role_menu` VALUES (5, 2172);
-INSERT INTO `sys_role_menu` VALUES (5, 2179);
-INSERT INTO `sys_role_menu` VALUES (5, 2180);
-INSERT INTO `sys_role_menu` VALUES (5, 2181);
-INSERT INTO `sys_role_menu` VALUES (5, 2182);
-INSERT INTO `sys_role_menu` VALUES (5, 2183);
-INSERT INTO `sys_role_menu` VALUES (5, 2184);
-INSERT INTO `sys_role_menu` VALUES (5, 3000);
-INSERT INTO `sys_role_menu` VALUES (5, 3001);
-INSERT INTO `sys_role_menu` VALUES (5, 3002);
-INSERT INTO `sys_role_menu` VALUES (5, 3003);
-INSERT INTO `sys_role_menu` VALUES (5, 3004);
-INSERT INTO `sys_role_menu` VALUES (5, 3005);
-INSERT INTO `sys_role_menu` VALUES (5, 3006);
-INSERT INTO `sys_role_menu` VALUES (5, 3007);
-INSERT INTO `sys_role_menu` VALUES (5, 3008);
-INSERT INTO `sys_role_menu` VALUES (5, 3009);
-INSERT INTO `sys_role_menu` VALUES (5, 3010);
-INSERT INTO `sys_role_menu` VALUES (5, 3011);
-INSERT INTO `sys_role_menu` VALUES (5, 3012);
-INSERT INTO `sys_role_menu` VALUES (5, 3013);
-INSERT INTO `sys_role_menu` VALUES (5, 3014);
-INSERT INTO `sys_role_menu` VALUES (5, 3015);
-INSERT INTO `sys_role_menu` VALUES (5, 3016);
-INSERT INTO `sys_role_menu` VALUES (5, 3017);
-INSERT INTO `sys_role_menu` VALUES (5, 3018);
-INSERT INTO `sys_role_menu` VALUES (5, 3019);
-INSERT INTO `sys_role_menu` VALUES (5, 3020);
-INSERT INTO `sys_role_menu` VALUES (5, 3021);
-INSERT INTO `sys_role_menu` VALUES (5, 3022);
-INSERT INTO `sys_role_menu` VALUES (5, 3023);
-INSERT INTO `sys_role_menu` VALUES (5, 3024);
-INSERT INTO `sys_role_menu` VALUES (5, 3025);
-INSERT INTO `sys_role_menu` VALUES (5, 3026);
-INSERT INTO `sys_role_menu` VALUES (5, 3027);
-INSERT INTO `sys_role_menu` VALUES (5, 3028);
-INSERT INTO `sys_role_menu` VALUES (5, 3029);
-INSERT INTO `sys_role_menu` VALUES (5, 3030);
-INSERT INTO `sys_role_menu` VALUES (5, 3031);
-INSERT INTO `sys_role_menu` VALUES (5, 3032);
-INSERT INTO `sys_role_menu` VALUES (5, 3033);
-INSERT INTO `sys_role_menu` VALUES (5, 3034);
-INSERT INTO `sys_role_menu` VALUES (5, 3035);
-INSERT INTO `sys_role_menu` VALUES (5, 3036);
-INSERT INTO `sys_role_menu` VALUES (5, 3037);
-INSERT INTO `sys_role_menu` VALUES (5, 3038);
-INSERT INTO `sys_role_menu` VALUES (5, 3039);
-INSERT INTO `sys_role_menu` VALUES (5, 3040);
-INSERT INTO `sys_role_menu` VALUES (5, 3041);
-INSERT INTO `sys_role_menu` VALUES (5, 3042);
-INSERT INTO `sys_role_menu` VALUES (5, 3043);
+INSERT INTO sys_role_menu VALUES (2, 1);
+INSERT INTO sys_role_menu VALUES (2, 4);
+INSERT INTO sys_role_menu VALUES (2, 107);
+INSERT INTO sys_role_menu VALUES (2, 1036);
+INSERT INTO sys_role_menu VALUES (2, 2000);
+INSERT INTO sys_role_menu VALUES (2, 2001);
+INSERT INTO sys_role_menu VALUES (2, 2002);
+INSERT INTO sys_role_menu VALUES (2, 2003);
+INSERT INTO sys_role_menu VALUES (2, 2004);
+INSERT INTO sys_role_menu VALUES (2, 2005);
+INSERT INTO sys_role_menu VALUES (2, 2006);
+INSERT INTO sys_role_menu VALUES (2, 2007);
+INSERT INTO sys_role_menu VALUES (2, 2008);
+INSERT INTO sys_role_menu VALUES (2, 2009);
+INSERT INTO sys_role_menu VALUES (2, 2010);
+INSERT INTO sys_role_menu VALUES (2, 2011);
+INSERT INTO sys_role_menu VALUES (2, 2012);
+INSERT INTO sys_role_menu VALUES (2, 2019);
+INSERT INTO sys_role_menu VALUES (2, 2020);
+INSERT INTO sys_role_menu VALUES (2, 2021);
+INSERT INTO sys_role_menu VALUES (2, 2022);
+INSERT INTO sys_role_menu VALUES (2, 2023);
+INSERT INTO sys_role_menu VALUES (2, 2024);
+INSERT INTO sys_role_menu VALUES (2, 2043);
+INSERT INTO sys_role_menu VALUES (2, 2044);
+INSERT INTO sys_role_menu VALUES (2, 2045);
+INSERT INTO sys_role_menu VALUES (2, 2046);
+INSERT INTO sys_role_menu VALUES (2, 2047);
+INSERT INTO sys_role_menu VALUES (2, 2048);
+INSERT INTO sys_role_menu VALUES (2, 2049);
+INSERT INTO sys_role_menu VALUES (2, 2050);
+INSERT INTO sys_role_menu VALUES (2, 2051);
+INSERT INTO sys_role_menu VALUES (2, 2052);
+INSERT INTO sys_role_menu VALUES (2, 2053);
+INSERT INTO sys_role_menu VALUES (2, 2054);
+INSERT INTO sys_role_menu VALUES (2, 2129);
+INSERT INTO sys_role_menu VALUES (2, 2130);
+INSERT INTO sys_role_menu VALUES (2, 2136);
+INSERT INTO sys_role_menu VALUES (2, 2137);
+INSERT INTO sys_role_menu VALUES (2, 2138);
+INSERT INTO sys_role_menu VALUES (2, 2139);
+INSERT INTO sys_role_menu VALUES (2, 2140);
+INSERT INTO sys_role_menu VALUES (2, 2147);
+INSERT INTO sys_role_menu VALUES (2, 2148);
+INSERT INTO sys_role_menu VALUES (3, 1);
+INSERT INTO sys_role_menu VALUES (3, 4);
+INSERT INTO sys_role_menu VALUES (3, 107);
+INSERT INTO sys_role_menu VALUES (3, 1036);
+INSERT INTO sys_role_menu VALUES (3, 2000);
+INSERT INTO sys_role_menu VALUES (3, 2007);
+INSERT INTO sys_role_menu VALUES (3, 2008);
+INSERT INTO sys_role_menu VALUES (3, 2009);
+INSERT INTO sys_role_menu VALUES (3, 2010);
+INSERT INTO sys_role_menu VALUES (3, 2011);
+INSERT INTO sys_role_menu VALUES (3, 2012);
+INSERT INTO sys_role_menu VALUES (3, 2019);
+INSERT INTO sys_role_menu VALUES (3, 2020);
+INSERT INTO sys_role_menu VALUES (3, 2021);
+INSERT INTO sys_role_menu VALUES (3, 2022);
+INSERT INTO sys_role_menu VALUES (3, 2023);
+INSERT INTO sys_role_menu VALUES (3, 2024);
+INSERT INTO sys_role_menu VALUES (3, 2067);
+INSERT INTO sys_role_menu VALUES (3, 2068);
+INSERT INTO sys_role_menu VALUES (3, 2085);
+INSERT INTO sys_role_menu VALUES (3, 2086);
+INSERT INTO sys_role_menu VALUES (3, 2087);
+INSERT INTO sys_role_menu VALUES (3, 2088);
+INSERT INTO sys_role_menu VALUES (3, 2089);
+INSERT INTO sys_role_menu VALUES (3, 2090);
+INSERT INTO sys_role_menu VALUES (3, 2129);
+INSERT INTO sys_role_menu VALUES (3, 2130);
+INSERT INTO sys_role_menu VALUES (3, 2147);
+INSERT INTO sys_role_menu VALUES (3, 2148);
+INSERT INTO sys_role_menu VALUES (3, 2168);
+INSERT INTO sys_role_menu VALUES (3, 2169);
+INSERT INTO sys_role_menu VALUES (3, 2170);
+INSERT INTO sys_role_menu VALUES (3, 2171);
+INSERT INTO sys_role_menu VALUES (3, 2172);
+INSERT INTO sys_role_menu VALUES (4, 1);
+INSERT INTO sys_role_menu VALUES (4, 2);
+INSERT INTO sys_role_menu VALUES (4, 3);
+INSERT INTO sys_role_menu VALUES (4, 4);
+INSERT INTO sys_role_menu VALUES (4, 100);
+INSERT INTO sys_role_menu VALUES (4, 101);
+INSERT INTO sys_role_menu VALUES (4, 102);
+INSERT INTO sys_role_menu VALUES (4, 103);
+INSERT INTO sys_role_menu VALUES (4, 104);
+INSERT INTO sys_role_menu VALUES (4, 105);
+INSERT INTO sys_role_menu VALUES (4, 106);
+INSERT INTO sys_role_menu VALUES (4, 107);
+INSERT INTO sys_role_menu VALUES (4, 108);
+INSERT INTO sys_role_menu VALUES (4, 109);
+INSERT INTO sys_role_menu VALUES (4, 110);
+INSERT INTO sys_role_menu VALUES (4, 111);
+INSERT INTO sys_role_menu VALUES (4, 112);
+INSERT INTO sys_role_menu VALUES (4, 113);
+INSERT INTO sys_role_menu VALUES (4, 114);
+INSERT INTO sys_role_menu VALUES (4, 115);
+INSERT INTO sys_role_menu VALUES (4, 116);
+INSERT INTO sys_role_menu VALUES (4, 500);
+INSERT INTO sys_role_menu VALUES (4, 501);
+INSERT INTO sys_role_menu VALUES (4, 1001);
+INSERT INTO sys_role_menu VALUES (4, 1008);
+INSERT INTO sys_role_menu VALUES (4, 1013);
+INSERT INTO sys_role_menu VALUES (4, 1017);
+INSERT INTO sys_role_menu VALUES (4, 1021);
+INSERT INTO sys_role_menu VALUES (4, 1026);
+INSERT INTO sys_role_menu VALUES (4, 1031);
+INSERT INTO sys_role_menu VALUES (4, 1036);
+INSERT INTO sys_role_menu VALUES (4, 1040);
+INSERT INTO sys_role_menu VALUES (4, 1043);
+INSERT INTO sys_role_menu VALUES (4, 1046);
+INSERT INTO sys_role_menu VALUES (4, 1049);
+INSERT INTO sys_role_menu VALUES (4, 1055);
+INSERT INTO sys_role_menu VALUES (4, 2000);
+INSERT INTO sys_role_menu VALUES (4, 2001);
+INSERT INTO sys_role_menu VALUES (4, 2002);
+INSERT INTO sys_role_menu VALUES (4, 2003);
+INSERT INTO sys_role_menu VALUES (4, 2007);
+INSERT INTO sys_role_menu VALUES (4, 2008);
+INSERT INTO sys_role_menu VALUES (4, 2009);
+INSERT INTO sys_role_menu VALUES (4, 2019);
+INSERT INTO sys_role_menu VALUES (4, 2020);
+INSERT INTO sys_role_menu VALUES (4, 2021);
+INSERT INTO sys_role_menu VALUES (4, 2043);
+INSERT INTO sys_role_menu VALUES (4, 2044);
+INSERT INTO sys_role_menu VALUES (4, 2045);
+INSERT INTO sys_role_menu VALUES (4, 2049);
+INSERT INTO sys_role_menu VALUES (4, 2050);
+INSERT INTO sys_role_menu VALUES (4, 2051);
+INSERT INTO sys_role_menu VALUES (4, 2104);
+INSERT INTO sys_role_menu VALUES (4, 2123);
+INSERT INTO sys_role_menu VALUES (4, 2124);
+INSERT INTO sys_role_menu VALUES (4, 2125);
+INSERT INTO sys_role_menu VALUES (4, 2129);
+INSERT INTO sys_role_menu VALUES (4, 2130);
+INSERT INTO sys_role_menu VALUES (4, 2131);
+INSERT INTO sys_role_menu VALUES (4, 2136);
+INSERT INTO sys_role_menu VALUES (4, 2137);
+INSERT INTO sys_role_menu VALUES (4, 2141);
+INSERT INTO sys_role_menu VALUES (4, 2147);
+INSERT INTO sys_role_menu VALUES (4, 2148);
+INSERT INTO sys_role_menu VALUES (4, 2149);
+INSERT INTO sys_role_menu VALUES (4, 3007);
+INSERT INTO sys_role_menu VALUES (4, 3008);
+INSERT INTO sys_role_menu VALUES (4, 3009);
+INSERT INTO sys_role_menu VALUES (4, 3031);
+INSERT INTO sys_role_menu VALUES (4, 3032);
+INSERT INTO sys_role_menu VALUES (4, 3033);
+INSERT INTO sys_role_menu VALUES (4, 3034);
+INSERT INTO sys_role_menu VALUES (4, 3035);
+INSERT INTO sys_role_menu VALUES (4, 3047);
+INSERT INTO sys_role_menu VALUES (5, 1);
+INSERT INTO sys_role_menu VALUES (5, 2);
+INSERT INTO sys_role_menu VALUES (5, 3);
+INSERT INTO sys_role_menu VALUES (5, 4);
+INSERT INTO sys_role_menu VALUES (5, 100);
+INSERT INTO sys_role_menu VALUES (5, 101);
+INSERT INTO sys_role_menu VALUES (5, 102);
+INSERT INTO sys_role_menu VALUES (5, 103);
+INSERT INTO sys_role_menu VALUES (5, 104);
+INSERT INTO sys_role_menu VALUES (5, 105);
+INSERT INTO sys_role_menu VALUES (5, 106);
+INSERT INTO sys_role_menu VALUES (5, 107);
+INSERT INTO sys_role_menu VALUES (5, 108);
+INSERT INTO sys_role_menu VALUES (5, 109);
+INSERT INTO sys_role_menu VALUES (5, 110);
+INSERT INTO sys_role_menu VALUES (5, 111);
+INSERT INTO sys_role_menu VALUES (5, 112);
+INSERT INTO sys_role_menu VALUES (5, 113);
+INSERT INTO sys_role_menu VALUES (5, 114);
+INSERT INTO sys_role_menu VALUES (5, 115);
+INSERT INTO sys_role_menu VALUES (5, 116);
+INSERT INTO sys_role_menu VALUES (5, 124);
+INSERT INTO sys_role_menu VALUES (5, 500);
+INSERT INTO sys_role_menu VALUES (5, 501);
+INSERT INTO sys_role_menu VALUES (5, 1001);
+INSERT INTO sys_role_menu VALUES (5, 1002);
+INSERT INTO sys_role_menu VALUES (5, 1003);
+INSERT INTO sys_role_menu VALUES (5, 1004);
+INSERT INTO sys_role_menu VALUES (5, 1005);
+INSERT INTO sys_role_menu VALUES (5, 1006);
+INSERT INTO sys_role_menu VALUES (5, 1007);
+INSERT INTO sys_role_menu VALUES (5, 1008);
+INSERT INTO sys_role_menu VALUES (5, 1009);
+INSERT INTO sys_role_menu VALUES (5, 1010);
+INSERT INTO sys_role_menu VALUES (5, 1011);
+INSERT INTO sys_role_menu VALUES (5, 1012);
+INSERT INTO sys_role_menu VALUES (5, 1013);
+INSERT INTO sys_role_menu VALUES (5, 1014);
+INSERT INTO sys_role_menu VALUES (5, 1015);
+INSERT INTO sys_role_menu VALUES (5, 1016);
+INSERT INTO sys_role_menu VALUES (5, 1017);
+INSERT INTO sys_role_menu VALUES (5, 1018);
+INSERT INTO sys_role_menu VALUES (5, 1019);
+INSERT INTO sys_role_menu VALUES (5, 1020);
+INSERT INTO sys_role_menu VALUES (5, 1021);
+INSERT INTO sys_role_menu VALUES (5, 1022);
+INSERT INTO sys_role_menu VALUES (5, 1023);
+INSERT INTO sys_role_menu VALUES (5, 1024);
+INSERT INTO sys_role_menu VALUES (5, 1025);
+INSERT INTO sys_role_menu VALUES (5, 1026);
+INSERT INTO sys_role_menu VALUES (5, 1027);
+INSERT INTO sys_role_menu VALUES (5, 1028);
+INSERT INTO sys_role_menu VALUES (5, 1029);
+INSERT INTO sys_role_menu VALUES (5, 1030);
+INSERT INTO sys_role_menu VALUES (5, 1031);
+INSERT INTO sys_role_menu VALUES (5, 1032);
+INSERT INTO sys_role_menu VALUES (5, 1033);
+INSERT INTO sys_role_menu VALUES (5, 1034);
+INSERT INTO sys_role_menu VALUES (5, 1035);
+INSERT INTO sys_role_menu VALUES (5, 1036);
+INSERT INTO sys_role_menu VALUES (5, 1037);
+INSERT INTO sys_role_menu VALUES (5, 1038);
+INSERT INTO sys_role_menu VALUES (5, 1039);
+INSERT INTO sys_role_menu VALUES (5, 1040);
+INSERT INTO sys_role_menu VALUES (5, 1041);
+INSERT INTO sys_role_menu VALUES (5, 1042);
+INSERT INTO sys_role_menu VALUES (5, 1043);
+INSERT INTO sys_role_menu VALUES (5, 1044);
+INSERT INTO sys_role_menu VALUES (5, 1045);
+INSERT INTO sys_role_menu VALUES (5, 1046);
+INSERT INTO sys_role_menu VALUES (5, 1047);
+INSERT INTO sys_role_menu VALUES (5, 1048);
+INSERT INTO sys_role_menu VALUES (5, 1049);
+INSERT INTO sys_role_menu VALUES (5, 1050);
+INSERT INTO sys_role_menu VALUES (5, 1051);
+INSERT INTO sys_role_menu VALUES (5, 1052);
+INSERT INTO sys_role_menu VALUES (5, 1053);
+INSERT INTO sys_role_menu VALUES (5, 1054);
+INSERT INTO sys_role_menu VALUES (5, 1055);
+INSERT INTO sys_role_menu VALUES (5, 1056);
+INSERT INTO sys_role_menu VALUES (5, 1057);
+INSERT INTO sys_role_menu VALUES (5, 1058);
+INSERT INTO sys_role_menu VALUES (5, 1059);
+INSERT INTO sys_role_menu VALUES (5, 1060);
+INSERT INTO sys_role_menu VALUES (5, 1065);
+INSERT INTO sys_role_menu VALUES (5, 2000);
+INSERT INTO sys_role_menu VALUES (5, 2001);
+INSERT INTO sys_role_menu VALUES (5, 2002);
+INSERT INTO sys_role_menu VALUES (5, 2003);
+INSERT INTO sys_role_menu VALUES (5, 2004);
+INSERT INTO sys_role_menu VALUES (5, 2005);
+INSERT INTO sys_role_menu VALUES (5, 2006);
+INSERT INTO sys_role_menu VALUES (5, 2007);
+INSERT INTO sys_role_menu VALUES (5, 2008);
+INSERT INTO sys_role_menu VALUES (5, 2009);
+INSERT INTO sys_role_menu VALUES (5, 2010);
+INSERT INTO sys_role_menu VALUES (5, 2011);
+INSERT INTO sys_role_menu VALUES (5, 2012);
+INSERT INTO sys_role_menu VALUES (5, 2019);
+INSERT INTO sys_role_menu VALUES (5, 2020);
+INSERT INTO sys_role_menu VALUES (5, 2021);
+INSERT INTO sys_role_menu VALUES (5, 2022);
+INSERT INTO sys_role_menu VALUES (5, 2023);
+INSERT INTO sys_role_menu VALUES (5, 2024);
+INSERT INTO sys_role_menu VALUES (5, 2043);
+INSERT INTO sys_role_menu VALUES (5, 2044);
+INSERT INTO sys_role_menu VALUES (5, 2045);
+INSERT INTO sys_role_menu VALUES (5, 2046);
+INSERT INTO sys_role_menu VALUES (5, 2047);
+INSERT INTO sys_role_menu VALUES (5, 2048);
+INSERT INTO sys_role_menu VALUES (5, 2049);
+INSERT INTO sys_role_menu VALUES (5, 2050);
+INSERT INTO sys_role_menu VALUES (5, 2051);
+INSERT INTO sys_role_menu VALUES (5, 2052);
+INSERT INTO sys_role_menu VALUES (5, 2053);
+INSERT INTO sys_role_menu VALUES (5, 2054);
+INSERT INTO sys_role_menu VALUES (5, 2104);
+INSERT INTO sys_role_menu VALUES (5, 2123);
+INSERT INTO sys_role_menu VALUES (5, 2124);
+INSERT INTO sys_role_menu VALUES (5, 2125);
+INSERT INTO sys_role_menu VALUES (5, 2126);
+INSERT INTO sys_role_menu VALUES (5, 2127);
+INSERT INTO sys_role_menu VALUES (5, 2128);
+INSERT INTO sys_role_menu VALUES (5, 2129);
+INSERT INTO sys_role_menu VALUES (5, 2130);
+INSERT INTO sys_role_menu VALUES (5, 2131);
+INSERT INTO sys_role_menu VALUES (5, 2132);
+INSERT INTO sys_role_menu VALUES (5, 2133);
+INSERT INTO sys_role_menu VALUES (5, 2134);
+INSERT INTO sys_role_menu VALUES (5, 2136);
+INSERT INTO sys_role_menu VALUES (5, 2137);
+INSERT INTO sys_role_menu VALUES (5, 2138);
+INSERT INTO sys_role_menu VALUES (5, 2139);
+INSERT INTO sys_role_menu VALUES (5, 2140);
+INSERT INTO sys_role_menu VALUES (5, 2141);
+INSERT INTO sys_role_menu VALUES (5, 2147);
+INSERT INTO sys_role_menu VALUES (5, 2148);
+INSERT INTO sys_role_menu VALUES (5, 2149);
+INSERT INTO sys_role_menu VALUES (5, 3007);
+INSERT INTO sys_role_menu VALUES (5, 3008);
+INSERT INTO sys_role_menu VALUES (5, 3009);
+INSERT INTO sys_role_menu VALUES (5, 3010);
+INSERT INTO sys_role_menu VALUES (5, 3011);
+INSERT INTO sys_role_menu VALUES (5, 3012);
+INSERT INTO sys_role_menu VALUES (5, 3031);
+INSERT INTO sys_role_menu VALUES (5, 3032);
+INSERT INTO sys_role_menu VALUES (5, 3033);
+INSERT INTO sys_role_menu VALUES (5, 3034);
+INSERT INTO sys_role_menu VALUES (5, 3035);
+INSERT INTO sys_role_menu VALUES (5, 3036);
+INSERT INTO sys_role_menu VALUES (5, 3037);
+INSERT INTO sys_role_menu VALUES (5, 3038);
+INSERT INTO sys_role_menu VALUES (5, 3047);
 
 -- ----------------------------
 -- Table structure for sys_user

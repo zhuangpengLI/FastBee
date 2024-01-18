@@ -22,10 +22,10 @@ server:
       min-spare: 100        # Tomcat启动初始化的线程数，默认值10
   # 基于netty的服务器
   broker:
-    enabled: false           # mqttBroker类型选择, true: 基于netty的mqttBroker和webSocket  false: emq的mqttBroker
+    enabled: true            # mqttBroker类型选择, true: 基于netty的mqttBroker和webSocket  false: emq的mqttBroker
     broker-node: node1       # 服务器集群节点
     port: 1883
-    openws: false             # 控制webSocket是否开启
+    openws: false            # 控制webSocket是否开启
     websocket-port: 8083
     websocket-path: /mqtt
     keep-alive: 70          # 默认的全部客户端心跳上传时间
@@ -48,7 +48,7 @@ server:
 spring:
   # 环境配置，dev=开发环境，prod=生产环境
   profiles:
-    active: local               # 环境配置，dev=开发环境，prod=生产环境
+    active: prod               # 环境配置，dev=开发环境，prod=生产环境
   # 资源信息
   messages:
     # 国际化资源文件路径

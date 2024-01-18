@@ -16,35 +16,6 @@
                                         :label="category.name" :value="category.id"></el-option>
                                 </el-select>
                             </el-form-item>
-                            <el-form-item v-if="form.deviceType !== 3" label="通讯协议" prop="protocolCode">
-                                <el-select v-model="form.protocolCode" placeholder="请选择协议" style="width: 100%"
-                                    :disabled="form.status == 2" @change="changeProductCode">
-                                    <el-option v-for="p in protocolList" :key="p.protocolCode" :label="p.protocolName"
-                                        :value="p.protocolCode" />
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item v-if="form.deviceType !== 3">
-                                <el-form-item v-if="tempOpen">
-                                    <template>
-                                        <el-alert type="success" description="当前通讯协议为modbus协议,请选择采集点模板,默认添加设备为网关设备">
-                                        </el-alert>
-                                    </template>
-                                </el-form-item>
-                            </el-form-item>
-                            <el-form-item prop="templateId" v-if="tempOpen">
-                                <span slot="label"><span style="color:#f56c6c">* </span>采集点模板</span>
-                                <div v-if="selectRowData" style="display: inline-block ; padding-right: 5px">
-                                    <span
-                                        style="font-size: 9px;padding-right: 5px;color: #00bb00;font-size: 12px;font-weight: bold">{{
-                                            selectRowData.templateName }}</span>
-                                    <el-button plain size="mini" :disabled="form.status == 2 || form.productId != 0"
-                                        @click="deleteData">删除</el-button>
-                                </div>
-                                <el-button type="primary" size="mini" plain
-                                    :disabled="form.status == 2 || form.productId != 0"
-                                    @click="selectTemplate">选择模板</el-button>
-                            </el-form-item>
-
                             <el-form-item label="设备类型" prop="deviceType">
                                 <el-select v-model="form.deviceType" placeholder="请选择设备类型" :disabled="form.status == 2"
                                     style="width:100%">
@@ -58,6 +29,13 @@
                                     <el-option v-for="dict in dict.type.iot_transport_type" :key="dict.value"
                                         :label="dict.label" :value="dict.value" />
                                 </el-select>
+                            </el-form-item>
+                            <el-form-item v-if="form.deviceType !== 3" label="编码协议" prop="protocolCode">
+                              <el-select v-model="form.protocolCode" placeholder="请选择编码协议" style="width: 100%"
+                                         :disabled="form.status == 2" @change="changeProductCode">
+                                <el-option v-for="p in protocolList" :key="p.protocolCode" :label="p.protocolName"
+                                           :value="p.protocolCode" />
+                              </el-select>
                             </el-form-item>
                             <el-form-item label="联网方式" prop="networkMethod">
                                 <el-select v-model="form.networkMethod" placeholder="请选择联网方式" style="width:100%;"
@@ -152,10 +130,6 @@
                 <span slot="label"><span style="color:red;">* </span>产品模型</span>
                 <product-things-model ref="productThingsModel" :product="form" />
             </el-tab-pane>
-            <el-tab-pane label="" name="productFirmware" :disabled="form.productId == 0" v-if="form.deviceType !== 3">
-                <span slot="label">固件管理</span>
-                <product-firmware ref="productFirmware" :product="form" />
-            </el-tab-pane>
 
             <el-tab-pane label="" name="productAuthorize" :disabled="form.productId == 0" v-if="form.deviceType !== 3">
                 <span slot="label">设备授权</span>
@@ -163,7 +137,8 @@
             </el-tab-pane>
 
             <el-tab-pane label="" name="alert" :disabled="form.productId == 0" v-if="form.deviceType !== 3">
-                <span slot="label"> 告警配置 （商业版本支持）</span>
+                <span slot="label"><span style="color:red;">￥ </span>告警配置</span>
+                <business ref="business"/>
             </el-tab-pane>
 
 
@@ -194,70 +169,6 @@
                 </span>
             </el-tab-pane>
         </el-tabs>
-        <!--添加从机对话框-->
-        <el-dialog :title="title" :visible.sync="open" width="1000px" append-to-body>
-            <el-row :gutter="30">
-                <el-col :span="11">
-                    <el-form ref="tempParams" :inline="true" :model="tempParams">
-                        <el-form-item size="mini">
-                            <el-input v-model="tempParams.templateName" placeholder="模板名称">
-
-                            </el-input>
-                        </el-form-item>
-                        <el-form-item size="mini">
-                            <el-button type="primary" icon="el-icon-search" size="mini" @click="queryTemp">搜索</el-button>
-                            <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
-                        </el-form-item>
-                    </el-form>
-                    <el-table v-loading="loading" :data="tempList" highlight-current-row ref="multipleTable"
-                        style="width: 100%">
-                        <el-table-column label="选择采集点模板" align="left">
-                            <template slot-scope="scope">
-                                <el-radio v-model="currentRow" :label="scope.row"
-                                    @change.native="getCurrentRow(scope.row)">{{ scope.row.templateName }}</el-radio>
-                            </template>
-                        </el-table-column>
-                    </el-table>
-                    <pagination v-show="tempTotal > 0" :total="tempTotal" small layout="total, prev, pager, next"
-                        :page.sync="tempParams.pageNum" :limit.sync="tempParams.pageSize" @pagination="getTempList" />
-                </el-col>
-                <el-col :span="13">
-                    <el-form :inline="true" :model="pointsParams">
-                        <el-form-item size="mini">
-                            <span slot="label" style="font-size:16px;font-weight:400;">物模型列表</span>
-                        </el-form-item>
-                        <el-form-item size="mini">
-                            <span slot="label" style="font-weight:400;font-size:12px;">从机数量:</span>
-                            {{ selectRowData.slaveTotal }}
-                        </el-form-item>
-                        <el-form-item size="mini">
-                            <span slot="label" style="font-weight:400;font-size:12px;">变量数量:</span>
-                            {{ selectRowData.pointTotal }}
-                        </el-form-item>
-                        <el-form-item size="mini">
-                            <span slot="label" style="font-weight:400;font-size:12px;">采集方式:</span>
-                            <dict-tag :options="dict.type.data_collect_type" :value="selectRowData.pollingMethod"
-                                size="small" style="display: inline-block" />
-                        </el-form-item>
-                    </el-form>
-                    <el-table v-loading="loading" :data="pointList" :border="false" size="mini">
-                        <el-table-column prop="templateName" label="物模型名称">
-                        </el-table-column>
-                        <el-table-column prop="regAddr" label="寄存器">
-                        </el-table-column>
-                        <el-table-column prop="datatype" label="数值类型">
-                        </el-table-column>
-                    </el-table>
-                    <pagination v-show="total > 0" :total="total" small layout="total, prev, pager, next"
-                        :page.sync="pointsParams.pageNum" :limit.sync="pointsParams.pageSize" @pagination="getList" />
-                </el-col>
-            </el-row>
-
-            <div slot="footer" class="dialog-footer">
-                <el-button @click="cancel">取 消</el-button>
-                <el-button type="primary" @click="submitSelect">确 定</el-button>
-            </div>
-        </el-dialog>
 
     </el-card>
 </template>
@@ -267,6 +178,7 @@ import productThingsModel from "./product-things-model";
 import productApp from "./product-app"
 import productAuthorize from "./product-authorize"
 import imageUpload from "../../../components/ImageUpload/index"
+import business from "../business/index"
 import {
     listProtocol
 } from "@/api/iot/protocol";
@@ -298,6 +210,7 @@ export default {
         productApp,
         productAuthorize,
         imageUpload,
+        business,
     },
     data() {
         return {

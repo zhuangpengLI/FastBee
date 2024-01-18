@@ -188,35 +188,6 @@ export const dynamicRoutes = [
       }
     ]
   },
-  {
-    path: '/iot/varTemp-edit',
-    component: Layout,
-    hidden: true,
-    permissions: ['iot:device:add'],
-    children: [
-      {
-        path: 'point',
-        component: () => import('@/views/iot/varTemp/point'),
-        name: 'Point',
-        meta: { title: '变量模板配置',activeMenu: '/iot/varTemp'}
-      }
-    ]
-  },
-
-  {
-    path: '/iot/varTemp-edit',
-    component: Layout,
-    hidden: true,
-    permissions: ['iot:device:add'],
-    children: [
-      {
-        path: 'mjpoint',
-        component: () => import('@/views/iot/varTemp/mjpoint'),
-        name: 'mjPoint',
-        meta: { title: '变量模板配置', activeMenu: '/iot/template' },
-      },
-    ],
-  },
 ]
 
 // 防止连续点击多次路由报错
