@@ -1,5 +1,7 @@
 package com.fastbee.modbus.codec;
 
+import com.fastbee.base.codec.MessageDecoder;
+import com.fastbee.base.codec.MessageEncoder;
 import com.fastbee.common.ProtocolColl;
 import com.fastbee.common.constant.FastBeeConstant;
 import com.fastbee.common.core.mq.DeviceReport;
@@ -9,11 +11,8 @@ import com.fastbee.common.exception.ServiceException;
 import com.fastbee.common.utils.StringUtils;
 import com.fastbee.iot.model.ProductCode;
 import com.fastbee.iot.service.IProductService;
-import com.fastbee.modbus.model.ModbusRtu;
 import com.fastbee.protocol.base.protocol.IProtocol;
 import com.fastbee.protocol.service.IProtocolManagerService;
-import com.fastbee.base.codec.MessageDecoder;
-import com.fastbee.base.codec.MessageEncoder;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;

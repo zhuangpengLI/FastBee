@@ -5,12 +5,9 @@ import com.fastbee.base.session.SessionManager;
 import com.fastbee.common.core.domain.AjaxResult;
 import com.fastbee.common.core.protocol.Message;
 import com.fastbee.common.exception.ServiceException;
-import com.fastbee.modbus.model.ModbusRtu;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-
-import java.time.Duration;
 
 /**
  * @author gsb
@@ -31,14 +28,6 @@ public class MessageManager {
         this.sessionManager = sessionManager;
     }
 
-    public Mono<Void> notifyR(String sessionId, ModbusRtu request){
-        Session session = sessionManager.getSession(sessionId);
-        if (session == null){
-            return OFFLINE_EXCEPTION;
-        }
-        return session.notify(request);
-    }
-
     public <T> Mono<AjaxResult> requestR(String sessionId, Message request, Class<T> responseClass){
         Session session = sessionManager.getSession(sessionId);
         if (session == null){
@@ -52,26 +41,5 @@ public class MessageManager {
                 });
     }
 
-    /**
-     * 下发指令等待回复
-     * @param sessionId
-     * @return
-     */
-    public <T> Mono<T> request(String sessionId, ModbusRtu request, Class<T> responseClass, long timeout){
-        return request(sessionId,request,responseClass).timeout(Duration.ofMillis(timeout));
-    }
-
-    /**
-     * 下发指令,不等待回复
-     * @param sessionId
-     * @return
-     */
-    public <T> Mono<T> request(String sessionId, ModbusRtu request, Class<T> responseClass){
-        Session session = sessionManager.getSession(sessionId);
-        if (session == null){
-            return OFFLINE_EXCEPTION;
-        }
-        return session.request(request,responseClass);
-    }
 
 }

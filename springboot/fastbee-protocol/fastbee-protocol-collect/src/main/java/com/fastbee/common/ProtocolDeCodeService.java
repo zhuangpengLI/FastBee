@@ -1,19 +1,11 @@
 package com.fastbee.common;
 
 import com.fastbee.common.core.iot.response.DeCodeBo;
-import com.fastbee.common.core.mq.message.DeviceData;
 import com.fastbee.common.exception.ServiceException;
 import com.fastbee.common.utils.gateway.CRC16Utils;
-import com.fastbee.modbus.codec.ModbusMessageDecoder;
-import com.fastbee.modbus.codec.ModbusMessageEncoder;
-import com.fastbee.modbus.model.ModbusRtu;
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
-import io.netty.buffer.Unpooled;
-import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,8 +18,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ProtocolDeCodeService {
 
-    private static ModbusMessageDecoder decoder = new ModbusMessageDecoder("com.fastbee.modbus");
-    private static ModbusMessageEncoder encoder = new ModbusMessageEncoder("com.fastbee.modbus");
 
     public String protocolDeCode(DeCodeBo bo) {
         if (null == bo) {
@@ -37,24 +27,8 @@ public class ProtocolDeCodeService {
         /*1-解析 2-读指令 3-写指令 4-CRC生成 5-CRC校验*/
         switch (bo.getType()) {
             case 1:
-                ByteBuf buf = Unpooled.wrappedBuffer(ByteBufUtil.decodeHexDump(payload));
-                DeviceData data = DeviceData.builder()
-                        .buf(buf)
-                        .build();
-                ModbusRtu message = decoder.decode(data);
-                ReferenceCountUtil.release(buf);
-                String[] split = message.toString().split("Modbus");
-                return split[0].replace(";", "<br/>");
             case 2:
             case 3:
-                ModbusRtu rtu = new ModbusRtu();
-                BeanUtils.copyProperties(bo,rtu);
-                ByteBuf in = encoder.encode(rtu);
-                byte[] bytes = ByteBufUtil.getBytes(in);
-                byte[] result = CRC16Utils.CRC(bytes);
-                String hexDump = ByteBufUtil.hexDump(result);
-                ReferenceCountUtil.release(in);
-                return hexDump;
             case 4:
                 byte[] crc16Byte = ByteBufUtil.decodeHexDump(payload);
                 String crc = CRC16Utils.getCRC(crc16Byte);

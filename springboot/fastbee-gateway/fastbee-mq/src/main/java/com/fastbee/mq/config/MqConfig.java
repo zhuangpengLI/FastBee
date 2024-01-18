@@ -2,11 +2,9 @@ package com.fastbee.mq.config;
 
 import com.fastbee.common.constant.FastBeeConstant;
 import com.fastbee.mq.redischannel.service.RedisPublishServiceImpl;
-import com.fastbee.mq.rocketmq.service.RocketMqPublishServiceImpl;
 import com.fastbee.mq.service.IMessagePublishService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,12 +23,5 @@ public class MqConfig {
     public IMessagePublishService redisChannelPublish(){
        return new RedisPublishServiceImpl();
     }
-
-    //@Bean
-    @ConditionalOnProperty(prefix ="cluster", name = "type",havingValue = FastBeeConstant.MQTT.ROCKET_MQ)
-    public IMessagePublishService rocketMqPublish() {
-        return new RocketMqPublishServiceImpl();
-    }
-
 
 }

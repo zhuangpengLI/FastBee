@@ -2,7 +2,6 @@ package com.fastbee.mqtt.service.impl;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
-import com.fastbee.common.core.mq.DeviceReport;
 import com.fastbee.common.core.mq.DeviceReportBo;
 import com.fastbee.common.core.mq.MQSendMessageBo;
 import com.fastbee.common.core.mq.message.DeviceData;
@@ -13,11 +12,8 @@ import com.fastbee.common.core.mq.ota.OtaUpgradeBo;
 import com.fastbee.common.core.protocol.Message;
 import com.fastbee.common.core.protocol.modbus.ModbusCode;
 import com.fastbee.common.core.redis.RedisCache;
-import com.fastbee.common.core.redis.RedisKeyBuilder;
 import com.fastbee.common.core.thingsModel.ThingsModelSimpleItem;
-import com.fastbee.common.core.thingsModel.ThingsModelValuesInput;
 import com.fastbee.common.enums.FunctionReplyStatus;
-import com.fastbee.common.enums.OTAUpgrade;
 import com.fastbee.common.enums.ServerType;
 import com.fastbee.common.enums.TopicType;
 import com.fastbee.common.exception.ServiceException;
@@ -31,13 +27,12 @@ import com.fastbee.iot.domain.FunctionLog;
 import com.fastbee.iot.domain.Product;
 import com.fastbee.iot.model.NtpModel;
 import com.fastbee.iot.model.ThingsModels.PropertyDto;
-import com.fastbee.iot.model.ThingsModels.ValueItem;
-import com.fastbee.iot.service.*;
+import com.fastbee.iot.service.IDeviceService;
+import com.fastbee.iot.service.IFunctionLogService;
+import com.fastbee.iot.service.IProductService;
+import com.fastbee.iot.service.IThingsModelService;
 import com.fastbee.iot.service.cache.IFirmwareCache;
 import com.fastbee.iot.util.SnowflakeIdWorker;
-import com.fastbee.modbus.codec.ModbusMessageDecoder;
-import com.fastbee.modbus.codec.ModbusMessageEncoder;
-import com.fastbee.modbus.model.ModbusRtu;
 import com.fastbee.mq.model.ReportDataBo;
 import com.fastbee.mq.mqttClient.PubMqttClient;
 import com.fastbee.mq.service.IDataHandler;
@@ -49,15 +44,15 @@ import com.fastbee.mqtt.model.PushMessageBo;
 import com.fastbee.protocol.base.protocol.IProtocol;
 import com.fastbee.protocol.domain.DeviceProtocol;
 import com.fastbee.protocol.service.IProtocolManagerService;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
-import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * 消息推送方法集合
@@ -98,8 +93,6 @@ public class MqttMessagePublishImpl implements IMqttMessagePublish {
 
     private SnowflakeIdWorker snowflakeIdWorker = new SnowflakeIdWorker(3);
 
-    private static ModbusMessageDecoder decoder = new ModbusMessageDecoder("com.fastbee.modbus");
-    private static ModbusMessageEncoder encoder = new ModbusMessageEncoder("com.fastbee.modbus");
 
     @Override
     public InstructionsMessage buildMessage(DeviceDownMessage downMessage, TopicType type) {

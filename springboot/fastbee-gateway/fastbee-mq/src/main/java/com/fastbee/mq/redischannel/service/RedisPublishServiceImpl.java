@@ -1,6 +1,5 @@
 package com.fastbee.mq.redischannel.service;
 
-import com.fastbee.common.core.mq.message.DeviceMessage;
 import com.fastbee.common.core.redis.RedisCache;
 import com.fastbee.mq.service.IMessagePublishService;
 import lombok.NoArgsConstructor;

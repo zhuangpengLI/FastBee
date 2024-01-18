@@ -1,18 +1,15 @@
-package com.fastbee.modbusToJson;
+package com.fastbee.jsonPak;
 
 import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.fastbee.common.annotation.SysProtocol;
 import com.fastbee.common.constant.FastBeeConstant;
 import com.fastbee.common.core.mq.DeviceReport;
 import com.fastbee.common.core.mq.message.DeviceData;
-import com.fastbee.common.core.thingsModel.NeuronModel;
 import com.fastbee.common.core.thingsModel.ThingsModelSimpleItem;
 import com.fastbee.common.core.thingsModel.ThingsModelValuesInput;
 import com.fastbee.common.exception.ServiceException;
 import com.fastbee.common.utils.DateUtils;
-import com.fastbee.common.utils.StringUtils;
 import com.fastbee.protocol.base.protocol.IProtocol;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -24,67 +21,37 @@ import java.util.Map;
 
 /**
  * @author gsb
- * @date 2023/8/14 16:04
+ * @date 2022/10/10 16:55
  */
 @Slf4j
 @Component
-@SysProtocol(name = "Modbus转Json解析协议-繁易",protocolCode = FastBeeConstant.PROTOCOL.ModbusToJsonFY,description = "modbus转json解析协议-繁易")
-public class ModbusToJsonFYProtocolService implements IProtocol {
-
-
+@SysProtocol(name = "JSONObject解析协议",protocolCode = FastBeeConstant.PROTOCOL.JsonObject,description = "系统内置JSONObject解析协议")
+public class JsonPakProtocolService implements IProtocol {
 
     /**
-     * {
-     * 	"device1": [
-     *                {
-     * 			"name": "J2",
-     * 			"quality": 0,
-     * 			"value": 8.331631
-     *        },
-     *        {
-     * 			"name": "J1",
-     * 			"quality": 0,
-     * 			"value": -130.123718
-     *        }
-     * 	],
-     * 	"device2": [
-     *        {
-     * 			"name": "J4",
-     * 			"quality": 0,
-     * 			"value": -16.350224
-     *        },
-     *        {
-     * 			"name": "J3",
-     * 			"quality": 0,
-     * 			"value": 94.769806
-     *        }
-     * 	]
-     * }
-     *
+     * 解析json格式数据
+     * 上报数据格式：  [{\"id\":\"switch\",\"value\":\"0\"},{\"id\":\"gear\",\"value\":\"0\"}]
      */
     @Override
     public DeviceReport decode(DeviceData deviceData, String clientId) {
         try {
             DeviceReport reportMessage = new DeviceReport();
+            // bytep[] 转String
             String data = new String(deviceData.getData(),StandardCharsets.UTF_8);
-            List<ThingsModelSimpleItem> result = new ArrayList<>();
             Map<String,Object> values = JSON.parseObject(data, Map.class);
+            List<ThingsModelSimpleItem> result = new ArrayList<>();
             for (Map.Entry<String, Object> entry : values.entrySet()) {
-                String slaveKey = entry.getKey();
-                Integer slaveId = StringUtils.matcherNum(slaveKey);
-                List<FYModel> valueList = JSON.parseArray(JSON.toJSONString(entry.getValue()), FYModel.class);
-                for (FYModel fyModel : valueList) {
-                    ThingsModelSimpleItem item = new ThingsModelSimpleItem();
-                    item.setTs(DateUtils.getNowDate());
-                    item.setValue(fyModel.getValue());
-                    item.setId(fyModel.getName());
-                    item.setSlaveId(slaveId);
-                    result.add(item);
-                }
+                ThingsModelSimpleItem item = new ThingsModelSimpleItem();
+                item.setTs(DateUtils.getNowDate());
+                item.setValue(entry.getValue()+"");
+                item.setId(entry.getKey());
+                result.add(item);
             }
             ThingsModelValuesInput valuesInput = new ThingsModelValuesInput();
             valuesInput.setThingsModelValueRemarkItem(result);
             reportMessage.setValuesInput(valuesInput);
+             reportMessage.setIsPackage(true);
+             reportMessage.setMessageId("0");
             reportMessage.setClientId(clientId);
             reportMessage.setSerialNumber(clientId);
             return reportMessage;
@@ -96,7 +63,7 @@ public class ModbusToJsonFYProtocolService implements IProtocol {
     @Override
     public byte[] encode(DeviceData message, String clientId) {
         try {
-            String msg = JSONObject.toJSONString(message.getDownMessage().getBody());
+            String msg = message.getBody().toString();
             return msg.getBytes(StandardCharsets.UTF_8);
         }catch (Exception e){
             log.error("=>指令编码异常,device={},data={}",message.getSerialNumber(),
@@ -104,5 +71,4 @@ public class ModbusToJsonFYProtocolService implements IProtocol {
             return null;
         }
     }
-
 }
