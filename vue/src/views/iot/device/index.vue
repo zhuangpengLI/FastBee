@@ -210,7 +210,7 @@
 
 <script>
 import vueQr from 'vue-qr';
-import { listDeviceShort, delDevice, getGwDevCode } from '@/api/iot/device';
+import { listDeviceShort, delDevice } from '@/api/iot/device';
 import { listGroup } from '@/api/iot/group';
 
 export default {

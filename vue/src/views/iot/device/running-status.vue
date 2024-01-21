@@ -11,15 +11,6 @@
             </template>
             <el-link :underline="false" style="line-height: 28px; font-size: 16px; padding-right: 10px">{{ title }}</el-link>
           </el-descriptions-item>
-          <!-- 设备升级-->
-          <el-descriptions-item :labelStyle="statusColor" v-if="hasShrarePerm('ota')">
-            <template slot="label">
-              <svg-icon icon-class="ota" />
-              OTA升级
-            </template>
-            <el-link :underline="false" style="line-height: 28px; font-size: 16px; padding-right: 10px">Version {{ deviceInfo.firmwareVersion }}</el-link>
-            <el-button type="success" size="mini" style="float: right" @click="getLatestFirmware(deviceInfo.deviceId)" :disabled="deviceInfo.status != 3">检查更新</el-button>
-          </el-descriptions-item>
 
           <!-- 设备物模型-->
           <el-descriptions-item v-for="(item, index) in deviceInfo.thingsModels" :key="index" :labelStyle="statusColor">
@@ -353,30 +344,6 @@
         </el-row>
       </el-col>
     </el-row>
-
-    <!-- 添加或修改产品固件对话框 -->
-    <el-dialog title="设备固件升级" :visible.sync="openFirmware" width="600px" append-to-body>
-      <div v-if="firmware == null" style="text-align: center; font-size: 16px">
-        <i class="el-icon-success" style="color: #67c23a"></i>
-        已经是最新版本，不需要升级
-      </div>
-      <el-descriptions :column="1" border size="large" v-if="firmware != null && deviceInfo.firmwareVersion < firmware.version" :labelStyle="{ width: '150px', 'font-weight': 'bold' }">
-        <template slot="title">
-          <el-link icon="el-icon-success" type="success" :underline="false">可以升级到以下版本</el-link>
-        </template>
-        <el-descriptions-item label="固件名称">{{ firmware.firmwareName }}</el-descriptions-item>
-        <el-descriptions-item label="所属产品">{{ firmware.productName }}</el-descriptions-item>
-        <el-descriptions-item label="固件版本">Version {{ firmware.version }}</el-descriptions-item>
-        <el-descriptions-item label="下载地址">
-          <el-link :href="getDownloadUrl(firmware.filePath)" :underline="false" type="primary">{{ getDownloadUrl(firmware.filePath) }}</el-link>
-        </el-descriptions-item>
-        <el-descriptions-item label="固件描述">{{ firmware.remark }}</el-descriptions-item>
-      </el-descriptions>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="success" @click="otaUpgrade" v-if="firmware != null && deviceInfo.firmwareVersion < firmware.version">升 级</el-button>
-        <el-button @click="cancel">取 消</el-button>
-      </div>
-    </el-dialog>
   </div>
 </template>
 

@@ -48,8 +48,7 @@
 </template>
 
 <script>
-import { listLog, getLog, delLog, addLog, updateLog } from '@/api/iot/functionLog';
-import { cacheJsonThingsModel } from '@/api/iot/model';
+import { listLog, delLog } from '@/api/iot/functionLog';
 
 export default {
   name: 'device-func',
@@ -124,7 +123,7 @@ export default {
       // 表单校验
       rules: {
         identify: [{ required: true, message: '标识符不能为空', trigger: 'blur' }],
-        funType: [{ required: true, message: '1==服务下发，2=属性获取，3.OTA升级不能为空', trigger: 'change' }],
+        funType: [{ required: true, message: '功能下发类型不能为空', trigger: 'change' }],
         funValue: [{ required: true, message: '日志值不能为空', trigger: 'blur' }],
         serialNumber: [{ required: true, message: '设备编号不能为空', trigger: 'blur' }],
       },

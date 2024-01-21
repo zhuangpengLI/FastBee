@@ -193,11 +193,7 @@ import {
     changeProductStatus,
     deviceCount,
 } from "@/api/iot/product";
-import {
-    getTemp,
-    getTempByPId,
-    listTemp
-} from "@/api/iot/temp";
+
 import {
     getAllPoints
 } from "@/api/iot/template";
@@ -494,39 +490,10 @@ export default {
                 this.protocolList = res.rows;
             })
         },
-        /*选择模板*/
-        selectTemplate() {
-            // this.reset();
-            this.open = true;
-            this.title = "选择模板";
-            this.getTempList();
-            // this.getList()
-        },
-        getTempDetail() {
-            const params = {
-                productId: this.form.productId
-            };
-            getTempByPId(params).then(response => {
-                this.selectRowData = response.data;
-            })
-        },
         // 取消按钮
         cancel() {
             this.open = false;
             // this.reset();
-        },
-        /** 查询设备采集变量模板列表 */
-        getTempList() {
-            this.loading = true;
-            listTemp(this.tempParams).then(response => {
-                this.tempList = response.rows;
-                this.tempTotal = response.total;
-                this.currentRow = this.tempList[0];
-                // this.pointsParams.templateId = this.currentRow.templateId;
-                this.getCurrentRow(this.tempList[0]);
-                this.loading = false;
-                this.getList();
-            });
         },
         getList() {
             getAllPoints(this.pointsParams).then(response => {
@@ -535,29 +502,14 @@ export default {
             });
         },
 
-        /*确认选择*/
-        submitSelect() {
-            this.open = false;
-            this.form.templateId = this.selectRowData.templateId;
-        },
-        getCurrentRow(val) {
-            if (val != null) {
-                this.selectRowData = val;
-            }
-            this.pointsParams.templateId = val.templateId;
-            this.getList();
-        },
-        deleteData() {
-            this.selectRowData = {};
-            this.form.templateId = null;
-        },
+
         changeProductCode(val) {
             if (val && val.startsWith("MODBUS")) {
                 this.tempOpen = true;
                 this.form.deviceType = 2;
                 this.form.isModbus = true;
                 if (this.form.productId != 0 && this.form.productId != null) {
-                    this.getTempDetail()
+                    //this.getTempDetail()
                 }
             } else {
                 this.form.isModbus = false;
@@ -568,7 +520,7 @@ export default {
         tabChange(tabItem) {
             // 切换到告警配置，获取物模型
             if (tabItem.paneName == "alert") {
-                this.$refs.productAlert.getCacheThingsModel(this.form.productId);
+                //this.$refs.productAlert.getCacheThingsModel(this.form.productId);
             }
         },
 

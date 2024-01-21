@@ -83,7 +83,7 @@ export default {
     /**
      * Mqtt发布消息
      * @device 设备
-     * @model 物模型 ,type 类型(1=属性，2=功能，3=OTA升级，4=实时监测)
+     * @model 物模型 ,type 类型(1=属性，2=功能，3=OTA升级(商业版支持)，4=实时监测)
      * */
     mqttPublish(device, model) {
       let topic = '';

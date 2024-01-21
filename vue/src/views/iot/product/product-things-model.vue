@@ -20,19 +20,9 @@
       </el-col>
     </el-row>
 
-    <el-form size="small" v-if="this.queryParams.isModbus">
-      <el-form-item label="请选择设备从机:">
-        <el-select v-model="slave.id" placeholder="请选择设备从机" @change="selectSlave">
-          <el-option v-for="slave in slaveList" :key="slave.slaveAddr"
-            :label="`${slave.slaveName}   (${slave.slaveAddr})`" :value="slave.slaveAddr"></el-option>
-        </el-select>
-      </el-form-item>
-    </el-form>
-
     <el-table v-loading="loading" :data="modelList" size="mini">
       <el-table-column label="名称" align="center" prop="modelName" width="230" />
       <el-table-column label="标识符" align="center" prop="identifier" />
-      <el-table-column label="寄存器地址(10进制)" align="center" prop="regAddr" v-if="queryParams.isModbus" />
       <el-table-column label="图表展示" align="center" prop="" width="80">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.iot_yes_no" :value="scope.row.isChart" />
@@ -89,9 +79,6 @@
         </el-form-item>
         <el-form-item label="模型标识" prop="identifier">
           <el-input v-model="form.identifier" placeholder="请输入标识符，例如：temperature" style="width: 385px" />
-        </el-form-item>
-        <el-form-item label="寄存器地址" prop="regAddr" v-if="queryParams.isModbus">
-          <el-input v-model="form.regAddr" style="width: 385px" />
         </el-form-item>
         <el-form-item label="模型排序" prop="modelOrder">
           <el-input v-model="form.modelOrder" placeholder="请输入排序" type="number" style="width: 385px" />
@@ -172,9 +159,6 @@
               </el-tooltip>
             </template>
             <el-input v-model="form.formula" style="width: 385px" />
-          </el-form-item>
-          <el-form-item label="控制公式" prop="reverseFormula" v-if="queryParams.isModbus">
-            <el-input v-model="form.reverseFormula" style="width: 385px" />
           </el-form-item>
         </div>
 
@@ -346,8 +330,6 @@ import JsonViewer from 'vue-json-viewer';
 import 'vue-json-viewer/style.css';
 import thingsParameter from '../template/parameter';
 import { listModel, getModel, delModel, addModel, updateModel, importModel } from '@/api/iot/model';
-import { listByPid } from '@/api/iot/salve';
-import { listPoint, getPoint } from '@/api/iot/point';
 
 export default {
   name: 'product-things-model',
@@ -371,9 +353,6 @@ export default {
         this.queryParams.productId = this.productInfo.productId;
         this.queryParams.isModbus = this.productInfo.isModbus;
         this.getList();
-        if (this.queryParams.isModbus) {
-          this.getSlaveList();
-        }
       }
     },
   },
@@ -472,23 +451,6 @@ export default {
         this.total = response.total;
         this.loading = false;
       });
-    },
-    /**根据产品id获取从机列表*/
-    getSlaveList() {
-      const params = {
-        productId: this.queryParams.productId,
-      };
-      listByPid(params).then((response) => {
-        this.slaveList = response.data;
-        this.slave.id = this.slaveList[0].slaveAddr;
-        this.queryParams.tempSlaveId = this.slaveList[0].slaveAddr;
-        this.getList();
-      });
-    },
-
-    selectSlave() {
-      this.queryParams.tempSlaveId = this.slave.id;
-      this.getList();
     },
     // 取消按钮
     cancel() {

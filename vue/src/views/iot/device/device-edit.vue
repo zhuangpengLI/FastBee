@@ -25,11 +25,9 @@
                   <span style="color: red">*</span>
                   设备编号
                 </template>
-                <el-input v-model="form.serialNumber" placeholder="请输入设备编号" :disabled="form.status != 1" maxlength="32">
-                  <el-button v-if="form.deviceType !== 3" slot="append" @click="generateNum" :loading="genDisabled"
-                    :disabled="form.status != 1">生成</el-button>
-                  <el-button v-if="form.deviceType === 3" slot="append" @click="genSipID()"
-                    :disabled="form.status != 1">生成</el-button>
+                <el-input v-model="form.serialNumber" placeholder="请输入设备编号" :disabled="form.status !== 1" maxlength="32">
+                  <el-button slot="append" @click="generateNum" :loading="genDisabled"
+                    :disabled="form.status !== 1">生成</el-button>
                 </el-input>
               </el-form-item>
               <el-form-item v-if="openServerTip">
@@ -58,8 +56,8 @@
               </el-form-item>
               <el-form-item label="禁用设备" prop="deviceStatus">
                 <el-switch v-model="deviceStatus" active-text="" inactive-text=""
-                  :disabled="form.status == 1 || form.deviceType === 3" :active-value="1" :inactive-value="0"
-                  active-color="#F56C6C"></el-switch>
+                           :disabled="form.status === 1 || form.deviceType === 3" :active-value="1" :inactive-value="0"
+                           active-color="#F56C6C"></el-switch>
               </el-form-item>
               <el-form-item label="备注信息" prop="remark">
                 <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" rows="1" />
@@ -127,19 +125,32 @@
         <product-list ref="productList" :productId="form.productId" @productEvent="getProductData($event)" />
       </el-tab-pane>
 
-      <el-tab-pane name="runningStatus" v-if="form.deviceType !== 3">
+      <el-tab-pane name="runningStatus" v-if="form.deviceType !== 3 && !isSubDev">
         <span slot="label">运行状态</span>
-        <real-time-status ref="realTimeStatus" :device="form" @statusEvent="getDeviceStatusData($event)"
-          v-if="isSubDev" />
-        <running-status ref="runningStatus" :device="form" @statusEvent="getDeviceStatusData($event)" v-else />
+        <running-status ref="runningStatus" :device="form" @statusEvent="getDeviceStatusData($event)"/>
       </el-tab-pane>
 
-      <el-tab-pane name="deviceSub" :disabled="form.deviceId == 0" v-if="isSubDev && form.deviceType !== 3">
-        <span slot="label">子设备</span>
-        <device-sub ref="deviceSub" :device="form" />
+      <el-tab-pane name="runningStatus" v-if="isSubDev">
+        <span slot="label"><span style="color:red;">￥ </span>运行状态</span>
+        <business ref="business"/>
       </el-tab-pane>
 
-      <el-tab-pane name="deviceTimer" :disabled="form.deviceId == 0"
+      <el-tab-pane name="sipChannel" :disabled="form.deviceId === 0" v-if="form.deviceType === 3">
+        <span slot="label"><span style="color:red;">￥ </span>设备通道</span>
+        <business ref="business"/>
+      </el-tab-pane>
+
+      <el-tab-pane :disabled="form.deviceId === 0" v-if="form.deviceType === 3" name="sipPlayer">
+        <span slot="label"><span style="color:red;">￥ </span>设备直播</span>
+        <business ref="business"/>
+      </el-tab-pane>
+
+      <el-tab-pane :disabled="form.deviceId === 0" v-if="form.deviceType === 3" name="sipVideo">
+        <span slot="label"><span style="color:red;">￥ </span>直播录像</span>
+        <business ref="business"/>
+      </el-tab-pane>
+
+      <el-tab-pane name="deviceTimer" :disabled="form.deviceId === 0"
         v-if="form.deviceType !== 3 && hasShrarePerm('timer')">
         <span slot="label">设备定时</span>
         <device-timer ref="deviceTimer" :device="form" />
@@ -161,7 +172,7 @@
         <device-func ref="deviceFuncLog" :device="form" />
       </el-tab-pane>
 
-      <el-tab-pane name="deviceMonitor" :disabled="form.deviceId == 0"
+      <el-tab-pane name="deviceMonitor" :disabled="form.deviceId == 0 "
         v-if="form.deviceType !== 3 && hasShrarePerm('monitor')">
         <span slot="label">实时监测</span>
         <device-monitor ref="deviceMonitor" :device="form" />
@@ -180,13 +191,6 @@
         </span>
       </el-tab-pane>
 
-      <!-- <el-tab-pane name="device04" v-if="form.deviceType !==3" disabled>
-            <span slot="label">
-                <el-tooltip class="item" effect="dark" content="用于查看发送的指令，设备是否已经响应" placement="right-start">
-                    <el-button type="warning" size="mini" @click="deviceSynchronization()" :disabled="form.deviceId==0">数据同步</el-button>
-                </el-tooltip>
-            </span>
-        </el-tab-pane> -->
       <el-tab-pane name="deviceReturn" disabled>
         <span slot="label">
           <el-button type="info" size="mini" @click="goBack()">返回列表</el-button>
@@ -255,24 +259,20 @@ import runningStatus from './running-status';
 import deviceMonitor from './device-monitor';
 import deviceStatistic from './device-statistic';
 import deviceTimer from './device-timer';
-import deviceFuncLog from './device-functionlog';
-import deviceSub from './device-sub';
-import realTimeStatus from './realTime-status';
+import DeviceFunc from './device-functionlog';
+import business from "@/views/iot/business/index.vue";
 import vueQr from 'vue-qr';
 import { loadBMap } from '@/utils/map.js';
 import { deviceSynchronization, getDevice, addDevice, updateDevice, generatorDeviceNum, listDevice, getMqttConnect } from '@/api/iot/device';
 import { getDeviceRunningStatus } from '@/api/iot/device';
 import { cacheJsonThingsModel } from '@/api/iot/model';
-import DeviceFunc from '@/views/iot/device/device-functionlog';
 import { getDeviceTemp } from '@/api/iot/temp';
-import { getGwDevCode } from '@/api/iot/device';
-import RealTimeStatus from '@/views/iot/device/realTime-status';
 
 export default {
   name: 'DeviceEdit',
   dicts: ['iot_device_status', 'iot_location_way'],
   components: {
-    RealTimeStatus,
+    business,
     DeviceFunc,
     deviceLog,
     deviceUser,
@@ -281,8 +281,6 @@ export default {
     runningStatus,
     productList,
     deviceTimer,
-    deviceFuncLog,
-    deviceSub,
     JsonViewer,
     vueQr,
   },
@@ -404,7 +402,7 @@ export default {
       this.connectMqtt();
       this.getDevice(this.form.deviceId);
     }
-    this.isSubDev = this.$route.query.isSubDev == 1 ? true : false;
+    this.isSubDev = this.$route.query.isSubDev === 1;
   },
   activated() {
     // 跳转选项卡
@@ -517,49 +515,15 @@ export default {
     getDeviceStatusData(status) {
       this.form.status = status;
     },
-    // 获取直播子组件传递的激活选项卡名称
-    getPlayerData(data) {
-      this.activeName = data.tabName;
-      this.channelId = data.channelId;
-      // this.$set(this.form, 'channelId', this.channelId);
-      if (this.channelId) {
-        this.$refs.deviceLiveStream.channelId = this.channelId;
-        this.$refs.deviceLiveStream.changeChannel();
-      }
-    },
+
     /** 选项卡改变事件*/
     tabChange(panel) {
-      if (this.form.deviceType == 3 && panel.name != 'deviceReturn') {
-        if (panel.name === 'sipPlayer') {
-          this.$refs.deviceVideo.destroy();
-          if (this.channelId) {
-            this.$refs.deviceLiveStream.channelId = this.channelId;
-            this.$refs.deviceLiveStream.changeChannel();
-          }
-          if (this.$refs.deviceLiveStream.channelId) {
-            this.$refs.deviceLiveStream.changeChannel();
-          }
-        } else if (panel.name === 'sipVideo') {
-          this.$refs.deviceLiveStream.destroy();
-          if (this.$refs.deviceVideo.channelId && this.$refs.deviceVideo.queryDate) {
-            this.$refs.deviceVideo.loadDevRecord();
-          }
-        } else {
-          this.$refs.deviceVideo.destroy();
-          this.$refs.deviceLiveStream.destroy();
-        }
-      }
       this.$nextTick(() => {
         // 获取监测统计数据
-        if (panel.name === 'deviceStastic') {
+        if (panel.name === 'deviceStastic' && !this.isSubDev) {
           this.$refs.deviceStatistic.getListHistory();
-        } else if (panel.name === 'deviceTimer') {
+        } else if (panel.name === 'deviceTimer'&& !this.isSubDev) {
           this.$refs.deviceTimer.getList();
-        } else if (panel.name === 'deviceSub') {
-          if (this.form.serialNumber) {
-            this.$refs.deviceSub.queryParams.gwDevCode = this.form.serialNumber;
-            this.$refs.deviceSub.getList();
-          }
         }
       });
     },
@@ -582,6 +546,7 @@ export default {
     /**获取设备详情*/
     getDevice(deviceId) {
       getDevice(deviceId).then(async (response) => {
+
         // 分享设备获取用户权限
         response.data.userPerms = [];
         if (response.data.isOwner == 0) {
@@ -622,7 +587,6 @@ export default {
     getDeviceStatus(data) {
       const params = {
         deviceId: data.deviceId,
-        slaveId: data.slaveId,
       };
       return new Promise((resolve, reject) => {
         getDeviceRunningStatus(params)
@@ -880,9 +844,6 @@ export default {
         this.openServerTip = false;
         this.serverType = 1;
       }
-    },
-    getSipIDData(devsipid) {
-      this.form.serialNumber = devsipid;
     },
     getDeviceTemp(productId) {
       getDeviceTemp(this.form).then((response) => {

@@ -148,8 +148,6 @@ export default {
       total: 0,
       // 设备用户表格数据
       deviceUserList: [],
-      // 设备信息
-      deviceInfo: {},
       // 查询参数
       queryParams: {
         pageNum: 1,
@@ -266,11 +264,6 @@ export default {
       permListModel(this.deviceInfo.productId).then((response) => {
         // 固定增加设备系统相关权限
         this.sharePermissionList = [
-          {
-            identifier: 'ota',
-            modelName: '设备升级',
-            remark: '设备OTA升级',
-          },
           {
             identifier: 'timer',
             modelName: '设备定时',
