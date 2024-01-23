@@ -18,11 +18,16 @@
    cd FastBee/vue
    npm install
    npm run build:prod
-   cp -rf ./dist/* /var/data/htnl
+   cp -rf ./dist/* /var/data/vue
 ```
 
 ## 4.启动项目
 ```
    cd /var/data
+   setenforce 0
+   chmod 777 -R /var/data 
+   #使用netty版本mqtt broker 输入该命令：
+   sudo cp -rf docker-compose-netty.yml docker-compose.yml
+   #使用emqx直接启动
    docker-compose up -d
 ```

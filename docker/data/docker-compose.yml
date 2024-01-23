@@ -111,11 +111,10 @@ services:
       - java
     volumes:
       - /var/data/nginx/vue:/usr/share/nginx/html
-      - /var/data/nginx/view:/usr/share/nginx/view
       - /var/data/nginx/h5:/usr/share/nginx/h5
       - /var/data/nginx/www:/usr/share/nginx/www
       - /var/data/nginx/ssl:/usr/share/nginx/ssl
-      - /var/data/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /var/data/nginx/nginx-eqmx.conf:/etc/nginx/nginx.conf
       - /var/data/nginx:/var/log/nginx
 
   tdengine:

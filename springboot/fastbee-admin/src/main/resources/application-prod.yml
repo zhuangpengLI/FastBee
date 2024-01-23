@@ -19,7 +19,7 @@ spring:
       tdengine-server:
         enabled: true       # 默认不启用TDengine，true=启用，false=不启用
         driverClassName: com.taosdata.jdbc.TSDBDriver
-        url: jdbc:TAOS://fastbee:6030/fastbee_log?timezone=Asia/Beijing&charset=utf-8
+        url: jdbc:TAOS://177.7.0.14:6030/fastbee_log?timezone=Asia/Beijing&charset=utf-8
         username: root
         password: taosdata
         dbName: fastbee_log
@@ -72,8 +72,7 @@ spring:
   mqtt:
     username: fastbee                       # 账号（仅用于后端自认证）
     password: fastbee                       # 密码（仅用于后端自认证）
-    host-url: tcp://177.7.0.12:1883         # 连接 Emqx 消息服务器地址
-    # host-url: tcp://177.7.0.13:1883       # 内置netty mqtt broker地址
+    host-url: tcp://177.7.0.12:1883         # 连接消息服务器地址
     client-id: ${random.int}                # 客户端Id，不能相同，采用随机数 ${random.value}
     default-topic: test                     # 默认主题
     timeout: 30                             # 超时时间
