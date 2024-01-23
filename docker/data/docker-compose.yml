@@ -86,7 +86,6 @@ services:
       - redis
       - mysql
       - tdengine
-      - zlmedia-record
     volumes:
       - /var/data/java/fastbee-admin.jar:/server.jar
       - /var/data/java/libtaos.so:/usr/lib/libtaos.so
