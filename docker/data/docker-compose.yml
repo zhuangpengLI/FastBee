@@ -96,26 +96,6 @@ services:
       TZ: Asia/Shanghai
     entrypoint: java -jar /server.jar
 
-  nginx:
-    image: nginx:stable
-    container_name: nginx
-    ports:
-      - 80:80
-      - 443:443
-    privileged: true
-    networks:
-      network:
-        ipv4_address: 177.7.0.14
-    depends_on:
-      - java
-    volumes:
-      - /var/data/nginx/vue:/usr/share/nginx/html
-      - /var/data/nginx/h5:/usr/share/nginx/h5
-      - /var/data/nginx/www:/usr/share/nginx/www
-      - /var/data/nginx/ssl:/usr/share/nginx/ssl
-      - /var/data/nginx/nginx-eqmx.conf:/etc/nginx/nginx.conf
-      - /var/data/nginx:/var/log/nginx
-
   tdengine:
     image: 'tdengine/tdengine:2.6.0.12'
     container_name: tdengine
@@ -131,4 +111,24 @@ services:
       TZ: Asia/Shanghai
     networks:
       network:
-        ipv4_address: 177.7.0.16
+        ipv4_address: 177.7.0.14
+
+  nginx:
+    image: nginx:stable
+    container_name: nginx
+    ports:
+      - 80:80
+      - 443:443
+    privileged: true
+    networks:
+      network:
+        ipv4_address: 177.7.0.15
+    depends_on:
+      - java
+    volumes:
+      - /var/data/nginx/vue:/usr/share/nginx/html
+      - /var/data/nginx/h5:/usr/share/nginx/h5
+      - /var/data/nginx/www:/usr/share/nginx/www
+      - /var/data/nginx/ssl:/usr/share/nginx/ssl
+      - /var/data/nginx/nginx-eqmx.conf:/etc/nginx/nginx.conf
+      - /var/data/nginx:/var/log/nginx
