@@ -256,11 +256,6 @@ public class ProductServiceImpl implements IProductService
             String key = RedisKeyBuilder.buildTSLCacheKey(productIds[i]);
             redisCache.deleteObject(key);
         }
-        // 产品下不能有固件
-        int firmwareCount=productMapper.firmwareCountInProducts(productIds);
-        if(firmwareCount>0){
-            return AjaxResult.error("删除失败，请先删除对应产品下的固件");
-        }
         // 产品下不能有设备
         int deviceCount=productMapper.deviceCountInProducts(productIds);
         if(deviceCount>0){

@@ -178,13 +178,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </foreach>
     </delete>
 
-    <select id="firmwareCountInProducts" parameterType="String" resultType="int">
-        select count(*) from iot_firmware where product_id in
-        <foreach item="productId" collection="array" open="(" separator="," close=")">
-            #{productId}
-        </foreach>
-    </select>
-
     <select id="deviceCountInProducts" parameterType="String" resultType="int">
         select count(*) from iot_device where product_id in
         <foreach item="productId" collection="array" open="(" separator="," close=")">
