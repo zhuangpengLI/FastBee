@@ -409,6 +409,12 @@ export default {
             message: '物模型名称不能为空',
             trigger: 'blur',
           },
+          {
+            min: 1,
+            max: 64,
+            message: '模型标识不能少于1个字符和超过64字符',
+            trigger: 'blur',
+          },
         ],
         identifier: [
           {
@@ -416,11 +422,22 @@ export default {
             message: '标识符，产品下唯一不能为空',
             trigger: 'blur',
           },
+          {
+            min: 1,
+            max: 64,
+            message: '模型标识不能少于1个字符和超过64字符',
+            trigger: 'blur',
+          },
         ],
         modelOrder: [
           {
             required: true,
             message: '模型排序不能为空',
+            trigger: 'blur',
+          }, {
+            min: 1,
+            max: 10,
+            message: '排序超过最大限制',
             trigger: 'blur',
           },
         ],
@@ -430,6 +447,7 @@ export default {
             message: '模型类别不能为空',
             trigger: 'change',
           },
+
         ],
         datatype: [
           {
@@ -695,20 +713,20 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const modelIds = row.modelId;
-      if (!this.queryParams.isModbus) {
-        this.$modal
-          .confirm('是否确认删除物模型编号为"' + modelIds + '"的数据项？')
-          .then(function () {
-            return delModel(modelIds);
-          })
-          .then(() => {
-            this.getList();
-            this.$modal.msgSuccess('删除成功');
-          })
-          .catch(() => { });
-      } else {
-        this.$modal.alert('采集点删除请在采集点模板修改');
-      }
+      // if (!this.queryParams.isModbus) {
+      this.$modal
+        .confirm('是否确认删除物模型编号为"' + modelIds + '"的数据项？')
+        .then(function () {
+          return delModel(modelIds);
+        })
+        .then(() => {
+          this.getList();
+          this.$modal.msgSuccess('删除成功');
+        })
+        .catch(() => { });
+      // } else {
+      //   this.$modal.alert('采集点删除请在采集点模板修改');
+      // }
     },
     /** 导出按钮操作 */
     handleExport() {

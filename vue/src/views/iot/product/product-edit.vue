@@ -228,14 +228,21 @@ export default {
                 transport: 'MQTT',
                 imgUrl: "",
             },
-            tempOpen: false,
             // 表单校验
             rules: {
                 productName: [{
                     required: true,
                     message: "产品名称不能为空",
-                    trigger: "blur"
-                }],
+                    trigger: "blur",
+                    
+                },
+                {
+                    min: 1,
+                    max: 64,
+                    message: '产品名称不能少于1个字符和超过64字符',
+                    trigger: 'blur',    
+                },
+               ],
                 categoryId: [{
                     required: true,
                     message: "产品分类ID不能为空",
@@ -310,7 +317,7 @@ export default {
     activated() {
         const time = this.$route.query.t;
         if (time != null && time != this.uniqueId) {
-            this.uniqueId = time;
+            this.uniqueId = time;  
         }
         // 获取产品信息
         let productId = this.$route.query.productId
@@ -377,10 +384,6 @@ export default {
         submitForm() {
             this.$refs["form"].validate(valid => {
                 if (valid) {
-                    if (this.tempOpen && !this.form.templateId) {
-                        this.$modal.alert("请选择采集点模板");
-                        return;
-                    }
                     if (this.form.productId != null && this.form.productId != 0) {
                         updateProduct(this.form).then(response => {
                             this.changeProductCode(this.form.protocolCode);
@@ -501,11 +504,8 @@ export default {
                 this.total = response.total;
             });
         },
-
-
         changeProductCode(val) {
             if (val && val.startsWith("MODBUS")) {
-                this.tempOpen = true;
                 this.form.deviceType = 2;
                 this.form.isModbus = true;
                 if (this.form.productId != 0 && this.form.productId != null) {
@@ -513,7 +513,6 @@ export default {
                 }
             } else {
                 this.form.isModbus = false;
-                this.tempOpen = false;
             }
         },
         /**选项卡切换事件**/

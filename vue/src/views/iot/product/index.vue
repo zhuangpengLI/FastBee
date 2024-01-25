@@ -257,13 +257,10 @@ export default {
             const productIds = row.productId || this.ids;
             let msg = "";
             this.$modal.confirm('是否确认删除产品编号为"' + productIds + '"的数据项？').then(function () {
-                // 删除SIP配置
-                delSipconfigByProductId(productIds).then(response => {});
-                return delProduct(productIds).then(response => {
-                    msg = response.msg;
-                });
+                // // 删除SIP配置
+                // delSipconfigByProductId(productIds).then(response => {});
+                return delProduct(productIds);
             }).then(() => {
-
                 this.getList();
                 this.$modal.msgSuccess(msg);
             }).catch(() => {});
