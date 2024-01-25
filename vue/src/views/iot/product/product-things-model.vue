@@ -437,7 +437,7 @@ export default {
           }, {
             min: 1,
             max: 10,
-            message: '排序超过最大限制',
+            message: '字符不能超过10位',
             trigger: 'blur',
           },
         ],
