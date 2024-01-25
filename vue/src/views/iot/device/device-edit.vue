@@ -834,7 +834,6 @@ export default {
       this.form.productId = product.productId;
       this.form.productName = product.productName;
       this.form.deviceType = product.deviceType;
-      this.getDeviceTemp();
       this.form.tenantId = product.tenantId;
       this.form.tenantName = product.tenantName;
       if (product.transport === 'TCP') {
@@ -844,15 +843,6 @@ export default {
         this.openServerTip = false;
         this.serverType = 1;
       }
-    },
-    getDeviceTemp(productId) {
-      getDeviceTemp(this.form).then((response) => {
-        if (response.data && this.form.deviceType == 2) {
-          this.openTip = true;
-        } else {
-          this.openTip = false;
-        }
-      });
     },
     // 获取选中的用户
     getUserData(user) { },
