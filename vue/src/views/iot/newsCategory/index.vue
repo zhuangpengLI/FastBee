@@ -54,7 +54,7 @@
                 <el-input v-model="form.categoryName" placeholder="请输入分类名称" />
             </el-form-item>
             <el-form-item label="显示顺序" prop="orderNum">
-                <el-input v-model="form.orderNum" placeholder="请输入显示顺序" />
+                <el-input-number v-model="form.orderNum" placeholder="请输入显示顺序" type="number" controls-position="right"  style="width: 100%"/>
             </el-form-item>
             <el-form-item label="备注" prop="remark">
                 <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" />
@@ -114,12 +114,19 @@ export default {
                     required: true,
                     message: "分类名字不能为空",
                     trigger: "blur"
-                }],
+                },
+                {
+                    min: 1,
+                    max: 64,
+                    message: '分类名字不能少于1个字符和超过64字符',
+                },
+            ],
                 orderNum: [{
                     required: true,
                     message: "显示顺序不能为空",
                     trigger: "blur"
-                }],
+                }
+            ],
             }
         };
     },

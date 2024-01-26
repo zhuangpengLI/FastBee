@@ -228,7 +228,13 @@ export default {
                     required: true,
                     message: "标题不能为空",
                     trigger: "blur"
-                }],
+                },
+                {
+                    min: 1,
+                    max: 64,
+                    message: '标题不能少于1个字符和超过64字符',
+                },
+            ],
                 content: [{
                     required: true,
                     message: "内容不能为空",
@@ -243,7 +249,12 @@ export default {
                     required: true,
                     message: "作者不能为空",
                     trigger: "blur"
-                }],
+                },
+                {
+                    min: 1,
+                    max: 50,
+                    message: '作者名称不能少于1个字符和超过50字符',
+                },],
             }
         };
     },

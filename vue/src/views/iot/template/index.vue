@@ -377,11 +377,23 @@ export default {
             message: '物模型名称不能为空',
             trigger: 'blur',
           },
+          {
+            min: 1,
+            max: 64,
+            message: '物模型名称不能少于1个字符和超过64字符',
+            trigger: 'blur',
+          },
         ],
         identifier: [
           {
             required: true,
             message: '标识符，产品下唯一不能为空',
+            trigger: 'blur',
+          },
+          {
+            min: 1,
+            max: 32,
+            message: '标识符不能少于1个字符和超过32字符',
             trigger: 'blur',
           },
         ],
