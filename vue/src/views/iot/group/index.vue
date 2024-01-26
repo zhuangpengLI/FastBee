@@ -3,7 +3,8 @@
     <el-card v-show="showSearch" style="margin-bottom: 6px">
       <el-form ref="queryForm" :model="queryParams" :inline="true" label-width="68px" style="margin-bottom: -20px">
         <el-form-item label="分组名称" prop="groupName">
-          <el-input v-model="queryParams.groupName" placeholder="请输入分组名称" clearable size="small" @keyup.enter.native="handleQuery" />
+          <el-input v-model="queryParams.groupName" placeholder="请输入分组名称" clearable size="small"
+            @keyup.enter.native="handleQuery" />
         </el-form-item>
         <el-form-item v-if="isAdmin" label="我的分组" style="margin: 0 20px">
           <el-switch v-model="myGroup" @change="myGroupChange"></el-switch>
@@ -13,7 +14,8 @@
           <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
         </el-form-item>
         <el-form-item style="float: right">
-          <el-button v-hasPermi="['iot:group:add']" type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd">新增</el-button>
+          <el-button v-hasPermi="['iot:group:add']" type="primary" plain icon="el-icon-plus" size="mini"
+            @click="handleAdd">新增</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -31,14 +33,19 @@
         <el-table-column label="备注" align="left" header-align="center" prop="remark" />
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="320">
           <template slot-scope="scope">
-            <el-button v-hasPermi="['iot:device:query']" size="small" type="warning" style="padding: 5px" icon="el-icon-search" @click="handleViewDevice(scope.row.groupId)">查看设备</el-button>
-            <el-button v-hasPermi="['iot:group:add']" size="small" type="success" style="padding: 5px" icon="el-icon-edit" @click="selectDevice(scope.row)">添加设备</el-button>
-            <el-button v-hasPermi="['iot:group:edit']" size="small" type="primary" style="padding: 5px" icon="el-icon-edit" @click="handleUpdate(scope.row)">修改</el-button>
-            <el-button v-hasPermi="['iot:group:remove']" size="small" type="danger" style="padding: 5px" icon="el-icon-delete" @click="handleDelete(scope.row)">删除</el-button>
+            <el-button v-hasPermi="['iot:device:query']" size="small" type="warning" style="padding: 5px"
+              icon="el-icon-search" @click="handleViewDevice(scope.row.groupId)">查看设备</el-button>
+            <el-button v-hasPermi="['iot:group:add']" size="small" type="success" style="padding: 5px" icon="el-icon-edit"
+              @click="selectDevice(scope.row)">添加设备</el-button>
+            <el-button v-hasPermi="['iot:group:edit']" size="small" type="primary" style="padding: 5px"
+              icon="el-icon-edit" @click="handleUpdate(scope.row)">修改</el-button>
+            <el-button v-hasPermi="['iot:group:remove']" size="small" type="danger" style="padding: 5px"
+              icon="el-icon-delete" @click="handleDelete(scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
-      <pagination v-show="total > 0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize" @pagination="getList" />
+      <pagination v-show="total > 0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize"
+        @pagination="getList" />
 
       <!-- 分组设备列表 -->
       <deviceList ref="groupDeviceList" :group="group"></deviceList>
@@ -117,11 +124,21 @@ export default {
             message: '分组名称不能为空',
             trigger: 'blur',
           },
+          {
+            min: 1,
+            max: 64,
+            message: '分组名称不能少于1个字符和超过64字符',
+          },
         ],
         groupOrder: [
           {
             required: true,
             message: '分组排序不能为空,最大值为99',
+            trigger: 'blur',
+          },
+          {
+            max: 128,
+            message: '分组排序不能少于1个位和超过10位',
             trigger: 'blur',
           },
         ],
@@ -140,7 +157,9 @@ export default {
     },
     // 我的分组改变事件
     myGroupChange() {
-      this.queryParams.userId = this.myGroup ? this.$store.state.user.userId : null
+      this.queryParams.userId = this.myGroup ? this.$store.state.user.userId : null;
+      console.log(this.queryParams.userId, this.myGroup, this.$store.state.user.userId);
+      this.handleQuery();
     },
     /** 查看设备按钮操作 */
     handleViewDevice(groupId) {
@@ -253,7 +272,7 @@ export default {
           this.getList()
           this.$modal.msgSuccess('删除成功')
         })
-        .catch(() => {})
+        .catch(() => { })
     },
     /** 导出按钮操作 */
     handleExport() {
