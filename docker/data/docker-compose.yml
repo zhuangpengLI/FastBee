@@ -130,5 +130,5 @@ services:
       - /var/data/nginx/h5:/usr/share/nginx/h5
       - /var/data/nginx/www:/usr/share/nginx/www
       - /var/data/nginx/ssl:/usr/share/nginx/ssl
-      - /var/data/nginx/nginx-eqmx.conf:/etc/nginx/nginx.conf
+      - /var/data/nginx/nginx-emqx.conf:/etc/nginx/nginx.conf
       - /var/data/nginx:/var/log/nginx
