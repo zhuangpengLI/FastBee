@@ -2,11 +2,11 @@
   <div style="padding: 6px">
     <el-card v-show="showSearch" style="margin-bottom: 5px">
       <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px" style="margin-bottom: -20px">
-        <el-form-item label="名称" prop="templateName">
+        <el-form-item label="模型名称" prop="templateName">
           <el-input v-model="queryParams.templateName" placeholder="请输入物模型名称" clearable size="small"
             @keyup.enter.native="handleQuery" />
         </el-form-item>
-        <el-form-item label="类别" prop="type">
+        <el-form-item label="模型类别" prop="type">
           <el-select v-model="queryParams.type" placeholder="请选择模型类别" clearable size="small">
             <el-option v-for="dict in dict.type.iot_things_type" :key="dict.value" :label="dict.label"
               :value="dict.value" />
@@ -25,7 +25,7 @@
 
     <el-card style="padding-bottom: 100px">
       <el-table v-loading="loading" :data="templateList" @selection-change="handleSelectionChange" border>
-        <el-table-column label="名称" align="center" prop="templateName" />
+        <el-table-column label="模型名称" align="center" prop="templateName" />
         <el-table-column label="标识符" align="center" prop="identifier" />
         <el-table-column label="图表展示" align="center" prop="isMonitor" width="75">
           <template slot-scope="scope">
@@ -69,17 +69,17 @@
           </template>
         </el-table-column>
         <el-table-column label="排序" align="center" prop="modelOrder" width="80" />
-        <el-table-column label="创建时间" align="center" prop="createTime" width="100">
+        <el-table-column label="创建时间" align="center" prop="createTime" width="200">
           <template slot-scope="scope">
-            <span>{{ parseTime(scope.row.createTime, '{y}-{m}-{d}') }}</span>
+            <span>{{ parseTime(scope.row.createTime, '{y}-{m}-{d} {h}:{m}:{s}') }}</span>
           </template>
         </el-table-column>
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="150">
           <template slot-scope="scope">
-            <el-button size="small" type="primary" style="padding: 5px" icon="el-icon-view"
+            <el-button size="small" type="primary" style="padding: 5px" icon="el-icon-edit"
               @click="handleUpdate(scope.row)" v-hasPermi="['iot:template:query']"
               v-if="scope.row.isSys == '0' ? true : !isTenant">
-              查看
+              修改
             </el-button>
             <el-button size="small" type="danger" style="padding: 5px" icon="el-icon-delete"
               @click="handleDelete(scope.row)" v-hasPermi="['iot:template:remove']"
@@ -95,7 +95,7 @@
         @pagination="getList" />
 
       <!-- 添加或修改通用物模型对话框 -->
-      <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
+      <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body :close-on-click-modal="false">
         <el-form ref="form" :model="form" :rules="rules" label-width="100px">
           <el-form-item label="模型名称" prop="templateName">
             <el-input v-model="form.templateName" placeholder="请输入物模型名称，例如：温度" style="width: 385px" />
@@ -104,8 +104,7 @@
             <el-input v-model="form.identifier" placeholder="请输入标识符，例如：temperature" style="width: 385px" />
           </el-form-item>
           <el-form-item label="模型排序" prop="modelOrder">
-            <el-input-number controls-position="right" v-model="form.modelOrder" placeholder="请输入排序" type="number"
-              style="width: 385px" />
+            <el-input-number controls-position="right" v-model="form.modelOrder" placeholder="请输入排序" style="width: 386px" />
           </el-form-item>
           <el-form-item label="模型类别" prop="type">
             <el-radio-group v-model="form.type" @change="typeChange(form.type)">
@@ -162,24 +161,39 @@
               <el-option key="object" label="对象" value="object" :disabled="form.isChart == 1"></el-option>
             </el-select>
           </el-form-item>
-          <div v-if="form.datatype == 'integer' || form.datatype == 'decimal'">
-            <el-form-item label="取值范围">
+          <div>
+            <el-form-item label="取值范围" v-if="form.datatype == 'integer'">
               <el-row>
                 <el-col :span="9">
-                  <el-input v-model="form.specs.min" placeholder="最小值" type="number" />
+                  <el-input v-model="form.specs.min" placeholder="最小值" controls-position="right" type="number"
+                    style="width: 174px;" @input="handleEdit" />
                 </el-col>
                 <el-col :span="2" align="center">到</el-col>
                 <el-col :span="9">
-                  <el-input v-model="form.specs.max" placeholder="最大值" type="number" />
+                  <el-input v-model="form.specs.max" placeholder="最大值" type="number" controls-position="right"
+                    style="width: 174px;" @input="handleEditmax" />
                 </el-col>
               </el-row>
             </el-form-item>
-            <el-form-item label="单位">
+            <el-form-item label="取值范围" v-if="form.datatype == 'decimal'">
+              <el-row>
+                <el-col :span="9">
+                  <el-input v-model="form.specs.min" placeholder="最小值1" controls-position="right" type="number"
+                    style="width: 174px;" />
+                </el-col>
+                <el-col :span="2" align="center">到</el-col>
+                <el-col :span="9">
+                  <el-input v-model="form.specs.max" placeholder="最大值" type="number" controls-position="right"
+                    style="width: 174px;" />
+                </el-col>
+              </el-row>
+            </el-form-item>
+            <el-form-item label="单位" prop="unit" v-if="form.datatype == 'integer' || form.datatype == 'decimal'">
               <el-input v-model="form.specs.unit" placeholder="请输入单位，例如：℃" style="width: 385px" />
             </el-form-item>
-            <el-form-item label="步长">
+            <el-form-item label="步长" prop="step" v-if="form.datatype == 'integer' || form.datatype == 'decimal'">
               <el-input-number controls-position="right" v-model="form.specs.step" placeholder="请输入步长，例如：1" type="number"
-                style="width: 385px" />
+                style="width: 386px" />
             </el-form-item>
           </div>
           <div v-if="form.datatype == 'bool'">
@@ -403,6 +417,13 @@ export default {
             message: '模型排序不能为空',
             trigger: 'blur',
           },
+          {
+            type: 'number',
+            min: -2147483648,
+            max: 2147483647,
+            message: '排序不能超过int型的范围值( -2^31——2^31-1)',
+            trigger: 'blur',
+          },
         ],
         type: [
           {
@@ -418,6 +439,7 @@ export default {
             trigger: 'change',
           },
         ],
+
       },
     };
   },
@@ -634,7 +656,6 @@ export default {
     },
     // 类型改变
     typeChange(type) {
-      console.log(type);
       if (type == 1) {
         this.form.isChart = 1;
         this.form.isHistory = 1;
@@ -729,7 +750,9 @@ export default {
       return JSON.stringify(data);
     },
     /** 数据类型改变 */
-    dataTypeChange(val) { },
+    dataTypeChange(val) {
+      this.form.specs = {};
+    },
     /** 添加枚举项 */
     addEnumItem() {
       this.form.specs.enumList.push({
@@ -812,6 +835,24 @@ export default {
         // 解决数组在界面中不更新问题
         this.$set(this.form.specs.params, data.index, this.form.specs.params[data.index]);
       }
+    },
+    // 在输入最小值改变时触发
+    handleEdit(e) {
+      let value = e.replace(/[^\-\d]/g, ""); // 只能输入-和数字
+      value = value.replace(/\-{2,}/g, "-"); // -只能保留一个
+      value = value.replace(/(\d)\-/g, "$1"); // 数字后面不能接-，不能出现类似-11-2,12-，11-23
+      value = value.replace(/(-)0+/g, "$1"); // 不能出现-0,-001,-0001类似
+      value = value.replace(/(-\d{10})\d*/, '$1') // 最多保留10位整数
+      this.form.specs.min = value;
+    },
+    // 在输入最大值改变时触发
+    handleEditmax(e) {
+      let value = e.replace(/[^\-\d]/g, ""); // 只能输入-和数字
+      value = value.replace(/\-{2,}/g, "-"); // -只能保留一个
+      value = value.replace(/(\d)\-/g, "$1"); // 数字后面不能接-，不能出现类似-11-2,12-，11-23
+      value = value.replace(/(-)0+/g, "$1"); // 不能出现-0,-001,-0001类似
+      value = value.replace(/(-\d{10})\d*/, '$1') // 最多保留10位整数
+      this.form.specs.max = value;
     },
   },
 };

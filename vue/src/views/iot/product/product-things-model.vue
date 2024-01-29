@@ -81,7 +81,7 @@
           <el-input v-model="form.identifier" placeholder="请输入标识符，例如：temperature" style="width: 385px" />
         </el-form-item>
         <el-form-item label="模型排序" prop="modelOrder">
-          <el-input v-model="form.modelOrder" placeholder="请输入排序" type="number" style="width: 385px" />
+          <el-input-number v-model="form.modelOrder" placeholder="请输入排序" type="number" style="width: 386px" controls-position="right"/>
         </el-form-item>
         <el-form-item label="模型类别" prop="type">
           <el-radio-group v-model="form.type" @change="typeChange(form.type)">
@@ -119,7 +119,7 @@
           <el-form-item label="取值范围">
             <el-row>
               <el-col :span="9">
-                <el-input v-model="form.specs.min" placeholder="最小值" type="number" />
+                <el-input v-model="form.specs.min" placeholder="最小值" type="number"  style="width: 175px"/>
               </el-col>
               <el-col :span="2" align="center">到</el-col>
               <el-col :span="9">
@@ -131,7 +131,7 @@
             <el-input v-model="form.specs.unit" placeholder="请输入单位，例如：℃" style="width: 385px" />
           </el-form-item>
           <el-form-item label="步长">
-            <el-input v-model="form.specs.step" placeholder="请输入步长，例如：1" type="number" style="width: 385px" />
+            <el-input-number v-model="form.specs.step" placeholder="请输入步长，例如：1" type="number" style="width: 386px" controls-position="right"/>
           </el-form-item>
           <el-form-item label="计算公式" prop="formula">
             <template slot="label">
@@ -412,7 +412,7 @@ export default {
           {
             min: 1,
             max: 64,
-            message: '模型标识不能少于1个字符和超过64字符',
+            message: '物模型名称不能少于1个字符和超过64字符',
             trigger: 'blur',
           },
         ],
@@ -435,9 +435,10 @@ export default {
             message: '模型排序不能为空',
             trigger: 'blur',
           }, {
-            min: 1,
-            max: 10,
-            message: '字符不能超过10位',
+            type: 'number', 
+            min: -2147483648,
+            max:2147483647,
+            message: '排序不能超过int型的范围值( -2^31——2^31-1)',
             trigger: 'blur',
           },
         ],
