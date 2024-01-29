@@ -34,9 +34,9 @@
                 </el-table-column>
                 <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="150">
                     <template slot-scope="scope">
-                        <el-button size="small" type="primary" style="padding:5px;" icon="el-icon-view"
+                        <el-button size="small" type="primary" style="padding:5px;" icon="el-icon-edit"
                             @click="handleUpdate(scope.row)" v-hasPermi="['iot:category:query']"
-                            v-if="scope.row.isSys == '0' ? true : !isTenant">查看</el-button>
+                            v-if="scope.row.isSys == '0' ? true : !isTenant">修改</el-button>
                         <el-button size="small" type="danger" style="padding:5px;" icon="el-icon-delete"
                             @click="handleDelete(scope.row)" v-hasPermi="['iot:category:remove']"
                             v-if="scope.row.isSys == '0' ? true : !isTenant">删除</el-button>
@@ -55,8 +55,8 @@
                         <el-input v-model="form.categoryName" placeholder="请输入产品分类名称" />
                     </el-form-item>
                     <el-form-item label="显示顺序" prop="orderNum">
-                        <el-input controls-position="right" v-model="form.orderNum" type="number"
-                            placeholder="请输入显示顺序" />
+                        <el-input-number controls-position="right" v-model="form.orderNum" 
+                            placeholder="请输入显示顺序" style="width:100%" />
                     </el-form-item>
                     <el-form-item label="备注" prop="remark">
                         <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" />
@@ -132,12 +132,20 @@ export default {
                 ],
                 orderNum: [{
                     required: true,
-                    message: '模型排序不能为空',
+                    message: '分类顺序不能为空',
                     trigger: 'blur',
                 }, {
-                    min: 1,
-                    max: 10,
-                    message: '字符不能超过10位',
+                    type: 'number',
+                    min: -2147483648,
+                    max: 2147483647,
+                    message: '顺序值不能超过int型的取值范围(-2^31——2^31-1)',
+                    trigger: 'blur',
+                }],
+                remark: [{
+                    required: false,
+                    min: 0,
+                    max: 500,
+                    message: '备注不能输入超过500个字符',
                     trigger: 'blur',
                 }],
                 isSys: [{
