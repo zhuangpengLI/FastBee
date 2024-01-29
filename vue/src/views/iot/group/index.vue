@@ -75,6 +75,7 @@
 <script>
 import deviceList from './device-list'
 import { listGroup, getGroup, delGroup, addGroup, updateGroup } from '@/api/iot/group'
+import {getUserId} from "@/utils/auth";
 
 export default {
   name: 'Group',
@@ -157,7 +158,7 @@ export default {
     },
     // 我的分组改变事件
     myGroupChange() {
-      this.queryParams.userId = this.myGroup ? this.$store.state.user.userId : null;
+      this.queryParams.userId = this.myGroup ? getUserId() : null;
       console.log(this.queryParams.userId, this.myGroup, this.$store.state.user.userId);
       this.handleQuery();
     },
