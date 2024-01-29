@@ -25,7 +25,7 @@ server:
     enabled: true            # mqttBroker类型选择, true: 基于netty的mqttBroker和webSocket  false: emq的mqttBroker
     broker-node: node1       # 服务器集群节点
     port: 1883
-    openws: false            # 控制webSocket是否开启
+    openws: true            # 控制webSocket是否开启
     websocket-port: 8083
     websocket-path: /mqtt
     keep-alive: 70          # 默认的全部客户端心跳上传时间
