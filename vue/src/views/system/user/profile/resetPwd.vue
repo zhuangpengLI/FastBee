@@ -41,11 +41,23 @@ export default {
         ],
         newPassword: [
           { required: true, message: "新密码不能为空", trigger: "blur" },
-          { min: 6, max: 20, message: "长度在 6 到 20 个字符", trigger: "blur" }
+          { min: 6, max: 20, message: "长度在 6 到 20 个字符", trigger: "blur" },
+          {
+            trigger: 'blur',
+            validator: (rule, value, callback) => {
+              var passwordreg = /(?![A-Z]*$)(?![a-z]*$)(?![0-9]*$)(?![^a-zA-Z0-9]*$)/
+              if (!passwordreg.test(value)) {
+                callback(new Error('密码必须由大写字母、小写字母、数字、特殊符号中的2种及以上类型组成!'))
+              }
+              else {
+                callback()
+              }
+            }
+          },
         ],
         confirmPassword: [
           { required: true, message: "确认密码不能为空", trigger: "blur" },
-          { required: true, validator: equalToPassword, trigger: "blur" }
+          { required: true, validator: equalToPassword, trigger: "blur" },
         ]
       }
     };
@@ -55,7 +67,6 @@ export default {
       this.$refs["form"].validate(valid => {
         if (valid) {
           updateUserPwd(this.user.oldPassword, this.user.newPassword).then(response => {
-            console.log(response);
             this.$modal.msgSuccess("修改成功，请重新登录！");
             if (response.code == 200) {
               //清除登录缓存
