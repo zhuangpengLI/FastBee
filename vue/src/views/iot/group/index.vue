@@ -159,7 +159,6 @@ export default {
     // 我的分组改变事件
     myGroupChange() {
       this.queryParams.userId = this.myGroup ? getUserId() : null;
-      console.log(this.queryParams.userId, this.myGroup, this.$store.state.user.userId);
       this.handleQuery();
     },
     /** 查看设备按钮操作 */

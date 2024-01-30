@@ -2,7 +2,8 @@
   <div style="padding-left: 20px">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="70px">
       <el-form-item label="定时名称" prop="jobName">
-        <el-input v-model="queryParams.jobName" placeholder="请输入定时名称" clearable size="small" @keyup.enter.native="handleQuery" />
+        <el-input v-model="queryParams.jobName" placeholder="请输入定时名称" clearable size="small"
+          @keyup.enter.native="handleQuery" />
       </el-form-item>
       <el-form-item label="定时状态" prop="status" style="margin-left: 20px">
         <el-select v-model="queryParams.status" placeholder="请选择定时状态" clearable size="small">
@@ -14,11 +15,12 @@
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
       </el-form-item>
       <el-form-item style="float: right">
-        <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd" v-hasPermi="['iot:device:timer']">新增</el-button>
+        <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
+          v-hasPermi="['iot:device:timer']">新增</el-button>
       </el-form-item>
     </el-form>
 
-    <el-table v-loading="loading" :data="jobList" @selection-change="handleSelectionChange" size="mini">
+    <el-table v-loading="loading" :data="jobList" @selection-change="handleSelectionChange" size="small">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="名称" align="center" prop="jobName" :show-overflow-tooltip="true" />
       <el-table-column label="描述" align="center" prop="cronText">
@@ -35,21 +37,27 @@
 
       <el-table-column label="状态" align="center">
         <template slot-scope="scope">
-          <el-switch v-model="scope.row.status" active-value="0" inactive-value="1" active-text="启用" @change="handleStatusChange(scope.row)"></el-switch>
+          <el-switch v-model="scope.row.status" active-value="0" inactive-value="1" active-text="启用"
+            @change="handleStatusChange(scope.row)"></el-switch>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)" v-hasPermi="['iot:device:timer']">修改</el-button>
-          <el-button size="mini" type="text" icon="el-icon-caret-right" @click="handleView(scope.row)" v-hasPermi="['iot:device:timer']">定时详细</el-button>
+          <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
+            v-hasPermi="['iot:device:timer']">修改</el-button>
+          <el-button size="mini" type="text" icon="el-icon-caret-right" @click="handleView(scope.row)"
+            v-hasPermi="['iot:device:timer']">定时详细</el-button>
           <br />
-          <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)" v-hasPermi="['iot:device:timer']">删除</el-button>
-          <el-button size="mini" type="text" icon="el-icon-caret-right" @click="handleRun(scope.row)" v-hasPermi="['iot:device:timer']">执行一次</el-button>
+          <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
+            v-hasPermi="['iot:device:timer']">删除</el-button>
+          <el-button size="mini" type="text" icon="el-icon-caret-right" @click="handleRun(scope.row)"
+            v-hasPermi="['iot:device:timer']">执行一次</el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <pagination v-show="total > 0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize" @pagination="getList" />
+    <pagination v-show="total > 0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize"
+      @pagination="getList" />
 
     <!-- 添加或修改定时定时对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="800px" append-to-body>
@@ -57,14 +65,17 @@
         <el-form-item label="定时名称" prop="jobName">
           <el-input v-model="form.jobName" placeholder="请输入定时名称" style="width: 340px" />
         </el-form-item>
-        <el-form-item label="执行时间" prop="timerTimeValue">
-          <el-time-picker v-model="timerTimeValue" value-format="HH:mm" format="HH:mm" placeholder="选择时间" style="width: 340px" @change="timeChange" :disabled="form.isAdvance == 1"></el-time-picker>
+        <el-form-item label="执行时间" required>
+          <el-time-picker v-model="timerTimeValue" value-format="HH:mm" format="HH:mm" placeholder="选择时间" :editable="false"
+            style="width: 340px" @change="timeChange" :disabled="form.isAdvance == 1"></el-time-picker>
         </el-form-item>
         <el-form-item label="选择星期" prop="timerWeek">
           <el-row>
             <el-col :span="18">
-              <el-select v-model="timerWeekValue" placeholder="请选择" multiple style="width: 100%" @change="weekChange" :disabled="form.isAdvance == 1">
-                <el-option v-for="item in timerWeeks" :key="item.value" :label="item.label" :value="item.value"></el-option>
+              <el-select v-model="timerWeekValue" placeholder="请选择" multiple style="width: 100%" @change="weekChange"
+                :disabled="form.isAdvance == 1">
+                <el-option v-for="item in timerWeeks" :key="item.value" :label="item.label"
+                  :value="item.value"></el-option>
               </el-select>
             </el-col>
           </el-row>
@@ -82,66 +93,76 @@
               </el-input>
             </el-col>
             <el-col :span="4" :offset="1">
-              <el-checkbox v-model="form.isAdvance" :true-label="1" :false-label="0" @change="customerCronChange">自定义表达式</el-checkbox>
+              <el-checkbox v-model="form.isAdvance" :true-label="1" :false-label="0"
+                @change="customerCronChange">自定义表达式</el-checkbox>
             </el-col>
           </el-row>
         </el-form-item>
         <el-form-item label="定时状态" prop="status">
           <el-radio-group v-model="form.status">
-            <el-radio v-for="dict in dict.type.sys_job_status" :key="dict.value" :label="dict.value">{{ dict.label }}</el-radio>
+            <el-radio v-for="dict in dict.type.sys_job_status" :key="dict.value" :label="dict.value">{{ dict.label
+            }}</el-radio>
           </el-radio-group>
         </el-form-item>
 
         <div style="padding-bottom: 15px; padding: 0 20px">
           <el-divider></el-divider>
         </div>
-        <el-form-item label="执行动作" prop="actions">
+        <el-form-item label="执行动作" required>
           <el-row v-for="(actionItem, index) in actionList" :key="index + 'action'" style="margin-bottom: 10px">
             <el-col :span="4">
               <el-select v-model="actionItem.type" placeholder="请选择类别" @change="actionTypeChange($event, index)">
-                <el-option v-for="(subItem, subIndex) in modelTypes" :key="subIndex + 'type'" :label="subItem.label" :value="subItem.value"></el-option>
+                <el-option v-for="(subItem, subIndex) in modelTypes" :key="subIndex + 'type'" :label="subItem.label"
+                  :value="subItem.value"></el-option>
               </el-select>
             </el-col>
             <el-col :span="4" :offset="1">
-              <el-select v-model="actionItem.id" placeholder="请选择" v-if="actionItem.type == 1" @change="thingsModelItemChange($event, index)">
-                <el-option v-for="(subItem, subIndex) in thingsModel.properties" :key="subIndex + 'property'" :label="subItem.name" :value="subItem.id"></el-option>
+              <el-select v-model="actionItem.id" placeholder="请选择" v-if="actionItem.type == 1"
+                @change="thingsModelItemChange($event, index)">
+                <el-option v-for="(subItem, subIndex) in thingsModel.properties" :key="subIndex + 'property'"
+                  :label="subItem.name" :value="subItem.id"></el-option>
               </el-select>
-              <el-select v-model="actionItem.id" placeholder="请选择" v-else-if="actionItem.type == 2" @change="thingsModelItemChange($event, index)">
-                <el-option v-for="(subItem, subIndex) in thingsModel.functions" :key="subIndex + 'func'" :label="subItem.name" :value="subItem.id"></el-option>
+              <el-select v-model="actionItem.id" placeholder="请选择" v-else-if="actionItem.type == 2"
+                @change="thingsModelItemChange($event, index)">
+                <el-option v-for="(subItem, subIndex) in thingsModel.functions" :key="subIndex + 'func'"
+                  :label="subItem.name" :value="subItem.id"></el-option>
               </el-select>
-              <el-select v-model="form.id" placeholder="请选择" v-else-if="actionItem.type == 3" @change="thingsModelItemChange($event, index)">
-                <el-option v-for="(subItem, subIndex) in thingsModel.functions" :key="subIndex + 'func'" :label="subItem.name" :value="subItem.id"></el-option>
+              <el-select v-model="form.id" placeholder="请选择" v-else-if="actionItem.type == 3"
+                @change="thingsModelItemChange($event, index)">
+                <el-option v-for="(subItem, subIndex) in thingsModel.functions" :key="subIndex + 'func'"
+                  :label="subItem.name" :value="subItem.id"></el-option>
               </el-select>
             </el-col>
             <el-col :span="10" :offset="1">
               <!--物模型项的值-->
-              <span v-if="actionItem.thingsModelItem && (actionItem.thingsModelItem.datatype.type == 'integer' || actionItem.thingsModelItem.datatype.type == 'decimal')">
-                <el-input v-model="actionItem.value" placeholder="值" :max="actionItem.thingsModelItem.datatype.max" :min="actionItem.thingsModelItem.datatype.min" type="number" size="small">
+              <span
+                v-if="actionItem.thingsModelItem && (actionItem.thingsModelItem.datatype.type == 'integer' || actionItem.thingsModelItem.datatype.type == 'decimal')">
+                <el-input v-model="actionItem.value" placeholder="值" :max="actionItem.thingsModelItem.datatype.max"
+                  :min="actionItem.thingsModelItem.datatype.min" type="number" size="small">
                   <template slot="append">{{ actionItem.thingsModelItem.datatype.unit }}</template>
                 </el-input>
               </span>
               <span v-else-if="actionItem.thingsModelItem && actionItem.thingsModelItem.datatype.type == 'bool'">
-                <el-switch
-                  v-model="actionItem.value"
-                  :active-text="actionItem.thingsModelItem.datatype.trueText"
-                  :inactive-text="actionItem.thingsModelItem.datatype.falseText"
-                  active-value="1"
-                  inactive-value="0"
-                ></el-switch>
+                <el-switch v-model="actionItem.value" :active-text="actionItem.thingsModelItem.datatype.trueText"
+                  :inactive-text="actionItem.thingsModelItem.datatype.falseText" active-value="1"
+                  inactive-value="0"></el-switch>
               </span>
               <span v-else-if="actionItem.thingsModelItem && actionItem.thingsModelItem.datatype.type == 'enum'">
                 <el-select v-model="actionItem.value" placeholder="请选择" style="width: 100%">
-                  <el-option v-for="(subItem, subIndex) in actionItem.thingsModelItem.datatype.enumList" :key="subIndex + 'things'" :label="subItem.text" :value="subItem.value"></el-option>
+                  <el-option v-for="(subItem, subIndex) in actionItem.thingsModelItem.datatype.enumList"
+                    :key="subIndex + 'things'" :label="subItem.text" :value="subItem.value"></el-option>
                 </el-select>
               </span>
               <span v-else-if="actionItem.thingsModelItem && actionItem.thingsModelItem.datatype.type == 'string'">
-                <el-input v-model="actionItem.value" placeholder="请输入字符串" :max="actionItem.thingsModelItem.datatype.maxLength" />
+                <el-input v-model="actionItem.value" placeholder="请输入字符串"
+                  :max="actionItem.thingsModelItem.datatype.maxLength" />
               </span>
               <span v-else-if="actionItem.thingsModelItem && actionItem.thingsModelItem.datatype.type == 'array'">
                 <el-input v-model="actionItem.value" placeholder="请输入英文逗号分隔的数组" />
               </span>
             </el-col>
-            <el-col :span="2" :offset="1" v-if="index != 0"><a style="color: #f56c6c" @click="removeEnumItem(index)">删除</a></el-col>
+            <el-col :span="2" :offset="1" v-if="index != 0"><a style="color: #f56c6c"
+                @click="removeEnumItem(index)">删除</a></el-col>
           </el-row>
           <div>
             +
@@ -156,7 +177,8 @@
     </el-dialog>
 
     <el-dialog title="Cron表达式生成器" :visible.sync="openCron" append-to-body destroy-on-close class="scrollbar">
-      <crontab @hide="openCron = false" @fill="crontabFill" :expression="expression" style="padding-bottom: 80px"></crontab>
+      <crontab @hide="openCron = false" @fill="crontabFill" :expression="expression" style="padding-bottom: 80px">
+      </crontab>
     </el-dialog>
 
     <!-- 定时日志详细 -->
@@ -200,7 +222,8 @@
 
           <el-col :span="24">
             <el-form-item label="执行动作：">
-              <div v-html="formatActionsDisplay(form.actions)" style="border: 1px solid #ddd; padding: 10px; border-radius: 5px; width: 465px"></div>
+              <div v-html="formatActionsDisplay(form.actions)"
+                style="border: 1px solid #ddd; padding: 10px; border-radius: 5px; width: 465px"></div>
             </el-form-item>
           </el-col>
         </el-row>
@@ -443,7 +466,7 @@ export default {
         .then(() => {
           this.$modal.msgSuccess('执行成功');
         })
-        .catch(() => {});
+        .catch(() => { });
     },
     /** 定时详细信息 */
     handleView(row) {
@@ -573,7 +596,7 @@ export default {
           this.getList();
           this.$modal.msgSuccess('删除成功');
         })
-        .catch(() => {});
+        .catch(() => { });
     },
     /** 导出按钮操作 */
     handleExport() {

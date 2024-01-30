@@ -546,7 +546,6 @@ export default {
     /**获取设备详情*/
     getDevice(deviceId) {
       getDevice(deviceId).then(async (response) => {
-
         // 分享设备获取用户权限
         response.data.userPerms = [];
         if (response.data.isOwner == 0) {
