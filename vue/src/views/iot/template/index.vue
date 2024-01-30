@@ -3,7 +3,7 @@
     <el-card v-show="showSearch" style="margin-bottom: 5px">
       <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px" style="margin-bottom: -20px">
         <el-form-item label="模型名称" prop="templateName">
-          <el-input v-model="queryParams.templateName" placeholder="请输入物模型名称" clearable size="small"
+          <el-input v-model="queryParams.templateName" placeholder="请输入模型名称" clearable size="small"
             @keyup.enter.native="handleQuery" />
         </el-form-item>
         <el-form-item label="模型类别" prop="type">
@@ -98,13 +98,14 @@
       <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body :close-on-click-modal="false">
         <el-form ref="form" :model="form" :rules="rules" label-width="100px">
           <el-form-item label="模型名称" prop="templateName">
-            <el-input v-model="form.templateName" placeholder="请输入物模型名称，例如：温度" style="width: 385px" />
+            <el-input v-model="form.templateName" placeholder="请输入模型名称，例如：温度" style="width: 385px" />
           </el-form-item>
           <el-form-item label="模型标识" prop="identifier">
             <el-input v-model="form.identifier" placeholder="请输入标识符，例如：temperature" style="width: 385px" />
           </el-form-item>
           <el-form-item label="模型排序" prop="modelOrder">
-            <el-input-number controls-position="right" v-model="form.modelOrder" placeholder="请输入排序" style="width: 386px" />
+            <el-input-number controls-position="right" v-model="form.modelOrder" placeholder="请输入排序"
+              style="width: 386px" />
           </el-form-item>
           <el-form-item label="模型类别" prop="type">
             <el-radio-group v-model="form.type" @change="typeChange(form.type)">
@@ -178,8 +179,10 @@
             <el-form-item label="取值范围" v-if="form.datatype == 'decimal'">
               <el-row>
                 <el-col :span="9">
-                  <el-input v-model="form.specs.min" placeholder="最小值1" controls-position="right" type="number"
+                  <el-input v-model="form.specs.min" placeholder="最小值" controls-position="right" type="number"
                     style="width: 174px;" />
+                  <p v-if="!hasDecimalPoint">请输入有效的小数</p>
+                  <!-- 当没有小数时显示错误提示 -->
                 </el-col>
                 <el-col :span="2" align="center">到</el-col>
                 <el-col :span="9">
@@ -192,7 +195,7 @@
               <el-input v-model="form.specs.unit" placeholder="请输入单位，例如：℃" style="width: 385px" />
             </el-form-item>
             <el-form-item label="步长" prop="step" v-if="form.datatype == 'integer' || form.datatype == 'decimal'">
-              <el-input-number controls-position="right" v-model="form.specs.step" placeholder="请输入步长，例如：1" type="number"
+              <el-input controls-position="right" v-model="form.specs.step" placeholder="请输入步长，例如：1" type="number"
                 style="width: 386px" />
             </el-form-item>
           </div>
@@ -355,6 +358,9 @@ export default {
       loading: true,
       // 选中数组
       ids: [],
+      //是否为小数的判断
+      isDecimal: '',
+      isDecimalMax: '',
       // 非单个禁用
       single: true,
       // 非多个禁用
@@ -388,13 +394,13 @@ export default {
         templateName: [
           {
             required: true,
-            message: '物模型名称不能为空',
+            message: '模型名称不能为空',
             trigger: 'blur',
           },
           {
             min: 1,
             max: 64,
-            message: '物模型名称不能少于1个字符和超过64字符',
+            message: '模型名称不能少于1个字符和超过64字符',
             trigger: 'blur',
           },
         ],
@@ -574,6 +580,21 @@ export default {
           if (this.form.datatype == 'object' || (this.form.datatype == 'array' && this.form.specs.arrayType == 'object')) {
             if (!this.form.specs.params || this.form.specs.params == 0) {
               this.$modal.msgError('对象的参数不能为空');
+              return;
+            }
+          }
+          //验证输入的取值范围最大值不能小于最小值
+          if (this.form.datatype == 'integer' || this.form.datatype == 'decimal') {
+            if (this.form.specs.min > this.form.specs.max) {
+              this.$modal.msgError('请重新输入取值范围,最大值不能比最小值小!');
+              return;
+            }
+          }
+          if (this.form.datatype == 'decimal') {
+            this.hasDecimalPoint();
+            this.hasDecimalPointMax();
+            if (this.isDecimal === false || this.isDecimalMax === false) {
+              this.$modal.msgError('取值范围必须输入小数,请重新输入!');
               return;
             }
           }
@@ -853,6 +874,17 @@ export default {
       value = value.replace(/(-)0+/g, "$1"); // 不能出现-0,-001,-0001类似
       value = value.replace(/(-\d{10})\d*/, '$1') // 最多保留10位整数
       this.form.specs.max = value;
+    },
+    //数据类型为小数的校验
+    hasDecimalPoint() {
+      const regex = /^-?\d+\.\d+$/; // 使用正则表达式匹配小数点格式
+      this.isDecimal = regex.test(this.form.specs.min);
+      return this.isDecimal;
+    },
+    hasDecimalPointMax() {
+      const regex = /^-?\d+\.\d+$/; // 使用正则表达式匹配小数点格式
+      this.isDecimalMax = regex.test(this.form.specs.max);
+      return this.isDecimalMax;
     },
   },
 };
