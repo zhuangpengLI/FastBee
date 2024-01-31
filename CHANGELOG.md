@@ -16,7 +16,7 @@
 - 消息网关重构
 
 ### 其他事务
-- 新增git提交规范([#3git提交规范](https://gitee.com/kerwincui/wumei-smart/blob/master/doc/Git%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83.md))
+- 新增Git提交规范([#Git提交规范](https://gitee.com/kerwincui/wumei-smart/blob/master/doc/Git%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83.md))
 - 新增贡献者指南([#贡献者指南](https://gitee.com/kerwincui/wumei-smart/blob/master/doc/%E8%B4%A1%E7%8C%AE%E8%80%85%E6%8C%87%E5%8D%97.md))
 - 新增功能规划([#功能规划](https://gitee.com/kerwincui/wumei-smart/blob/master/RoadMap.md))
 - 修改项目AGPL3协议商用授权说明
