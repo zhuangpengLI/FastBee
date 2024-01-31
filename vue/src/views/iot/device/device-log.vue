@@ -118,11 +118,7 @@ export default {
         /** 查询设备日志列表 */
         getList() {
             this.loading = true;
-            if (null != this.daterangeTime && '' != this.daterangeTime) {
-                this.queryParams.beginTime = this.daterangeTime[0];
-                this.queryParams.endTime = this.daterangeTime[1];
-            }
-            listEventLog(this.queryParams).then(response => {
+            listEventLog(this.addDateRange(this.queryParams, this.daterangeTime)).then(response => {
                 this.deviceLogList = response.rows;
                 this.total = response.total;
                 this.loading = false;
@@ -136,6 +132,7 @@ export default {
         /** 重置按钮操作 */
         resetQuery() {
             this.resetForm("queryForm");
+            this.daterangeTime=[];
             this.handleQuery();
         },
         /** 导出按钮操作 */
@@ -170,6 +167,9 @@ export default {
                         eventItem.name +
                         '： <span style="color:#409EFF">' + this.getThingsModelItemValue(eventItem, row.logValue) + ' ' +
                         (eventItem.datatype.unit != undefined ? eventItem.datatype.unit : '') + '</span>';
+                }
+                else {
+                    return row.logValue;
                 }
             } else if (row.logType == 4) {
                 return '<span style="font-weight:bold">设备升级</span>';
