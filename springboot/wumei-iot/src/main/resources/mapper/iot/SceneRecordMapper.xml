@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.SceneRecordMapper">
+    
+    <resultMap type="SceneRecord" id="SceneRecordResult">
+        <result property="id"    column="id"    />
+        <result property="sceneId"    column="scene_id"    />
+        <result property="runType"    column="run_type"    />
+        <result property="jobId"    column="job_id"    />
+        <result property="jobName"    column="job_name"    />
+        <result property="userId"    column="user_id"    />
+        <result property="deviceCount"    column="device_count"    />
+        <result property="sucDeviceCount"    column="suc_device_count"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+        
+        <result property="nickName"    column="nick_name"    />
+        <result property="phonenumber"    column="phonenumber"    />
+    </resultMap>
+
+    <sql id="selectSceneRecordVo">
+        select id, scene_id, run_type, job_id, job_name, user_id, device_count, suc_device_count, create_time, update_time, remark from iot_scene_record
+    </sql>
+
+    <select id="selectSceneRecordList" parameterType="SceneRecord" resultMap="SceneRecordResult">
+        select a.id, a.scene_id, a.run_type, a.job_id, a.job_name, a.user_id, a.device_count, a.suc_device_count, 
+        a.create_time, a.update_time, a.remark,
+        u.nick_name,u.phonenumber
+        from iot_scene_record a
+        left join sys_user u on u.user_id = a.user_id
+        <where>  
+            <if test="sceneId != null "> and a.scene_id = #{sceneId}</if>
+            <if test="runType != null "> and a.run_type = #{runType}</if>
+            <if test="jobId != null "> and a.job_id = #{jobId}</if>
+            <if test="jobName != null  and jobName != ''"> and a.job_name like concat('%', #{jobName}, '%')</if>
+            <if test="userId != null "> and a.user_id = #{userId}</if>
+            <if test="deviceCount != null "> and a.device_count = #{deviceCount}</if>
+            <if test="sucDeviceCount != null "> and a.suc_device_count = #{sucDeviceCount}</if>
+        </where>
+        order by create_time desc
+    </select>
+    
+    <select id="selectSceneRecordById" parameterType="Long" resultMap="SceneRecordResult">
+        <include refid="selectSceneRecordVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSceneRecord" parameterType="SceneRecord" useGeneratedKeys="true" keyProperty="id">
+        insert into iot_scene_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sceneId != null">scene_id,</if>
+            <if test="runType != null">run_type,</if>
+            <if test="jobId != null">job_id,</if>
+            <if test="jobName != null">job_name,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="deviceCount != null">device_count,</if>
+            <if test="sucDeviceCount != null">suc_device_count,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sceneId != null">#{sceneId},</if>
+            <if test="runType != null">#{runType},</if>
+            <if test="jobId != null">#{jobId},</if>
+            <if test="jobName != null">#{jobName},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="deviceCount != null">#{deviceCount},</if>
+            <if test="sucDeviceCount != null">#{sucDeviceCount},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSceneRecord" parameterType="SceneRecord">
+        update iot_scene_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="sceneId != null">scene_id = #{sceneId},</if>
+            <if test="runType != null">run_type = #{runType},</if>
+            <if test="jobId != null">job_id = #{jobId},</if>
+            <if test="jobName != null">job_name = #{jobName},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="deviceCount != null">device_count = #{deviceCount},</if>
+            <if test="sucDeviceCount != null">suc_device_count = #{sucDeviceCount},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSceneRecordById" parameterType="Long">
+        delete from iot_scene_record where id = #{id}
+    </delete>
+
+    <delete id="deleteSceneRecordByIds" parameterType="String">
+        delete from iot_scene_record where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

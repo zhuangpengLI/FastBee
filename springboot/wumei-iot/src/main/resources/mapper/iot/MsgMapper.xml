@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.MsgMapper">
+    
+    <resultMap type="com.ruoyi.system.otherDomain.Msg" id="MsgResult">
+        <result property="id"    column="id"    />
+        <result property="msgTitle"    column="msg_title"    />
+        <result property="msgType"    column="msg_type"    />
+        <result property="msgContent"    column="msg_content"    />
+        <result property="imgUrl"    column="img_url"    />
+        <result property="familyId"    column="family_id"    />
+        <result property="roomId"    column="room_id"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="noticeId"    column="notice_id"    />
+        <result property="isRead"    column="is_read"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        
+        <result property="familyName"    column="family_name"    />
+    </resultMap>
+
+    <sql id="selectMsgVo">
+        select id, msg_title, msg_type, msg_content, img_url, family_id, room_id, device_id, notice_id, user_id, is_read, create_time, update_time from iot_msg
+    </sql>
+
+    <select id="selectMsgList" parameterType="com.ruoyi.system.otherDomain.Msg" resultMap="MsgResult">
+        select msg.id, msg.msg_title, msg.msg_type, msg.msg_content, msg.img_url, msg.family_id, msg.room_id, msg.device_id, msg.notice_id, msg.user_id, msg.is_read, msg.create_time, msg.update_time 
+        ,f.name as family_name
+        from iot_msg msg
+        left join iot_family f on f.family_id=msg.family_id
+        <where>  
+            <if test="msgTitle != null  and msgTitle != ''"> and msg.msg_title like concat('%', #{msgTitle}, '%')</if>
+            <if test="msgType != null  and msgType != ''"> and msg.msg_type = #{msgType}</if>
+            <if test="msgContent != null  and msgContent != ''"> and msg.msg_content like concat('%', #{msgContent}, '%')</if>
+            <if test="imgUrl != null  and imgUrl != ''"> and msg.img_url = #{imgUrl}</if>
+            <if test="familyId != null "> and msg.family_id = #{familyId}</if>
+            <if test="roomId != null "> and msg.room_id = #{roomId}</if>
+            <if test="deviceId != null "> and msg.device_id = #{deviceId}</if>
+            <if test="noticeId != null "> and msg.notice_id = #{noticeId}</if>
+            <if test="userId != null "> and msg.user_id = #{userId}</if>
+            <if test="isRead != null "> and msg.is_read = #{isRead}</if>
+            <if test="params.beginCreateTime != null and params.beginCreateTime != '' and params.endCreateTime != null and params.endCreateTime != ''"> and msg.create_time between #{params.beginCreateTime} and #{params.endCreateTime}</if>
+             and msg.create_time >= date_sub(now(),interval 7 day)
+        </where>
+        order by msg.create_time desc
+    </select>
+    
+    <select id="selectSystemMsgList" parameterType="com.ruoyi.system.otherDomain.Msg" resultMap="MsgResult">
+        <include refid="selectMsgVo"/>
+        <where>  
+        	msg_type in ('1','2','50')
+            <if test="msgTitle != null  and msgTitle != ''"> and msg_title like concat('%', #{msgTitle}, '%')</if>
+            <if test="msgType != null  and msgType != ''"> and msg_type = #{msgType}</if>
+            <if test="msgContent != null  and msgContent != ''"> and msg_content like concat('%', #{msgContent}, '%')</if>
+            <if test="imgUrl != null  and imgUrl != ''"> and img_url = #{imgUrl}</if>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="roomId != null "> and room_id = #{roomId}</if>
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="isRead != null "> and is_read = #{isRead}</if>
+            <if test="params.beginCreateTime != null and params.beginCreateTime != '' and params.endCreateTime != null and params.endCreateTime != ''"> and create_time between #{params.beginCreateTime} and #{params.endCreateTime}</if>
+        	and create_time >= date_sub(now(),interval 7 day)
+        </where>
+        order by create_time desc
+    </select>
+    
+    <select id="selectMsgById" parameterType="Long" resultMap="MsgResult">
+        <include refid="selectMsgVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertMsg" parameterType="com.ruoyi.system.otherDomain.Msg" useGeneratedKeys="true" keyProperty="id">
+        insert into iot_msg
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="msgTitle != null">msg_title,</if>
+            <if test="msgType != null">msg_type,</if>
+            <if test="msgContent != null">msg_content,</if>
+            <if test="imgUrl != null">img_url,</if>
+            <if test="familyId != null">family_id,</if>
+            <if test="roomId != null">room_id,</if>
+            <if test="deviceId != null">device_id,</if>
+            <if test="noticeId != null">notice_id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="isRead != null">is_read,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="msgTitle != null">#{msgTitle},</if>
+            <if test="msgType != null">#{msgType},</if>
+            <if test="msgContent != null">#{msgContent},</if>
+            <if test="imgUrl != null">#{imgUrl},</if>
+            <if test="familyId != null">#{familyId},</if>
+            <if test="roomId != null">#{roomId},</if>
+            <if test="deviceId != null">#{deviceId},</if>
+            <if test="noticeId != null">#{noticeId},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="isRead != null">#{isRead},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMsg" parameterType="com.ruoyi.system.otherDomain.Msg">
+        update iot_msg
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="msgTitle != null">msg_title = #{msgTitle},</if>
+            <if test="msgType != null">msg_type = #{msgType},</if>
+            <if test="msgContent != null">msg_content = #{msgContent},</if>
+            <if test="imgUrl != null">img_url = #{imgUrl},</if>
+            <if test="familyId != null">family_id = #{familyId},</if>
+            <if test="roomId != null">room_id = #{roomId},</if>
+            <if test="deviceId != null">device_id = #{deviceId},</if>
+            <if test="isRead != null">is_read = #{isRead},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+    <update id="updateMsgRead" parameterType="Long">
+        update iot_msg
+        	set
+            is_read = 1,
+            update_time = sysdate()
+        where id = #{id} and is_read = 0
+    </update>
+    
+    <update id="updateMsgReadByType">
+        update iot_msg
+        	set
+            is_read = 1,
+            update_time = sysdate()
+        where is_read = 0 and user_id=#{userId} and msg_type in 
+        <foreach item="type" collection="types" open="(" separator="," close=")">
+            #{type}
+        </foreach>
+    </update>
+
+    <delete id="deleteMsgById" parameterType="Long">
+        delete from iot_msg where id = #{id}
+    </delete>
+    <delete id="deleteMsgByNoticeId">
+        delete from iot_msg 
+        <where>
+            <if test="msgType != null  and msgType != ''"> and msg_type = #{msgType}</if>
+            and notice_id = #{noticeId}
+        </where>
+    </delete>
+    <delete id="deleteMsg">
+        delete from iot_msg 
+        <where>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+        </where>
+    </delete>
+
+    <delete id="deleteMsgByIds" parameterType="String">
+        delete from iot_msg where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

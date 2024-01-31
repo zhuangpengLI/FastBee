@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.ApkVersionMapper">
+    
+    <resultMap type="ApkVersion" id="ApkVersionResult">
+        <result property="apkId"    column="apk_id"    />
+        <result property="apkType"    column="apk_type"    />
+        <result property="platform"    column="platform"    />
+        <result property="apkUrl"    column="apk_url"    />
+        <result property="versionCode"    column="version_code"    />
+        <result property="versionName"    column="version_name"    />
+        <result property="updateContent"    column="update_content"    />
+        <result property="isForce"    column="is_force"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="updateBy"    column="update_by"    />
+    </resultMap>
+
+    <sql id="selectApkVersionVo">
+        select apk_id, apk_type, platform, apk_url, version_code, version_name, update_content, is_force, create_time, create_by, update_time, update_by from iot_apk_version
+    </sql>
+
+    <select id="selectApkVersionList" parameterType="ApkVersion" resultMap="ApkVersionResult">
+        <include refid="selectApkVersionVo"/>
+        <where>  
+            <if test="apkType != null  and apkType != ''"> and apk_type = #{apkType}</if>
+            <if test="platform != null  and platform != ''"> and platform = #{platform}</if>
+            <if test="apkUrl != null  and apkUrl != ''"> and apk_url = #{apkUrl}</if>
+            <if test="versionCode != null "> and version_code = #{versionCode}</if>
+            <if test="versionName != null  and versionName != ''"> and version_name like concat('%', #{versionName}, '%')</if>
+            <if test="updateContent != null  and updateContent != ''"> and update_content = #{updateContent}</if>
+            <if test="isForce != null  and isForce != ''"> and is_force = #{isForce}</if>
+        </where>
+    </select>
+    
+    <select id="selectApkVersionByApkId" parameterType="Long" resultMap="ApkVersionResult">
+        <include refid="selectApkVersionVo"/>
+        where apk_id = #{apkId}
+    </select>
+        
+    <insert id="insertApkVersion" parameterType="ApkVersion" useGeneratedKeys="true" keyProperty="apkId">
+        insert into iot_apk_version
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="apkType != null">apk_type,</if>
+            <if test="platform != null">platform,</if>
+            <if test="apkUrl != null">apk_url,</if>
+            <if test="versionCode != null">version_code,</if>
+            <if test="versionName != null">version_name,</if>
+            <if test="updateContent != null">update_content,</if>
+            <if test="isForce != null">is_force,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="updateBy != null">update_by,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="apkType != null">#{apkType},</if>
+            <if test="platform != null">#{platform},</if>
+            <if test="apkUrl != null">#{apkUrl},</if>
+            <if test="versionCode != null">#{versionCode},</if>
+            <if test="versionName != null">#{versionName},</if>
+            <if test="updateContent != null">#{updateContent},</if>
+            <if test="isForce != null">#{isForce},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+         </trim>
+    </insert>
+
+    <update id="updateApkVersion" parameterType="ApkVersion">
+        update iot_apk_version
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="apkType != null">apk_type = #{apkType},</if>
+            <if test="platform != null">platform = #{platform},</if>
+            <if test="apkUrl != null">apk_url = #{apkUrl},</if>
+            <if test="versionCode != null">version_code = #{versionCode},</if>
+            <if test="versionName != null">version_name = #{versionName},</if>
+            <if test="updateContent != null">update_content = #{updateContent},</if>
+            <if test="isForce != null">is_force = #{isForce},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+        </trim>
+        where apk_id = #{apkId}
+    </update>
+
+    <delete id="deleteApkVersionByApkId" parameterType="Long">
+        delete from iot_apk_version where apk_id = #{apkId}
+    </delete>
+
+    <delete id="deleteApkVersionByApkIds" parameterType="String">
+        delete from iot_apk_version where apk_id in 
+        <foreach item="apkId" collection="array" open="(" separator="," close=")">
+            #{apkId}
+        </foreach>
+    </delete>
+</mapper>

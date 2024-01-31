@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.DeviceOtaUpdateMapper">
+    
+    <resultMap type="DeviceOtaUpdate" id="DeviceOtaUpdateResult">
+        <result property="id"    column="id"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="familyId"    column="family_id"    />
+        <result property="familyName"    column="family_name"    />
+        <result property="firmwarePath"    column="firmware_path"    />
+        <result property="otaVersion"    column="ota_version"    />
+        <result property="status"    column="status"    />
+        <result property="remark"    column="remark"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectDeviceOtaUpdateVo">
+        select id, device_id, device_name, family_id, family_name, firmware_path, ota_version, status, remark, create_time from iot_device_ota_update
+    </sql>
+
+    <select id="selectDeviceOtaUpdateList" parameterType="DeviceOtaUpdate" resultMap="DeviceOtaUpdateResult">
+        <include refid="selectDeviceOtaUpdateVo"/>
+        <where>  
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="deviceName != null  and deviceName != ''"> and device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="familyName != null  and familyName != ''"> and family_name like concat('%', #{familyName}, '%')</if>
+            <if test="firmwarePath != null  and firmwarePath != ''"> and firmware_path = #{firmwarePath}</if>
+            <if test="otaVersion != null  and otaVersion != ''"> and ota_version = #{otaVersion}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+        order by create_time desc
+    </select>
+    
+    <select id="selectDeviceOtaUpdateById" parameterType="Long" resultMap="DeviceOtaUpdateResult">
+        <include refid="selectDeviceOtaUpdateVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertDeviceOtaUpdate" parameterType="DeviceOtaUpdate" useGeneratedKeys="true" keyProperty="id">
+        insert into iot_device_ota_update
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deviceId != null">device_id,</if>
+            <if test="deviceName != null">device_name,</if>
+            <if test="familyId != null">family_id,</if>
+            <if test="familyName != null">family_name,</if>
+            <if test="firmwarePath != null">firmware_path,</if>
+            <if test="otaVersion != null">ota_version,</if>
+            <if test="status != null">status,</if>
+            <if test="remark != null">remark,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="deviceId != null">#{deviceId},</if>
+            <if test="deviceName != null">#{deviceName},</if>
+            <if test="familyId != null">#{familyId},</if>
+            <if test="familyName != null">#{familyName},</if>
+            <if test="firmwarePath != null">#{firmwarePath},</if>
+            <if test="otaVersion != null">#{otaVersion},</if>
+            <if test="status != null">#{status},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDeviceOtaUpdate" parameterType="DeviceOtaUpdate">
+        update iot_device_ota_update
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="deviceId != null">device_id = #{deviceId},</if>
+            <if test="deviceName != null">device_name = #{deviceName},</if>
+            <if test="familyId != null">family_id = #{familyId},</if>
+            <if test="familyName != null">family_name = #{familyName},</if>
+            <if test="firmwarePath != null">firmware_path = #{firmwarePath},</if>
+            <if test="otaVersion != null">ota_version = #{otaVersion},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDeviceOtaUpdateById" parameterType="Long">
+        delete from iot_device_ota_update where id = #{id}
+    </delete>
+
+    <delete id="deleteDeviceOtaUpdateByIds" parameterType="String">
+        delete from iot_device_ota_update where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

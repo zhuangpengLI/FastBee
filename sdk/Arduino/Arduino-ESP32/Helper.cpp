@@ -461,7 +461,7 @@ String getTime()
     }
     delay(500);
   }
-  return "1672524366000";
+  return "";
 }
 
 //打印提示信息

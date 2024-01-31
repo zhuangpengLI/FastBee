@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.MsgOperMsgMapper">
+    
+    <resultMap type="MsgOperMsg" id="MsgOperMsgResult">
+        <result property="id"    column="id"    />
+        <result property="sendUserId"    column="send_user_id"    />
+        <result property="sendUserName"    column="send_user_name"    />
+        <result property="receiveUserId"    column="receive_user_id"    />
+        <result property="receiveUserName"    column="receive_user_name"    />
+        <result property="msgType"    column="msg_type"    />
+        <result property="isOper"    column="is_oper"    />
+        <result property="msgTypeName"    column="msg_type_name"    />
+        <result property="familyId"    column="family_id"    />
+        <result property="familyName"    column="family_name"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="status"    column="status"    />
+        <result property="addTime"    column="add_time"    />
+        <result property="operTime"    column="oper_time"    />
+        <result property="expireTime"    column="expire_time"    />
+        <result property="familyUserRole"    column="family_user_role"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectMsgOperMsgVo">
+        select id, send_user_id, send_user_name, receive_user_id, receive_user_name, msg_type, is_oper, msg_type_name, family_id, family_name, device_id, device_name, status, add_time, oper_time, expire_time, family_user_role, remark from msg_oper_msg
+    </sql>
+
+    <select id="selectMsgOperMsgList" parameterType="MsgOperMsg" resultMap="MsgOperMsgResult">
+        <include refid="selectMsgOperMsgVo"/>
+        <where>  
+            <if test="sendUserId != null "> and send_user_id = #{sendUserId}</if>
+            <if test="sendUserName != null  and sendUserName != ''"> and send_user_name like concat('%', #{sendUserName}, '%')</if>
+            <if test="receiveUserId != null "> and receive_user_id = #{receiveUserId}</if>
+            <if test="receiveUserName != null  and receiveUserName != ''"> and receive_user_name like concat('%', #{receiveUserName}, '%')</if>
+            <if test="msgType != null  and msgType != ''"> and msg_type = #{msgType}</if>
+            <if test="isOper != null "> and is_oper = #{isOper}</if>
+            <if test="msgTypeName != null  and msgTypeName != ''"> and msg_type_name like concat('%', #{msgTypeName}, '%')</if>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="familyName != null  and familyName != ''"> and family_name like concat('%', #{familyName}, '%')</if>
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="deviceName != null  and deviceName != ''"> and device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="addTime != null "> and add_time = #{addTime}</if>
+            <if test="operTime != null "> and oper_time = #{operTime}</if>
+            <if test="expireTime != null "> and expire_time = #{expireTime}</if>
+        </where>
+        order by id desc
+    </select>
+    
+    
+    <select id="selectShareOperMsgList" parameterType="MsgOperMsg" resultMap="MsgOperMsgResult">
+        <include refid="selectMsgOperMsgVo"/>
+        <where>  
+        	msg_type in ('01','02')
+            <if test="sendUserId != null "> and send_user_id = #{sendUserId}</if>
+            <if test="sendUserName != null  and sendUserName != ''"> and send_user_name like concat('%', #{sendUserName}, '%')</if>
+            <if test="receiveUserId != null "> and receive_user_id = #{receiveUserId}</if>
+            <if test="receiveUserName != null  and receiveUserName != ''"> and receive_user_name like concat('%', #{receiveUserName}, '%')</if>
+            <if test="msgType != null  and msgType != ''"> and msg_type = #{msgType}</if>
+            <if test="isOper != null "> and is_oper = #{isOper}</if>
+            <if test="msgTypeName != null  and msgTypeName != ''"> and msg_type_name like concat('%', #{msgTypeName}, '%')</if>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="familyName != null  and familyName != ''"> and family_name like concat('%', #{familyName}, '%')</if>
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="deviceName != null  and deviceName != ''"> and device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="addTime != null "> and add_time = #{addTime}</if>
+            <if test="operTime != null "> and oper_time = #{operTime}</if>
+            <if test="expireTime != null "> and expire_time = #{expireTime}</if>
+        </where>
+        order by id desc
+    </select>
+    
+    <resultMap type="com.ruoyi.iot.mobile.respModel.DeviceShareInfoRespDto" id="ShareMsgWithRecDetailResult">
+        <result property="id"    column="id"    />
+        <result property="sendUserId"    column="send_user_id"    />
+        <result property="sendUserName"    column="send_user_name"    />
+        <result property="receiveUserId"    column="receive_user_id"    />
+        <result property="receiveUserName"    column="receive_user_name"    />
+        <result property="msgType"    column="msg_type"    />
+        <result property="isOper"    column="is_oper"    />
+        <result property="msgTypeName"    column="msg_type_name"    />
+        <result property="familyId"    column="family_id"    />
+        <result property="familyName"    column="family_name"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="status"    column="status"    />
+        <result property="addTime"    column="add_time"    />
+        <result property="operTime"    column="oper_time"    />
+        <result property="expireTime"    column="expire_time"    />
+        
+        <result property="receiveUserPhone"    column="receive_user_phone"    />
+        <result property="receiveUserAvatar"    column="receive_user_avatar"    />
+    </resultMap>
+    
+    <select id="selectShareMsgWithRecDetailList" parameterType="MsgOperMsg" resultMap="ShareMsgWithRecDetailResult">
+        select a.id, a.send_user_id, a.send_user_name, a.receive_user_id, a.msg_type, a.is_oper, a.msg_type_name
+        , a.family_id, a.family_name, a.device_id, a.device_name, a.status, a.add_time, a.oper_time, a.expire_time
+        , u.nick_name as receive_user_name, u.phonenumber as receive_user_phone, u.avatar as receive_user_avatar
+         from msg_oper_msg a
+         left join sys_user u on a.receive_user_id=u.user_id
+        <where>  
+        	a.msg_type in ('01','02')
+            <if test="sendUserId != null "> and a.send_user_id = #{sendUserId}</if>
+            <if test="sendUserName != null  and sendUserName != ''"> and a.send_user_name like concat('%', #{sendUserName}, '%')</if>
+            <if test="receiveUserId != null "> and a.receive_user_id = #{receiveUserId}</if>
+            <if test="receiveUserName != null  and receiveUserName != ''"> and a.receive_user_name like concat('%', #{receiveUserName}, '%')</if>
+            <if test="msgType != null  and msgType != ''"> and a.msg_type = #{msgType}</if>
+            <if test="isOper != null "> and a.is_oper = #{isOper}</if>
+            <if test="msgTypeName != null  and msgTypeName != ''"> and a.msg_type_name like concat('%', #{msgTypeName}, '%')</if>
+            <if test="familyId != null "> and a.family_id = #{familyId}</if>
+            <if test="familyName != null  and familyName != ''"> and a.family_name like concat('%', #{familyName}, '%')</if>
+            <if test="deviceId != null "> and a.device_id = #{deviceId}</if>
+            <if test="deviceName != null  and deviceName != ''"> and a.device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="status != null  and status != ''"> and a.status = #{status}</if>
+            <if test="addTime != null "> and a.add_time = #{addTime}</if>
+            <if test="operTime != null "> and a.oper_time = #{operTime}</if>
+            <if test="expireTime != null "> and a.expire_time = #{expireTime}</if>
+        </where>
+        order by a.id desc
+    </select>
+    
+    <resultMap type="com.ruoyi.iot.mobile.model.FamilyShareStatRespDto" id="FamilyShareResult">
+        <result property="familyId"    column="family_id"    />
+        <result property="familyName"    column="family_name"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="familyAvatarUrl"    column="family_avatar_url"    />
+        <result property="deviceImgUrl"    column="device_img_url"    />
+        <result property="deviceModelType"    column="device_model_type"    />
+        <result property="shareUserCount"    column="share_user_count"    />
+    </resultMap>
+    
+    <select id="selectFamilyShareStatList"  resultMap="FamilyShareResult">
+        select a.family_id,count(DISTINCT a.receive_user_id) as share_user_count
+        ,b.name as family_name,b.avatar_url as family_avatar_url
+         from msg_oper_msg a
+        left join iot_family b on a.family_id=b.family_id
+        <where>  
+        	a.msg_type = '01'
+            <if test="sendUserId != null "> and a.send_user_id = #{sendUserId}</if>
+            <if test="familyId != null "> and a.family_id = #{familyId}</if>
+        </where>
+        group by a.family_id
+    </select>
+    <select id="selectDeviceShareStatList"  resultMap="FamilyShareResult">
+        select a.family_id,a.device_id,count(DISTINCT a.receive_user_id) as share_user_count 
+        ,b.name as family_name ,b.avatar_url as family_avatar_url
+        ,c.device_name as device_name ,c.img_url as device_img_url
+        ,c.device_model_type
+        from msg_oper_msg a
+        left join iot_family b on a.family_id=b.family_id
+        left join iot_device c on a.device_id=c.device_id
+        <where>  
+        	msg_type = '02'
+            <if test="sendUserId != null "> and a.send_user_id = #{sendUserId}</if>
+            <if test="familyId != null "> and a.family_id = #{familyId}</if>
+            <if test="deviceId != null "> and a.device_id = #{deviceId}</if>
+        </where>
+        group by a.family_id,a.device_id
+    </select>
+    
+    <select id="countMsgOperMsgList" parameterType="MsgOperMsg" resultType="int">
+         select count(*) from msg_oper_msg
+        <where>  
+            <if test="sendUserId != null "> and send_user_id = #{sendUserId}</if>
+            <if test="sendUserName != null  and sendUserName != ''"> and send_user_name like concat('%', #{sendUserName}, '%')</if>
+            <if test="receiveUserId != null "> and receive_user_id = #{receiveUserId}</if>
+            <if test="receiveUserName != null  and receiveUserName != ''"> and receive_user_name like concat('%', #{receiveUserName}, '%')</if>
+            <if test="msgType != null  and msgType != ''"> and msg_type = #{msgType}</if>
+            <if test="isOper != null "> and is_oper = #{isOper}</if>
+            <if test="msgTypeName != null  and msgTypeName != ''"> and msg_type_name like concat('%', #{msgTypeName}, '%')</if>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="familyName != null  and familyName != ''"> and family_name like concat('%', #{familyName}, '%')</if>
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="deviceName != null  and deviceName != ''"> and device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="addTime != null "> and add_time = #{addTime}</if>
+            <if test="operTime != null "> and oper_time = #{operTime}</if>
+            <if test="expireTime != null "> and expire_time = #{expireTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectMsgOperMsgById" parameterType="Long" resultMap="MsgOperMsgResult">
+        <include refid="selectMsgOperMsgVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertMsgOperMsg" parameterType="MsgOperMsg" useGeneratedKeys="true" keyProperty="id">
+        insert into msg_oper_msg
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sendUserId != null">send_user_id,</if>
+            <if test="sendUserName != null">send_user_name,</if>
+            <if test="receiveUserId != null">receive_user_id,</if>
+            <if test="receiveUserName != null">receive_user_name,</if>
+            <if test="msgType != null">msg_type,</if>
+            <if test="isOper != null">is_oper,</if>
+            <if test="msgTypeName != null">msg_type_name,</if>
+            <if test="familyId != null">family_id,</if>
+            <if test="familyName != null">family_name,</if>
+            <if test="deviceId != null">device_id,</if>
+            <if test="deviceName != null">device_name,</if>
+            <if test="status != null">status,</if>
+            <if test="addTime != null">add_time,</if>
+            <if test="operTime != null">oper_time,</if>
+            <if test="expireTime != null">expire_time,</if>
+            <if test="familyUserRole != null">family_user_role,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sendUserId != null">#{sendUserId},</if>
+            <if test="sendUserName != null">#{sendUserName},</if>
+            <if test="receiveUserId != null">#{receiveUserId},</if>
+            <if test="receiveUserName != null">#{receiveUserName},</if>
+            <if test="msgType != null">#{msgType},</if>
+            <if test="isOper != null">#{isOper},</if>
+            <if test="msgTypeName != null">#{msgTypeName},</if>
+            <if test="familyId != null">#{familyId},</if>
+            <if test="familyName != null">#{familyName},</if>
+            <if test="deviceId != null">#{deviceId},</if>
+            <if test="deviceName != null">#{deviceName},</if>
+            <if test="status != null">#{status},</if>
+            <if test="addTime != null">#{addTime},</if>
+            <if test="operTime != null">#{operTime},</if>
+            <if test="expireTime != null">#{expireTime},</if>
+            <if test="familyUserRole != null">#{familyUserRole},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMsgOperMsg" parameterType="MsgOperMsg">
+        update msg_oper_msg
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="sendUserId != null">send_user_id = #{sendUserId},</if>
+            <if test="sendUserName != null">send_user_name = #{sendUserName},</if>
+            <if test="receiveUserId != null">receive_user_id = #{receiveUserId},</if>
+            <if test="receiveUserName != null">receive_user_name = #{receiveUserName},</if>
+            <if test="msgType != null">msg_type = #{msgType},</if>
+            <if test="isOper != null">is_oper = #{isOper},</if>
+            <if test="msgTypeName != null">msg_type_name = #{msgTypeName},</if>
+            <if test="familyId != null">family_id = #{familyId},</if>
+            <if test="familyName != null">family_name = #{familyName},</if>
+            <if test="deviceId != null">device_id = #{deviceId},</if>
+            <if test="deviceName != null">device_name = #{deviceName},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="addTime != null">add_time = #{addTime},</if>
+            <if test="operTime != null">oper_time = #{operTime},</if>
+            <if test="expireTime != null">expire_time = #{expireTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMsgOperMsgById" parameterType="Long">
+        delete from msg_oper_msg where id = #{id}
+    </delete>
+    <delete id="deleteMsgOperMsg">
+        delete from msg_oper_msg 
+        <where>  
+            <if test="receiveUserId != null "> and receive_user_id = #{receiveUserId}</if>
+            <if test="msgType != null  and msgType != ''"> and msg_type = #{msgType}</if>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+        </where>
+    </delete>
+
+    <delete id="deleteMsgOperMsgByIds" parameterType="String">
+        delete from msg_oper_msg where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+    <update id="updateOperMsgTo98" parameterType="MsgOperMsg">
+        update msg_oper_msg 
+        set status = '98',expire_time = now()
+         <where>  
+         	status = "00"
+            <if test="sendUserId != null "> and send_user_id = #{sendUserId}</if>
+            <if test="sendUserName != null  and sendUserName != ''"> and send_user_name like concat('%', #{sendUserName}, '%')</if>
+            <if test="receiveUserId != null "> and receive_user_id = #{receiveUserId}</if>
+            <if test="receiveUserName != null  and receiveUserName != ''"> and receive_user_name like concat('%', #{receiveUserName}, '%')</if>
+            <if test="msgType != null  and msgType != ''"> and msg_type = #{msgType}</if>
+            <if test="isOper != null "> and is_oper = #{isOper}</if>
+            <if test="msgTypeName != null  and msgTypeName != ''"> and msg_type_name like concat('%', #{msgTypeName}, '%')</if>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="familyName != null  and familyName != ''"> and family_name like concat('%', #{familyName}, '%')</if>
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="deviceName != null  and deviceName != ''"> and device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="addTime != null "> and add_time = #{addTime}</if>
+            <if test="operTime != null "> and oper_time = #{operTime}</if>
+            <if test="expireTime != null "> and expire_time = #{expireTime}</if>
+        </where>
+    </update>
+</mapper>

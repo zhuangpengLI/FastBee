@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.MsgSmsNoticeSettingMapper">
+    
+    <resultMap type="MsgSmsNoticeSetting" id="MsgSmsNoticeSettingResult">
+        <result property="id"    column="id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="identifier"    column="identifier"    />
+        <result property="settingName"    column="setting_name"    />
+        <result property="busId"    column="bus_id"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="isDisabled"    column="is_disabled"    />
+        <result property="smsLimitType"    column="sms_limit_type"    />
+        <result property="smsLimitCount"    column="sms_limit_count"    />
+        <result property="smsSendedCount"    column="sms_sended_count"    />
+        <result property="smsLimitDate"    column="sms_limit_date"    />
+    </resultMap>
+
+    <sql id="selectMsgSmsNoticeSettingVo">
+        select id, user_id, identifier, setting_name, bus_id, parent_id, is_disabled, sms_limit_type, sms_limit_count, sms_sended_count, sms_limit_date from msg_sms_notice_setting
+    </sql>
+
+    <select id="selectMsgSmsNoticeSettingList" parameterType="MsgSmsNoticeSetting" resultMap="MsgSmsNoticeSettingResult">
+        <include refid="selectMsgSmsNoticeSettingVo"/>
+        <where>  
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="identifier != null  and identifier != ''"> and identifier = #{identifier}</if>
+            <if test="settingName != null  and settingName != ''"> and setting_name like concat('%', #{settingName}, '%')</if>
+            <if test="busId != null  and busId != ''"> and bus_id = #{busId}</if>
+            <if test="parentId != null "> and parent_id = #{parentId}</if>
+            <if test="isDisabled != null "> and is_disabled = #{isDisabled}</if>
+            <if test="smsLimitType != null "> and sms_limit_type = #{smsLimitType}</if>
+            <if test="smsLimitCount != null "> and sms_limit_count = #{smsLimitCount}</if>
+            <if test="smsSendedCount != null "> and sms_sended_count = #{smsSendedCount}</if>
+            <if test="smsLimitDate != null "> and sms_limit_date = #{smsLimitDate}</if>
+        </where>
+    </select>
+    
+    <select id="selectMsgSmsNoticeSettingById" parameterType="Long" resultMap="MsgSmsNoticeSettingResult">
+        <include refid="selectMsgSmsNoticeSettingVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertMsgSmsNoticeSetting" parameterType="MsgSmsNoticeSetting" useGeneratedKeys="true" keyProperty="id">
+        insert into msg_sms_notice_setting
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="identifier != null">identifier,</if>
+            <if test="settingName != null">setting_name,</if>
+            <if test="busId != null">bus_id,</if>
+            <if test="parentId != null">parent_id,</if>
+            <if test="isDisabled != null">is_disabled,</if>
+            <if test="smsLimitType != null">sms_limit_type,</if>
+            <if test="smsLimitCount != null">sms_limit_count,</if>
+            <if test="smsSendedCount != null">sms_sended_count,</if>
+            <if test="smsLimitDate != null">sms_limit_date,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="identifier != null">#{identifier},</if>
+            <if test="settingName != null">#{settingName},</if>
+            <if test="busId != null">#{busId},</if>
+            <if test="parentId != null">#{parentId},</if>
+            <if test="isDisabled != null">#{isDisabled},</if>
+            <if test="smsLimitType != null">#{smsLimitType},</if>
+            <if test="smsLimitCount != null">#{smsLimitCount},</if>
+            <if test="smsSendedCount != null">#{smsSendedCount},</if>
+            <if test="smsLimitDate != null">#{smsLimitDate},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMsgSmsNoticeSetting" parameterType="MsgSmsNoticeSetting">
+        update msg_sms_notice_setting
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="identifier != null">identifier = #{identifier},</if>
+            <if test="settingName != null">setting_name = #{settingName},</if>
+            <if test="busId != null">bus_id = #{busId},</if>
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="isDisabled != null">is_disabled = #{isDisabled},</if>
+            <if test="smsLimitType != null">sms_limit_type = #{smsLimitType},</if>
+            <if test="smsLimitCount != null">sms_limit_count = #{smsLimitCount},</if>
+            <if test="smsSendedCount != null">sms_sended_count = #{smsSendedCount},</if>
+            <if test="smsLimitDate != null">sms_limit_date = #{smsLimitDate},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMsgSmsNoticeSettingById" parameterType="Long">
+        delete from msg_sms_notice_setting where id = #{id}
+    </delete>
+
+    <delete id="deleteMsgSmsNoticeSettingByIds" parameterType="String">
+        delete from msg_sms_notice_setting where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

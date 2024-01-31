@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.SysHolidayMapper">
+    
+    <resultMap type="SysHoliday" id="SysHolidayResult">
+        <result property="id"    column="id"    />
+        <result property="setDate"    column="set_date"    />
+        <result property="dateType"    column="date_type"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectSysHolidayVo">
+        select id, set_date, date_type, create_by, create_time, update_by, update_time, remark from sys_holiday
+    </sql>
+
+    <select id="selectSysHolidayList" parameterType="SysHoliday" resultMap="SysHolidayResult">
+        <include refid="selectSysHolidayVo"/>
+        <where>  
+            <if test="params.beginSetDate != null and params.beginSetDate != '' and params.endSetDate != null and params.endSetDate != ''"> and set_date between #{params.beginSetDate} and #{params.endSetDate}</if>
+            <if test="dateType != null "> and date_type = #{dateType}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysHolidayById" parameterType="Long" resultMap="SysHolidayResult">
+        <include refid="selectSysHolidayVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysHoliday" parameterType="SysHoliday" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_holiday
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="setDate != null">set_date,</if>
+            <if test="dateType != null">date_type,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="setDate != null">#{setDate},</if>
+            <if test="dateType != null">#{dateType},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysHoliday" parameterType="SysHoliday">
+        update sys_holiday
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="setDate != null">set_date = #{setDate},</if>
+            <if test="dateType != null">date_type = #{dateType},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysHolidayById" parameterType="Long">
+        delete from sys_holiday where id = #{id}
+    </delete>
+
+    <delete id="deleteSysHolidayByIds" parameterType="String">
+        delete from sys_holiday where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,7 +1,6 @@
 <template>
   <div class="component-upload-image">
     <el-upload
-      multiple
       :action="uploadImgUrl"
       list-type="picture-card"
       :on-success="handleUploadSuccess"
@@ -9,8 +8,8 @@
       :limit="limit"
       :on-error="handleUploadError"
       :on-exceed="handleExceed"
-      ref="imageUpload"
-      :on-remove="handleDelete"
+      name="file"
+      :on-remove="handleRemove"
       :show-file-list="true"
       :headers="headers"
       :file-list="fileList"
@@ -71,8 +70,6 @@ export default {
   },
   data() {
     return {
-      number: 0,
-      uploadList: [],
       dialogImageUrl: "",
       dialogVisible: false,
       hideUpload: false,
@@ -117,6 +114,24 @@ export default {
     },
   },
   methods: {
+    // 删除图片
+    handleRemove(file, fileList) {
+      const findex = this.fileList.map(f => f.name).indexOf(file.name);
+      if(findex > -1) {
+        this.fileList.splice(findex, 1);
+        this.$emit("input", this.listToString(this.fileList));
+      }
+    },
+    // 上传成功回调
+    handleUploadSuccess(res) {
+      if(res.url.startsWith("http")){
+        this.fileList.push({ name: res.fileName, url: res.url });
+      }else{
+        this.fileList.push({ name: res.fileName, url: process.env.VUE_APP_BASE_API +res.fileName });
+      }
+      this.$emit("input", this.listToString(this.fileList));
+      this.loading.close();
+    },
     // 上传前loading加载
     handleBeforeUpload(file) {
       let isImg = false;
@@ -135,58 +150,35 @@ export default {
       }
 
       if (!isImg) {
-        this.$modal.msgError(`文件格式不正确, 请上传${this.fileType.join("/")}图片格式文件!`);
+        this.$message.error(
+          `文件格式不正确, 请上传${this.fileType.join("/")}图片格式文件!`
+        );
         return false;
       }
       if (this.fileSize) {
         const isLt = file.size / 1024 / 1024 < this.fileSize;
         if (!isLt) {
-          this.$modal.msgError(`上传头像图片大小不能超过 ${this.fileSize} MB!`);
+          this.$message.error(`上传头像图片大小不能超过 ${this.fileSize} MB!`);
           return false;
         }
       }
-      this.$modal.loading("正在上传图片，请稍候...");
-      this.number++;
+      this.loading = this.$loading({
+        lock: true,
+        text: "上传中",
+        background: "rgba(0, 0, 0, 0.7)",
+      });
     },
     // 文件个数超出
     handleExceed() {
-      this.$modal.msgError(`上传文件数量不能超过 ${this.limit} 个!`);
-    },
-    // 上传成功回调
-    handleUploadSuccess(res, file) {
-      if (res.code === 200) {
-        this.uploadList.push({ name: res.fileName, url: res.fileName });
-        this.uploadedSuccessfully();
-      } else {
-        this.number--;
-        this.$modal.closeLoading();
-        this.$modal.msgError(res.msg);
-        this.$refs.imageUpload.handleRemove(file);
-        this.uploadedSuccessfully();
-      }
-    },
-    // 删除图片
-    handleDelete(file) {
-      const findex = this.fileList.map(f => f.name).indexOf(file.name);
-      if(findex > -1) {
-        this.fileList.splice(findex, 1);
-        this.$emit("input", this.listToString(this.fileList));
-      }
+      this.$message.error(`上传文件数量不能超过 ${this.limit} 个!`);
     },
     // 上传失败
     handleUploadError() {
-      this.$modal.msgError("上传图片失败，请重试");
-      this.$modal.closeLoading();
-    },
-    // 上传结束处理
-    uploadedSuccessfully() {
-      if (this.number > 0 && this.uploadList.length === this.number) {
-        this.fileList = this.fileList.concat(this.uploadList);
-        this.uploadList = [];
-        this.number = 0;
-        this.$emit("input", this.listToString(this.fileList));
-        this.$modal.closeLoading();
-      }
+      this.$message({
+        type: "error",
+        message: "上传失败",
+      });
+      this.loading.close();
     },
     // 预览
     handlePictureCardPreview(file) {
@@ -198,9 +190,7 @@ export default {
       let strs = "";
       separator = separator || ",";
       for (let i in list) {
-        if (list[i].url) {
-          strs += list[i].url.replace(this.baseUrl, "") + separator;
-        }
+        strs += list[i].url.replace(this.baseUrl, "") + separator;
       }
       return strs != '' ? strs.substr(0, strs.length - 1) : '';
     }

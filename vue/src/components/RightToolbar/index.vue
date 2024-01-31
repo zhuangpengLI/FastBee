@@ -1,7 +1,7 @@
 <template>
-  <div class="top-right-btn" :style="style">
+  <div class="top-right-btn">
     <el-row>
-      <el-tooltip class="item" effect="dark" :content="showSearch ? '隐藏搜索' : '显示搜索'" placement="top" v-if="search">
+      <el-tooltip class="item" effect="dark" :content="showSearch ? '隐藏搜索' : '显示搜索'" placement="top">
         <el-button size="mini" circle icon="el-icon-search" @click="toggleSearch()" />
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="刷新" placement="top">
@@ -42,23 +42,6 @@ export default {
     columns: {
       type: Array,
     },
-    search: {
-      type: Boolean,
-      default: true,
-    },
-    gutter: {
-      type: Number,
-      default: 10,
-    },
-  },
-  computed: {
-    style() {
-      const ret = {};
-      if (this.gutter) {
-        ret.marginRight = `${this.gutter / 2}px`;
-      }
-      return ret;
-    }
   },
   created() {
     // 显隐列初始默认隐藏列

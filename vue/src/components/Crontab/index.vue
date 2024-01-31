@@ -273,7 +273,7 @@ export default {
           insValue = 5;
         } else {
           this.$refs[refName].checkboxList = value.split(",");
-          insValue = 6;
+          insValue = 7;
         }
       } else if (name == "year") {
         if (value == "") {

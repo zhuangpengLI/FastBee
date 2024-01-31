@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.SceneMapper">
+    
+    <resultMap type="Scene" id="SceneResult">
+        <result property="sceneId"    column="scene_id"    />
+        <result property="sceneName"    column="scene_name"    />
+        <result property="scenceImgUrl"    column="scence_img_url"    />
+        <result property="userId"    column="user_id"    />
+        <result property="familyId"    column="family_id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="triggers"    column="triggers"    />
+        <result property="actions"    column="actions"    />
+        <result property="triggerType"    column="trigger_type"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="enabled"    column="enabled"    />
+        <result property="jobEnabled"    column="job_enabled"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+        
+        <result property="isSys"    column="is_sys"    />
+        <result property="sysSceneId"    column="sys_scene_id"    />
+    </resultMap>
+
+    <resultMap id="SceneSceneDeviceResult" type="Scene" extends="SceneResult">
+        <collection property="sceneDeviceList" notNullColumn="sub_id" javaType="java.util.List" resultMap="SceneDeviceResult" />
+    </resultMap>
+
+    <resultMap type="SceneDevice" id="SceneDeviceResult">
+        <result property="id"    column="sub_id"    />
+        <result property="sceneId"    column="sub_scene_id"    />
+        <result property="deviceId"    column="sub_device_id"    />
+        <result property="serialNumber"    column="sub_serial_number"    />
+        <result property="deviceName"    column="sub_device_name"    />
+        <result property="productId"    column="sub_product_id"    />
+        <result property="productName"    column="sub_product_name"    />
+        <result property="actions"    column="sub_actions"    />
+        <result property="actionsName"    column="sub_actions_name"    />
+        <result property="deviceModelType"    column="sub_device_model_type"    />
+        <result property="imgUrl"    column="sub_img_url"    />
+        <result property="belongRoomId"    column="sub_belong_room_id"    />
+        <result property="belongRoomName"    column="sub_belong_room_name"    />
+    </resultMap>
+
+    <sql id="selectSceneVo">
+        select scene_id, scene_name, scence_img_url, user_id, family_id, user_name, triggers, actions, trigger_type, create_by, create_time, update_by, enabled
+        ,job_enabled, update_time, remark, is_sys, sys_scene_id
+        from iot_scene
+    </sql>
+
+    <select id="selectSceneList" parameterType="Scene" resultMap="SceneResult">
+        <include refid="selectSceneVo"/>
+        <where>  
+            <if test="sceneName != null  and sceneName != ''"> and scene_name like concat('%', #{sceneName}, '%')</if>
+            <if test="scenceImgUrl != null  and scenceImgUrl != ''"> and scence_img_url = #{scenceImgUrl}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="userName != null  and userName != ''"> and user_name like concat('%', #{userName}, '%')</if>
+            <if test="triggerType != null "> and trigger_type = #{triggerType}</if>
+            <if test="enabled != null "> and enabled = #{enabled}</if>
+        </where>
+    </select>
+    <select id="countSceneByFamilyId" parameterType="Long" resultType="int">
+          select count(1) from iot_scene
+          where family_id = #{familyId}
+    </select>
+    
+    <select id="selectSceneBySceneId" parameterType="Long" resultMap="SceneSceneDeviceResult">
+        select a.scene_id, a.scene_name, a.scence_img_url, a.user_id, a.family_id, a.user_name, a.triggers, a.actions, a.trigger_type, a.create_by, a.create_time, a.update_by, a.enabled
+         ,a.job_enabled, a.update_time, a.remark,a.is_sys,a.sys_scene_id
+		 ,b.id as sub_id, b.scene_id as sub_scene_id, b.device_id as sub_device_id, b.serial_number as sub_serial_number, b.device_name as sub_device_name, b.product_id as sub_product_id, b.product_name as sub_product_name
+		 , b.actions as sub_actions , b.actions_name sub_actions_name
+        from iot_scene a
+        left join iot_scene_device b on b.scene_id = a.scene_id
+        where a.scene_id = #{sceneId}
+    </select>
+    <select id="selectOnlySceneBySceneId" parameterType="Long" resultMap="SceneResult">
+       select a.scene_id, a.scene_name, a.scence_img_url, a.user_id, a.family_id, a.user_name, a.triggers, a.actions, a.trigger_type, a.create_by, a.create_time, a.update_by, a.enabled
+       ,a.job_enabled, a.update_time, a.remark,a.is_sys,a.sys_scene_id
+        from iot_scene a
+        where a.scene_id = #{sceneId}
+    </select>
+    <select id="selectDeviceBySceneId" parameterType="Long" resultMap="SceneDeviceResult">
+        select  b.id as sub_id, b.scene_id as sub_scene_id, b.device_id as sub_device_id, b.serial_number as sub_serial_number, b.product_id as sub_product_id, b.product_name as sub_product_name
+		 , b.actions as sub_actions , b.actions_name sub_actions_name,d.device_name as sub_device_name
+		 ,d.device_model_type as sub_device_model_type ,d.img_url as sub_img_url,d.belong_room_id as sub_belong_room_id,r.name as sub_belong_room_name
+        from iot_scene_device b, iot_device d 
+        left join iot_room r on d.belong_room_id=r.room_id
+        where b.scene_id = #{sceneId} and b.device_id = d.device_id
+    </select>
+        
+    <insert id="insertScene" parameterType="Scene" useGeneratedKeys="true" keyProperty="sceneId">
+        insert into iot_scene
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sceneName != null and sceneName != ''">scene_name,</if>
+            <if test="scenceImgUrl != null">scence_img_url,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="familyId != null">family_id,</if>
+            <if test="userName != null and userName != ''">user_name,</if>
+            <if test="triggers != null and triggers != ''">triggers,</if>
+            <if test="actions != null and actions != ''">actions,</if>
+            <if test="triggerType != null">trigger_type,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="enabled != null">enabled,</if>
+            <if test="jobEnabled != null">job_enabled,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+            <if test="isSys != null">is_sys,</if>
+            <if test="sysSceneId != null">sys_scene_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sceneName != null and sceneName != ''">#{sceneName},</if>
+            <if test="scenceImgUrl != null">#{scenceImgUrl},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="familyId != null">#{familyId},</if>
+            <if test="userName != null and userName != ''">#{userName},</if>
+            <if test="triggers != null and triggers != ''">#{triggers},</if>
+            <if test="actions != null and actions != ''">#{actions},</if>
+            <if test="triggerType != null">#{triggerType},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="enabled != null">#{enabled},</if>
+            <if test="jobEnabled != null">#{jobEnabled},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="isSys != null">#{isSys},</if>
+            <if test="sysSceneId != null">#{sysSceneId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateScene" parameterType="Scene">
+        update iot_scene
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="sceneName != null and sceneName != ''">scene_name = #{sceneName},</if>
+            <if test="scenceImgUrl != null">scence_img_url = #{scenceImgUrl},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="familyId != null">family_id = #{familyId},</if>
+            <if test="userName != null and userName != ''">user_name = #{userName},</if>
+            <if test="triggers != null and triggers != ''">triggers = #{triggers},</if>
+            <if test="actions != null and actions != ''">actions = #{actions},</if>
+            <if test="triggerType != null">trigger_type = #{triggerType},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="enabled != null">enabled = #{enabled},</if>
+            <if test="jobEnabled != null">job_enabled = #{jobEnabled},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where scene_id = #{sceneId}
+    </update>
+
+    <select id="countDeviceBySceneId" parameterType="Long" resultType="int">
+        select count(1) from iot_scene_device where scene_id = #{sceneId}
+    </select>
+    
+    <delete id="deleteSceneBySceneId" parameterType="Long">
+        delete from iot_scene where scene_id = #{sceneId}
+    </delete>
+
+    <delete id="deleteSceneBySceneIds" parameterType="String">
+        delete from iot_scene where scene_id in 
+        <foreach item="sceneId" collection="array" open="(" separator="," close=")">
+            #{sceneId}
+        </foreach>
+    </delete>
+    
+    <delete id="deleteSceneDeviceBySceneIds" parameterType="String">
+        delete from iot_scene_device where scene_id in 
+        <foreach item="sceneId" collection="array" open="(" separator="," close=")">
+            #{sceneId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteSceneDeviceBySceneId" parameterType="Long">
+        delete from iot_scene_device where scene_id = #{sceneId}
+    </delete>
+    
+    <!-- 删除场景设备 通过设备id 即删除此设备的所有场景信息 -->
+    <delete id="deleteSceneDeviceByDeviceId" parameterType="Long">
+        delete from iot_scene_device where device_id = #{deviceId}
+    </delete>
+
+    <insert id="batchSceneDevice">
+        insert into iot_scene_device( id, scene_id, device_id, serial_number, device_name, product_id, product_name, actions, actions_name) values
+		<foreach item="item" index="index" collection="list" separator=",">
+            ( #{item.id}, #{item.sceneId}, #{item.deviceId}, #{item.serialNumber}, #{item.deviceName}, #{item.productId}, #{item.productName}, #{item.actions}, #{item.actionsName})
+        </foreach>
+    </insert>
+</mapper>

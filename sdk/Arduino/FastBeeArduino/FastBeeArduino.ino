@@ -57,7 +57,6 @@ void loop() {
     // 发布模拟数据，测试用
     publishSimulateDataClient();
   }
-  ESP.wdtFeed(); // 喂软件看门狗，防止程序跑偏
 }
 
 /*

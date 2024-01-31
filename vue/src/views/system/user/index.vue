@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-row :gutter="20">
       <!--部门数据-->
-      <el-col :span="4" :xs="24">
+      <!-- <el-col :span="4" :xs="24">
         <div class="head-container">
           <el-input
             v-model="deptName"
@@ -20,21 +20,20 @@
             :expand-on-click-node="false"
             :filter-node-method="filterNode"
             ref="tree"
-            node-key="id"
             default-expand-all
-            highlight-current
             @node-click="handleNodeClick"
           />
         </div>
-      </el-col>
+      </el-col> -->
       <!--用户数据-->
-      <el-col :span="20" :xs="24">
-        <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
+      <el-col :span="24" :xs="24">
+        <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
           <el-form-item label="用户名称" prop="userName">
             <el-input
               v-model="queryParams.userName"
               placeholder="请输入用户名称"
               clearable
+              size="small"
               style="width: 240px"
               @keyup.enter.native="handleQuery"
             />
@@ -44,6 +43,7 @@
               v-model="queryParams.phonenumber"
               placeholder="请输入手机号码"
               clearable
+              size="small"
               style="width: 240px"
               @keyup.enter.native="handleQuery"
             />
@@ -53,6 +53,7 @@
               v-model="queryParams.status"
               placeholder="用户状态"
               clearable
+              size="small"
               style="width: 240px"
             >
               <el-option
@@ -66,6 +67,7 @@
           <el-form-item label="创建时间">
             <el-date-picker
               v-model="dateRange"
+              size="small"
               style="width: 240px"
               value-format="yyyy-MM-dd"
               type="daterange"
@@ -91,7 +93,7 @@
               v-hasPermi="['system:user:add']"
             >新增</el-button>
           </el-col>
-          <el-col :span="1.5">
+          <!-- <el-col :span="1.5">
             <el-button
               type="success"
               plain
@@ -132,16 +134,16 @@
               @click="handleExport"
               v-hasPermi="['system:user:export']"
             >导出</el-button>
-          </el-col>
+          </el-col> -->
           <right-toolbar :showSearch.sync="showSearch" @queryTable="getList" :columns="columns"></right-toolbar>
         </el-row>
 
         <el-table v-loading="loading" :data="userList" @selection-change="handleSelectionChange">
-          <el-table-column type="selection" width="50" align="center" />
+          <!-- <el-table-column type="selection" width="50" align="center" /> -->
           <el-table-column label="用户编号" align="center" key="userId" prop="userId" v-if="columns[0].visible" />
           <el-table-column label="用户名称" align="center" key="userName" prop="userName" v-if="columns[1].visible" :show-overflow-tooltip="true" />
           <el-table-column label="用户昵称" align="center" key="nickName" prop="nickName" v-if="columns[2].visible" :show-overflow-tooltip="true" />
-          <el-table-column label="部门" align="center" key="deptName" prop="dept.deptName" v-if="columns[3].visible" :show-overflow-tooltip="true" />
+          <!-- <el-table-column label="部门" align="center" key="deptName" prop="dept.deptName" v-if="columns[3].visible" :show-overflow-tooltip="true" /> -->
           <el-table-column label="手机号码" align="center" key="phonenumber" prop="phonenumber" v-if="columns[4].visible" width="120" />
           <el-table-column label="状态" align="center" key="status" v-if="columns[5].visible">
             <template slot-scope="scope">
@@ -161,7 +163,7 @@
           <el-table-column
             label="操作"
             align="center"
-            width="160"
+            width="260"
             class-name="small-padding fixed-width"
           >
             <template slot-scope="scope" v-if="scope.row.userId !== 1">
@@ -179,15 +181,24 @@
                 @click="handleDelete(scope.row)"
                 v-hasPermi="['system:user:remove']"
               >删除</el-button>
-              <el-dropdown size="mini" @command="(command) => handleCommand(command, scope.row)" v-hasPermi="['system:user:resetPwd', 'system:user:edit']">
-                <el-button size="mini" type="text" icon="el-icon-d-arrow-right">更多</el-button>
+              <el-button
+                size="mini"
+                type="text"
+                icon="el-icon-key"
+                @click="handleResetPwd(scope.row)"
+                v-hasPermi="['system:user:resetPwd']"
+              >重置密码</el-button>
+              <!-- <el-dropdown size="mini" @command="(command) => handleCommand(command, scope.row)" v-hasPermi="['system:user:resetPwd', 'system:user:edit']">
+                <span class="el-dropdown-link">
+                  <i class="el-icon-d-arrow-right el-icon--right"></i>更多
+                </span>
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item command="handleResetPwd" icon="el-icon-key"
                     v-hasPermi="['system:user:resetPwd']">重置密码</el-dropdown-item>
                   <el-dropdown-item command="handleAuthRole" icon="el-icon-circle-check"
                     v-hasPermi="['system:user:edit']">分配角色</el-dropdown-item>
                 </el-dropdown-menu>
-              </el-dropdown>
+              </el-dropdown> -->
             </template>
           </el-table-column>
         </el-table>
@@ -211,11 +222,11 @@
               <el-input v-model="form.nickName" placeholder="请输入用户昵称" maxlength="30" />
             </el-form-item>
           </el-col>
-          <el-col :span="12">
+          <!-- <el-col :span="12">
             <el-form-item label="归属部门" prop="deptId">
               <treeselect v-model="form.deptId" :options="deptOptions" :show-count="true" placeholder="请选择归属部门" />
             </el-form-item>
-          </el-col>
+          </el-col> -->
         </el-row>
         <el-row>
           <el-col :span="12">
@@ -223,11 +234,11 @@
               <el-input v-model="form.phonenumber" placeholder="请输入手机号码" maxlength="11" />
             </el-form-item>
           </el-col>
-          <el-col :span="12">
+          <!-- <el-col :span="12">
             <el-form-item label="邮箱" prop="email">
               <el-input v-model="form.email" placeholder="请输入邮箱" maxlength="50" />
             </el-form-item>
-          </el-col>
+          </el-col> -->
         </el-row>
         <el-row>
           <el-col :span="12">
@@ -244,7 +255,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="用户性别">
-              <el-select v-model="form.sex" placeholder="请选择性别">
+              <el-select v-model="form.sex" placeholder="请选择">
                 <el-option
                   v-for="dict in dict.type.sys_user_sex"
                   :key="dict.value"
@@ -254,6 +265,19 @@
               </el-select>
             </el-form-item>
           </el-col>
+          <!-- <el-col :span="12">
+            <el-form-item label="状态">
+              <el-radio-group v-model="form.status">
+                <el-radio
+                  v-for="dict in dict.type.sys_normal_disable"
+                  :key="dict.value"
+                  :label="dict.value"
+                >{{dict.label}}</el-radio>
+              </el-radio-group>
+            </el-form-item>
+          </el-col> -->
+        </el-row>
+        <el-row>
           <el-col :span="12">
             <el-form-item label="状态">
               <el-radio-group v-model="form.status">
@@ -267,9 +291,9 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="12">
+          <!-- <el-col :span="12">
             <el-form-item label="岗位">
-              <el-select v-model="form.postIds" multiple placeholder="请选择岗位">
+              <el-select v-model="form.postIds" multiple placeholder="请选择">
                 <el-option
                   v-for="item in postOptions"
                   :key="item.postId"
@@ -279,10 +303,10 @@
                 ></el-option>
               </el-select>
             </el-form-item>
-          </el-col>
+          </el-col> -->
           <el-col :span="12">
             <el-form-item label="角色">
-              <el-select v-model="form.roleIds" multiple placeholder="请选择角色">
+              <el-select v-model="form.roleIds" multiple placeholder="请选择">
                 <el-option
                   v-for="item in roleOptions"
                   :key="item.roleId"
@@ -341,8 +365,9 @@
 </template>
 
 <script>
-import { listUser, getUser, delUser, addUser, updateUser, resetUserPwd, changeUserStatus, deptTreeSelect } from "@/api/system/user";
+import { listUser, getUser, delUser, addUser, updateUser, resetUserPwd, changeUserStatus } from "@/api/system/user";
 import { getToken } from "@/utils/auth";
+import { treeselect } from "@/api/system/dept";
 import Treeselect from "@riophae/vue-treeselect";
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 
@@ -438,7 +463,7 @@ export default {
         email: [
           {
             type: "email",
-            message: "请输入正确的邮箱地址",
+            message: "'请输入正确的邮箱地址",
             trigger: ["blur", "change"]
           }
         ],
@@ -460,7 +485,7 @@ export default {
   },
   created() {
     this.getList();
-    this.getDeptTree();
+    this.getTreeselect();
     this.getConfigKey("sys.user.initPassword").then(response => {
       this.initPassword = response.msg;
     });
@@ -477,8 +502,8 @@ export default {
       );
     },
     /** 查询部门下拉树结构 */
-    getDeptTree() {
-      deptTreeSelect().then(response => {
+    getTreeselect() {
+      treeselect().then(response => {
         this.deptOptions = response.data;
       });
     },
@@ -490,7 +515,7 @@ export default {
     // 节点单击事件
     handleNodeClick(data) {
       this.queryParams.deptId = data.id;
-      this.handleQuery();
+      this.getList();
     },
     // 用户状态修改
     handleStatusChange(row) {
@@ -535,8 +560,6 @@ export default {
     resetQuery() {
       this.dateRange = [];
       this.resetForm("queryForm");
-      this.queryParams.deptId = undefined;
-      this.$refs.tree.setCurrentKey(null);
       this.handleQuery();
     },
     // 多选框选中数据
@@ -561,6 +584,7 @@ export default {
     /** 新增按钮操作 */
     handleAdd() {
       this.reset();
+      this.getTreeselect();
       getUser().then(response => {
         this.postOptions = response.posts;
         this.roleOptions = response.roles;
@@ -572,13 +596,14 @@ export default {
     /** 修改按钮操作 */
     handleUpdate(row) {
       this.reset();
+      this.getTreeselect();
       const userId = row.userId || this.ids;
       getUser(userId).then(response => {
         this.form = response.data;
         this.postOptions = response.posts;
         this.roleOptions = response.roles;
-        this.$set(this.form, "postIds", response.postIds);
-        this.$set(this.form, "roleIds", response.roleIds);
+        this.form.postIds = response.postIds;
+        this.form.roleIds = response.roleIds;
         this.open = true;
         this.title = "修改用户";
         this.form.password = "";
@@ -658,7 +683,7 @@ export default {
       this.upload.open = false;
       this.upload.isUploading = false;
       this.$refs.upload.clearFiles();
-      this.$alert("<div style='overflow: auto;overflow-x: hidden;max-height: 70vh;padding: 10px 20px 0;'>" + response.msg + "</div>", "导入结果", { dangerouslyUseHTMLString: true });
+      this.$alert(response.msg, "导入结果", { dangerouslyUseHTMLString: true });
       this.getList();
     },
     // 提交上传文件

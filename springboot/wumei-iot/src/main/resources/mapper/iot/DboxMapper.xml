@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.DboxMapper">
+    
+    <resultMap type="Dbox" id="DboxResult">
+        <result property="id"    column="id"    />
+        <result property="dboxType"    column="dbox_type"    />
+        <result property="bgImgUrl"    column="bg_img_url"    />
+        <result property="stringImgUrl"    column="string_img_url"    />
+        <result property="dboxName"    column="dbox_name"    />
+        <result property="enable"    column="enable"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <resultMap id="DboxDboxSwitchResult" type="Dbox" extends="DboxResult">
+        <collection property="dboxSwitchList" notNullColumn="sub_id" javaType="java.util.List" resultMap="DboxSwitchResult" />
+    </resultMap>
+
+    <resultMap type="DboxSwitch" id="DboxSwitchResult">
+        <result property="id"    column="sub_id"    />
+        <result property="name"    column="sub_name"    />
+        <result property="switchType"    column="sub_switch_type"    />
+        <result property="switchStatus"    column="sub_switch_status"    />
+        <result property="imgUrl"    column="sub_img_url"    />
+        <result property="dboxType"    column="sub_dbox_type"    />
+        <result property="dboxId"    column="sub_dbox_id"    />
+        <result property="enable"    column="sub_enable"    />
+        <result property="createBy"    column="sub_create_by"    />
+        <result property="createTime"    column="sub_create_time"    />
+        <result property="updateBy"    column="sub_update_by"    />
+        <result property="updateTime"    column="sub_update_time"    />
+        <result property="remark"    column="sub_remark"    />
+    </resultMap>
+
+    <sql id="selectDboxVo">
+        select id, dbox_type, bg_img_url, string_img_url, dbox_name, enable, create_by, create_time, update_by, update_time, remark from iot_dbox
+    </sql>
+
+    <select id="selectDboxList" parameterType="Dbox" resultMap="DboxResult">
+        <include refid="selectDboxVo"/>
+        <where>  
+            <if test="dboxType != null  and dboxType != ''"> and dbox_type = #{dboxType}</if>
+            <if test="bgImgUrl != null  and bgImgUrl != ''"> and bg_img_url = #{bgImgUrl}</if>
+            <if test="stringImgUrl != null  and stringImgUrl != ''"> and string_img_url = #{stringImgUrl}</if>
+            <if test="dboxName != null  and dboxName != ''"> and dbox_name like concat('%', #{dboxName}, '%')</if>
+            <if test="enable != null "> and enable = #{enable}</if>
+        </where>
+    </select>
+    
+    <select id="selectDboxById" parameterType="Long" resultMap="DboxDboxSwitchResult">
+        select a.id, a.dbox_type, a.bg_img_url, a.string_img_url, a.dbox_name, a.enable, a.create_by, a.create_time, a.update_by, a.update_time, a.remark,
+ b.id as sub_id, b.name as sub_name, b.switch_type as sub_switch_type, b.switch_status as sub_switch_status, b.img_url as sub_img_url, b.dbox_type as sub_dbox_type, b.dbox_id as sub_dbox_id, b.enable as sub_enable, b.create_by as sub_create_by, b.create_time as sub_create_time, b.update_by as sub_update_by, b.update_time as sub_update_time, b.remark as sub_remark
+        from iot_dbox a
+        left join iot_dbox_switch b on b.dbox_id = a.id
+        where a.id = #{id}
+    </select>
+        
+    <insert id="insertDbox" parameterType="Dbox" useGeneratedKeys="true" keyProperty="id">
+        insert into iot_dbox
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dboxType != null">dbox_type,</if>
+            <if test="bgImgUrl != null">bg_img_url,</if>
+            <if test="stringImgUrl != null">string_img_url,</if>
+            <if test="dboxName != null">dbox_name,</if>
+            <if test="enable != null">enable,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dboxType != null">#{dboxType},</if>
+            <if test="bgImgUrl != null">#{bgImgUrl},</if>
+            <if test="stringImgUrl != null">#{stringImgUrl},</if>
+            <if test="dboxName != null">#{dboxName},</if>
+            <if test="enable != null">#{enable},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDbox" parameterType="Dbox">
+        update iot_dbox
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="dboxType != null">dbox_type = #{dboxType},</if>
+            <if test="bgImgUrl != null">bg_img_url = #{bgImgUrl},</if>
+            <if test="stringImgUrl != null">string_img_url = #{stringImgUrl},</if>
+            <if test="dboxName != null">dbox_name = #{dboxName},</if>
+            <if test="enable != null">enable = #{enable},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDboxById" parameterType="Long">
+        delete from iot_dbox where id = #{id}
+    </delete>
+
+    <delete id="deleteDboxByIds" parameterType="String">
+        delete from iot_dbox where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+    <delete id="deleteDboxSwitchByDboxIds" parameterType="String">
+        delete from iot_dbox_switch where dbox_id in 
+        <foreach item="dboxId" collection="array" open="(" separator="," close=")">
+            #{dboxId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteDboxSwitchByDboxId" parameterType="Long">
+        delete from iot_dbox_switch where dbox_id = #{dboxId}
+    </delete>
+
+    <insert id="batchDboxSwitch">
+        insert into iot_dbox_switch( id, name, switch_type, switch_status, img_url, dbox_type, dbox_id, enable, create_by, create_time, update_by, update_time, remark) values
+		<foreach item="item" index="index" collection="list" separator=",">
+            ( #{item.id}, #{item.name}, #{item.switchType}, #{item.switchStatus}, #{item.imgUrl}, #{item.dboxType}, #{item.dboxId}, #{item.enable}, #{item.createBy}, #{item.createTime}, #{item.updateBy}, #{item.updateTime}, #{item.remark})
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.CmsUserAgreementMapper">
+    
+    <resultMap type="CmsUserAgreement" id="CmsUserAgreementResult">
+        <result property="id"    column="id"    />
+        <result property="type"    column="type"    />
+        <result property="detail"    column="detail"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectCmsUserAgreementVo">
+        select id, type, detail, update_time, create_time from cms_user_agreement
+    </sql>
+
+    <select id="selectCmsUserAgreementList" parameterType="CmsUserAgreement" resultMap="CmsUserAgreementResult">
+        <include refid="selectCmsUserAgreementVo"/>
+        <where>  
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="detail != null  and detail != ''"> and detail = #{detail}</if>
+        </where>
+    </select>
+    
+    <select id="selectCmsUserAgreementById" parameterType="Long" resultMap="CmsUserAgreementResult">
+        <include refid="selectCmsUserAgreementVo"/>
+        where id = #{id}
+    </select>
+    <select id="selectCmsUserAgreementByType" parameterType="String" resultMap="CmsUserAgreementResult">
+        <include refid="selectCmsUserAgreementVo"/>
+        where type = #{type}
+    </select>
+        
+    <insert id="insertCmsUserAgreement" parameterType="CmsUserAgreement" useGeneratedKeys="true" keyProperty="id">
+        insert into cms_user_agreement
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="type != null and type != ''">type,</if>
+            <if test="detail != null">detail,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="type != null and type != ''">#{type},</if>
+            <if test="detail != null">#{detail},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCmsUserAgreement" parameterType="CmsUserAgreement">
+        update cms_user_agreement
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="type != null and type != ''">type = #{type},</if>
+            <if test="detail != null">detail = #{detail},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCmsUserAgreementById" parameterType="Long">
+        delete from cms_user_agreement where id = #{id}
+    </delete>
+
+    <delete id="deleteCmsUserAgreementByIds" parameterType="String">
+        delete from cms_user_agreement where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

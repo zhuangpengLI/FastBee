@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.BaseConfigMapper">
+    
+    <resultMap type="com.ruoyi.system.otherDomain.BaseConfig" id="BaseConfigResult">
+        <result property="id"    column="id"    />
+        <result property="userCreateRoomMax"    column="user_create_room_max"    />
+        <result property="userLoginDeviceMax"    column="user_login_device_max"    />
+        <result property="customerServicePhone"    column="customer_service_phone"    />
+        <result property="userReceiveSmsMax"    column="user_receive_sms_max"    />
+        <result property="userSceneMax"    column="user_scene_max"    />
+        <result property="familUserMax"    column="family_user_max"    />
+    </resultMap>
+
+    <sql id="selectBaseConfigVo">
+        select id, user_create_room_max, user_login_device_max, customer_service_phone, user_receive_sms_max, user_scene_max, family_user_max from iot_base_config
+    </sql>
+
+    <select id="selectBaseConfigList" parameterType="com.ruoyi.system.otherDomain.BaseConfig" resultMap="BaseConfigResult">
+        <include refid="selectBaseConfigVo"/>
+        <where>  
+            <if test="userCreateRoomMax != null "> and user_create_room_max = #{userCreateRoomMax}</if>
+            <if test="userLoginDeviceMax != null "> and user_login_device_max = #{userLoginDeviceMax}</if>
+            <if test="customerServicePhone != null  and customerServicePhone != ''"> and customer_service_phone = #{customerServicePhone}</if>
+            <if test="userReceiveSmsMax != null "> and user_receive_sms_max = #{userReceiveSmsMax}</if>
+            <if test="userSceneMax != null "> and user_scene_max = #{userSceneMax}</if>
+        </where>
+    </select>
+    
+    <select id="selectOneBaseConfig" resultMap="BaseConfigResult">
+        <include refid="selectBaseConfigVo"/>
+    </select>
+    <select id="selectBaseConfigById" parameterType="Long" resultMap="BaseConfigResult">
+        <include refid="selectBaseConfigVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBaseConfig" parameterType="com.ruoyi.system.otherDomain.BaseConfig" useGeneratedKeys="true" keyProperty="id">
+        insert into iot_base_config
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userCreateRoomMax != null">user_create_room_max,</if>
+            <if test="userLoginDeviceMax != null">user_login_device_max,</if>
+            <if test="customerServicePhone != null">customer_service_phone,</if>
+            <if test="userReceiveSmsMax != null">user_receive_sms_max,</if>
+            <if test="userSceneMax != null">user_scene_max,</if>
+            <if test="familUserMax != null">family_user_max,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userCreateRoomMax != null">#{userCreateRoomMax},</if>
+            <if test="userLoginDeviceMax != null">#{userLoginDeviceMax},</if>
+            <if test="customerServicePhone != null">#{customerServicePhone},</if>
+            <if test="userReceiveSmsMax != null">#{userReceiveSmsMax},</if>
+            <if test="userSceneMax != null">#{userSceneMax},</if>
+            <if test="familUserMax != null">#{familUserMax},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBaseConfig" parameterType="com.ruoyi.system.otherDomain.BaseConfig">
+        update iot_base_config
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userCreateRoomMax != null">user_create_room_max = #{userCreateRoomMax},</if>
+            <if test="userLoginDeviceMax != null">user_login_device_max = #{userLoginDeviceMax},</if>
+            <if test="customerServicePhone != null">customer_service_phone = #{customerServicePhone},</if>
+            <if test="userReceiveSmsMax != null">user_receive_sms_max = #{userReceiveSmsMax},</if>
+            <if test="userSceneMax != null">user_scene_max = #{userSceneMax},</if>
+            <if test="familUserMax != null">family_user_max = #{familUserMax},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBaseConfigById" parameterType="Long">
+        delete from iot_base_config where id = #{id}
+    </delete>
+
+    <delete id="deleteBaseConfigByIds" parameterType="String">
+        delete from iot_base_config where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

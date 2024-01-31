@@ -1,11 +1,12 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch">
+    <el-form :model="queryParams" ref="queryForm" v-show="showSearch" :inline="true">
       <el-form-item label="角色名称" prop="roleName">
         <el-input
           v-model="queryParams.roleName"
           placeholder="请输入角色名称"
           clearable
+          size="small"
           style="width: 240px"
           @keyup.enter.native="handleQuery"
         />
@@ -15,6 +16,7 @@
           v-model="queryParams.roleKey"
           placeholder="请输入权限字符"
           clearable
+          size="small"
           style="width: 240px"
           @keyup.enter.native="handleQuery"
         />
@@ -24,6 +26,7 @@
           v-model="queryParams.status"
           placeholder="角色状态"
           clearable
+          size="small"
           style="width: 240px"
         >
           <el-option
@@ -37,6 +40,7 @@
       <el-form-item label="创建时间">
         <el-date-picker
           v-model="dateRange"
+          size="small"
           style="width: 240px"
           value-format="yyyy-MM-dd"
           type="daterange"
@@ -62,7 +66,7 @@
           v-hasPermi="['system:role:add']"
         >新增</el-button>
       </el-col>
-      <el-col :span="1.5">
+      <!-- <el-col :span="1.5">
         <el-button
           type="success"
           plain
@@ -93,12 +97,12 @@
           @click="handleExport"
           v-hasPermi="['system:role:export']"
         >导出</el-button>
-      </el-col>
+      </el-col> -->
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="roleList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
+      <!-- <el-table-column type="selection" width="55" align="center" /> -->
       <el-table-column label="角色编号" prop="roleId" width="120" />
       <el-table-column label="角色名称" prop="roleName" :show-overflow-tooltip="true" width="150" />
       <el-table-column label="权限字符" prop="roleKey" :show-overflow-tooltip="true" width="150" />
@@ -119,7 +123,6 @@
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-<!-- v-if="scope.row.roleId !== 1 && scope.row.roleId !== 2 && scope.row.roleId !== 3" -->
         <template slot-scope="scope" v-if="scope.row.roleId !== 1">
           <el-button
             size="mini"
@@ -135,15 +138,17 @@
             @click="handleDelete(scope.row)"
             v-hasPermi="['system:role:remove']"
           >删除</el-button>
-          <el-dropdown size="mini" @command="(command) => handleCommand(command, scope.row)" v-hasPermi="['system:role:edit']">
-            <el-button size="mini" type="text" icon="el-icon-d-arrow-right">更多</el-button>
+          <!-- <el-dropdown size="mini" @command="(command) => handleCommand(command, scope.row)" v-hasPermi="['system:role:edit']">
+            <span class="el-dropdown-link">
+              <i class="el-icon-d-arrow-right el-icon--right"></i>更多
+            </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="handleDataScope" icon="el-icon-circle-check"
                 v-hasPermi="['system:role:edit']">数据权限</el-dropdown-item>
               <el-dropdown-item command="handleAuthUser" icon="el-icon-user"
                 v-hasPermi="['system:role:edit']">分配用户</el-dropdown-item>
             </el-dropdown-menu>
-          </el-dropdown>
+          </el-dropdown> -->
         </template>
       </el-table-column>
     </el-table>
@@ -253,8 +258,9 @@
 </template>
 
 <script>
-import { listRole, getRole, delRole, addRole, updateRole, dataScope, changeRoleStatus, deptTreeSelect } from "@/api/system/role";
+import { listRole, getRole, delRole, addRole, updateRole, dataScope, changeRoleStatus } from "@/api/system/role";
 import { treeselect as menuTreeselect, roleMenuTreeselect } from "@/api/system/menu";
+import { treeselect as deptTreeselect, roleDeptTreeselect } from "@/api/system/dept";
 
 export default {
   name: "Role",
@@ -362,6 +368,12 @@ export default {
         this.menuOptions = response.data;
       });
     },
+    /** 查询部门树结构 */
+    getDeptTreeselect() {
+      deptTreeselect().then(response => {
+        this.deptOptions = response.data;
+      });
+    },
     // 所有菜单节点数据
     getMenuAllCheckedKeys() {
       // 目前被选中的菜单节点
@@ -388,8 +400,8 @@ export default {
       });
     },
     /** 根据角色ID查询部门树结构 */
-    getDeptTree(roleId) {
-      return deptTreeSelect(roleId).then(response => {
+    getRoleDeptTreeselect(roleId) {
+      return roleDeptTreeselect(roleId).then(response => {
         this.deptOptions = response.depts;
         return response;
       });
@@ -535,12 +547,12 @@ export default {
     /** 分配数据权限操作 */
     handleDataScope(row) {
       this.reset();
-      const deptTreeSelect = this.getDeptTree(row.roleId);
+      const roleDeptTreeselect = this.getRoleDeptTreeselect(row.roleId);
       getRole(row.roleId).then(response => {
         this.form = response.data;
         this.openDataScope = true;
         this.$nextTick(() => {
-          deptTreeSelect.then(res => {
+          roleDeptTreeselect.then(res => {
             this.$refs.dept.setCheckedKeys(res.checkedKeys);
           });
         });

@@ -1,8 +1,5 @@
 ![](https://oscimg.oschina.net/oscnet/up-09e0fd4e7966a3049aa39e7ab2a99dc5586.png)
 
-## 注意！！！FastBee2.0开源版正式启动辣！敬请期待！！！
-
-
 ### 一、项目介绍
 0. 物美智能(wumei-smart)更名为[蜂信物联(FastBee)](https://fastbee.cn)。
 
@@ -66,14 +63,21 @@
 项目采用AGPL3协议，可用于个人学习和使用，商业用途需要赞助项目，获得授权，并提供商业版本源码、可视化平台和移动端源码。赞助过的用户请下载商业版本源码。
 - [授权详情>>](https://fastbee.cn/doc/pages/sponsor/) &nbsp; [商业版本源码>>](https://fastbee.cn/doc/pages/sponsor/)
 - [移动端源码>>](https://fastbee.cn/doc/pages/sponsor/) &nbsp; [可视化平台源码>>](https://fastbee.cn/doc/pages/sponsor/)
+- 二开项目同样遵守AGPL3.0协议进行开源，可以向原作者申请授权
+- 如果商业项目想转闭源，可以向原作者申请或者购买闭源授权
 
+### 六、贡献代码
+- [贡献者指南>>](./doc/贡献者指南.md)
+- [Git提交规范>>](./doc/Git提交规范.md)
+- [功能规划>>](./RoadMap.md)
 
-### 六、其他
+### 七、其他
 1. QQ交流群：&#x1F680;946029159    &#x1F680;1073236354(已满)
 
 2. 权限管理基于ruoyi-vue系统开发，Mqtt消息服务器使用EMQX5.0开源版
 
-* [在线演示](https://iot.fastbee.cn/)
+* [开源版本在线演示](http://101.33.237.12/)
+* [商业版本在线演示](https://iot.fastbee.cn/)
 * [项目使用文档](https://fastbee.cn/doc/)
 * [若依权限管理系统文档](http://doc.ruoyi.vip/ruoyi-vue/)
 * [EMQX5.0消息服务器文档](https://www.emqx.io/docs/zh/v5.0/)
@@ -88,7 +92,7 @@
 - [帐篷](https://gitee.com/zhuangpengli)：熟悉物联网开发，完善视频监控模块和部分协议，硬件SDK开发等
 - [JaminDeng](https://gitee.com/jamin-deng)：熟悉物联网开发，完善平台前端设计可视化等
 
-### 七、部分图片
+### 八、部分图片
 
 ![](https://oscimg.oschina.net/oscnet/up-972dea7b54eca705dcc8bf2fe0680b12c09.png)
 ![](https://oscimg.oschina.net/oscnet/up-6d89f1558797a9becf07c20f92c1407a13a.png)

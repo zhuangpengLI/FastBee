@@ -1,19 +1,15 @@
 <template>
-  <div id="app" style="background-color:#0e2e87" v-if="$route.meta.bigScreen">
+  <div id="app" style="background-color:#03050C" v-if="$route.meta.bigScreen">
     <router-view />
   </div>
     <div id="app" v-else>
     <router-view />
-    <theme-picker />
   </div>
 </template>
 
 <script>
-import ThemePicker from "@/components/ThemePicker";
-
-export default {
-  name: "App",
-  components: { ThemePicker },
+export default  {
+  name:  'App',
     metaInfo() {
         return {
             title: this.$store.state.settings.dynamicTitle && this.$store.state.settings.title,
@@ -22,10 +18,5 @@ export default {
             }
         }
     }
-};
-</script>
-<style scoped>
-#app .theme-picker {
-  display: none;
 }
-</style>
+</script>

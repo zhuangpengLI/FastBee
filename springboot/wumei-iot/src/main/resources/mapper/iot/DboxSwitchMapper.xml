@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.DboxSwitchMapper">
+    
+    <resultMap type="DboxSwitch" id="DboxSwitchResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="switchType"    column="switch_type"    />
+        <result property="switchStatus"    column="switch_status"    />
+        <result property="imgUrl"    column="img_url"    />
+        <result property="dboxType"    column="dbox_type"    />
+        <result property="dboxId"    column="dbox_id"    />
+        <result property="enable"    column="enable"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectDboxSwitchVo">
+        select id, name, switch_type, switch_status, img_url, dbox_type, dbox_id, enable, create_by, create_time, update_by, update_time, remark from iot_dbox_switch
+    </sql>
+
+    <select id="selectDboxSwitchList" parameterType="DboxSwitch" resultMap="DboxSwitchResult">
+        <include refid="selectDboxSwitchVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="switchType != null  and switchType != ''"> and switch_type = #{switchType}</if>
+            <if test="switchStatus != null "> and switch_status = #{switchStatus}</if>
+            <if test="imgUrl != null  and imgUrl != ''"> and img_url = #{imgUrl}</if>
+            <if test="dboxType != null  and dboxType != ''"> and dbox_type = #{dboxType}</if>
+            <if test="dboxId != null "> and dbox_id = #{dboxId}</if>
+            <if test="enable != null "> and enable = #{enable}</if>
+        </where>
+    </select>
+    
+    <select id="selectDboxSwitchById" parameterType="Long" resultMap="DboxSwitchResult">
+        <include refid="selectDboxSwitchVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertDboxSwitch" parameterType="DboxSwitch" useGeneratedKeys="true" keyProperty="id">
+        insert into iot_dbox_switch
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="switchType != null">switch_type,</if>
+            <if test="switchStatus != null">switch_status,</if>
+            <if test="imgUrl != null">img_url,</if>
+            <if test="dboxType != null">dbox_type,</if>
+            <if test="dboxId != null">dbox_id,</if>
+            <if test="enable != null">enable,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="switchType != null">#{switchType},</if>
+            <if test="switchStatus != null">#{switchStatus},</if>
+            <if test="imgUrl != null">#{imgUrl},</if>
+            <if test="dboxType != null">#{dboxType},</if>
+            <if test="dboxId != null">#{dboxId},</if>
+            <if test="enable != null">#{enable},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDboxSwitch" parameterType="DboxSwitch">
+        update iot_dbox_switch
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="switchType != null">switch_type = #{switchType},</if>
+            <if test="switchStatus != null">switch_status = #{switchStatus},</if>
+            <if test="imgUrl != null">img_url = #{imgUrl},</if>
+            <if test="dboxType != null">dbox_type = #{dboxType},</if>
+            <if test="dboxId != null">dbox_id = #{dboxId},</if>
+            <if test="enable != null">enable = #{enable},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDboxSwitchById" parameterType="Long">
+        delete from iot_dbox_switch where id = #{id}
+    </delete>
+
+    <delete id="deleteDboxSwitchByIds" parameterType="String">
+        delete from iot_dbox_switch where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

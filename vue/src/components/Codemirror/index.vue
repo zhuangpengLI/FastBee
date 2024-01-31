@@ -89,6 +89,7 @@ export default {
     this.editor.on("inputRead", () => {
       this.editor.showHint();
     });
+    debugger;
     this.editor.setSize("auto", this.height);
     if (typeof this.value !== "undefined") {
       this.editor.setValue(this.value);

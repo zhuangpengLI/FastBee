@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.AlertLogMapper">
+    
+    <resultMap type="com.ruoyi.iot.domain.AlertLog" id="AlertLogResult">
+        <result property="alertLogId"    column="alert_log_id"    />
+        <result property="alertName"    column="alert_name"    />
+        <result property="alertLevel"    column="alert_level"    />
+        <result property="status"    column="status"    />
+        <result property="productId"    column="product_id"    />
+        <result property="productName"    column="product_name"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+        <result property="userId"    column="user_id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="tenantId"    column="tenant_id"    />
+        <result property="tenantName"    column="tenant_name"    />
+        
+        <result property="alertCat"    column="alert_cat"    />
+        <result property="familyId"    column="family_id"    />
+        <result property="alertTime"    column="alert_time"    />
+        
+    </resultMap>
+
+    <sql id="selectAlertLogVo">
+        select alert_log_id, alert_name, alert_level, status, alert_cat ,family_id,alert_time
+        , product_id, product_name, device_id, device_name,user_id, user_name, tenant_id, tenant_name, create_by, create_time, update_by, update_time, remark from iot_alert_log
+    </sql>
+
+    <select id="selectAlertLogList" parameterType="com.ruoyi.iot.domain.AlertLog" resultMap="AlertLogResult">
+        <include refid="selectAlertLogVo"/>
+        <where>
+            <if test="userId != null and userId != 0"> and user_id = #{userId}</if>
+            <if test="tenantId != null and tenantId != 0"> and tenant_id = #{tenantId}</if>
+            <if test="alertName != null  and alertName != ''"> and alert_name like concat('%', #{alertName}, '%')</if>
+            <if test="alertLevel != null "> and alert_level = #{alertLevel}</if>
+            <if test="status != null "> and status = #{status}</if>
+            <if test="alertCat != null "> and alert_cat = #{alertCat}</if>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="alertTime != null "> and alert_time = #{alertTime}</if>
+            <if test="productId != null "> and product_id = #{productId}</if>
+            <if test="productName != null  and productName != ''"> and product_name like concat('%', #{productName}, '%')</if>
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="deviceName != null  and deviceName != ''"> and device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="params.beginCreateTime != null and params.beginCreateTime != '' and params.endCreateTime != null and params.endCreateTime != ''"> and create_time between #{params.beginCreateTime} and #{params.endCreateTime}</if>
+        </where>
+        order by create_time desc
+    </select>
+    
+    <resultMap type="com.ruoyi.iot.dto.AlertLogAndFamilyWithUser" id="AlertLogWithInfoResult">
+        <result property="alertLogId"    column="alert_log_id"    />
+        <result property="alertName"    column="alert_name"    />
+        <result property="alertLevel"    column="alert_level"    />
+        <result property="status"    column="status"    />
+        <result property="productId"    column="product_id"    />
+        <result property="productName"    column="product_name"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+        <result property="userId"    column="user_id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="tenantId"    column="tenant_id"    />
+        <result property="tenantName"    column="tenant_name"    />
+        
+        <result property="alertCat"    column="alert_cat"    />
+        <result property="familyId"    column="family_id"    />
+        <result property="alertTime"    column="alert_time"    />
+        
+        
+        <result property="phonenumber"    column="phonenumber"    />
+        <result property="nickName"    column="nick_name"    />
+        <result property="familyName"    column="family_name"    />
+        <result property="familyPosition"    column="family_position"    />
+        
+        
+        
+    </resultMap>
+    <select id="selectAlertLogWithInfoList" parameterType="com.ruoyi.iot.dto.AlertLogAndFamilyWithUser" resultMap="AlertLogWithInfoResult">
+       select a.alert_log_id, a.alert_name, a.alert_level, a.status, a.alert_cat ,a.family_id,a.alert_time
+        , a.product_id, a.product_name, a.device_id, a.user_id, a.user_name, a.tenant_id, a.tenant_name, a.create_by, a.create_time, a.update_by, a.update_time, a.remark 
+        , d.device_name as device_name
+        , u.nick_name as nick_name,u.phonenumber as phonenumber
+        , f.name as family_name,f.position as family_position
+        from iot_alert_log a
+        left join iot_device d on d.device_id=a.device_id
+        left join iot_family f on f.family_id=a.family_id
+        left join sys_user u on u.user_id=a.user_id
+        <where>
+            <if test="userId != null and userId != 0"> and a.user_id = #{userId}</if>
+            <if test="tenantId != null and tenantId != 0"> and a.tenant_id = #{tenantId}</if>
+            <if test="alertName != null  and alertName != ''"> and a.alert_name like concat('%', #{alertName}, '%')</if>
+            <if test="alertLevel != null "> and a.alert_level = #{alertLevel}</if>
+            <if test="status != null "> and a.status = #{status}</if>
+            <if test="alertCat != null "> and a.alert_cat = #{alertCat}</if>
+            <if test="familyId != null "> and a.family_id = #{familyId}</if>
+            <if test="alertTime != null "> and a.alert_time = #{alertTime}</if>
+            <if test="productId != null "> and a.product_id = #{productId}</if>
+            <if test="productName != null  and productName != ''"> and a.product_name like concat('%', #{productName}, '%')</if>
+            <if test="deviceId != null "> and a.device_id = #{deviceId}</if>
+            
+            <if test="deviceName != null  and deviceName != ''"> and d.device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="nickName != null  and nickName != ''"> and u.nick_name like concat('%', #{nickName}, '%')</if>
+            <if test="phonenumber != null  and phonenumber != ''"> and u.phonenumber like concat('%', #{phonenumber}, '%')</if>
+            
+           <if test="params.beginCreateTime != null and params.beginCreateTime != '' and params.endCreateTime != null and params.endCreateTime != ''"> and a.create_time between #{params.beginCreateTime} and #{params.endCreateTime}</if>
+            
+        </where>
+        
+        order by a.create_time desc
+    </select>
+    
+    <select id="selectAlertLogByAlertLogId" parameterType="Long" resultMap="AlertLogResult">
+        <include refid="selectAlertLogVo"/>
+        where alert_log_id = #{alertLogId}
+    </select>
+        
+    <insert id="insertAlertLog" parameterType="com.ruoyi.iot.domain.AlertLog" useGeneratedKeys="true" keyProperty="alertLogId">
+        insert into iot_alert_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="alertName != null and alertName != ''">alert_name,</if>
+            <if test="alertLevel != null">alert_level,</if>
+            <if test="status != null">status,</if>
+            <if test="alertCat != null">alert_cat,</if>
+            <if test="familyId != null">family_id,</if>
+            <if test="productId != null">product_id,</if>
+            <if test="productName != null and productName != ''">product_name,</if>
+            <if test="deviceId != null">device_id,</if>
+            <if test="deviceName != null and deviceName != ''">device_name,</if>
+            <if test="alertTime != null">alert_time,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="userName != null and userName != ''">user_name,</if>
+            <if test="tenantId != null">tenant_id,</if>
+            <if test="tenantName != null and tenantName != ''">tenant_name,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="alertName != null and alertName != ''">#{alertName},</if>
+            <if test="alertLevel != null">#{alertLevel},</if>
+            <if test="status != null">#{status},</if>
+            <if test="alertCat != null">#{alertCat},</if>
+            <if test="familyId != null">#{familyId},</if>
+            <if test="productId != null">#{productId},</if>
+            <if test="productName != null and productName != ''">#{productName},</if>
+            <if test="deviceId != null">#{deviceId},</if>
+            <if test="deviceName != null and deviceName != ''">#{deviceName},</if>
+            <if test="alertTime != null">#{alertTime},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="userName != null and userName != ''">#{userName},</if>
+            <if test="tenantId != null">#{tenantId},</if>
+            <if test="tenantName != null and tenantName != ''">#{tenantName},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAlertLog" parameterType="com.ruoyi.iot.domain.AlertLog">
+        update iot_alert_log
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="alertName != null and alertName != ''">alert_name = #{alertName},</if>
+            <if test="alertLevel != null">alert_level = #{alertLevel},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="productId != null">product_id = #{productId},</if>
+            <if test="productName != null and productName != ''">product_name = #{productName},</if>
+            <if test="deviceId != null">device_id = #{deviceId},</if>
+            <if test="deviceName != null and deviceName != ''">device_name = #{deviceName},</if>
+            <if test="alertTime != null">alert_time = #{alertTime},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="userName != null and userName != ''">user_name = #{userName},</if>
+            <if test="tenantId != null">tenant_id = #{tenantId},</if>
+            <if test="tenantName != null and tenantName != ''">tenant_name = #{tenantName},</if>
+        </trim>
+        where alert_log_id = #{alertLogId}
+    </update>
+
+    <delete id="deleteAlertLogByAlertLogId" parameterType="Long">
+        delete from iot_alert_log where alert_log_id = #{alertLogId}
+    </delete>
+    
+    <delete id="deleteAlertLog">
+        delete from iot_alert_log 
+         <where>
+            <if test="familyId != null "> and family_id = #{familyId}</if>
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+        </where>
+    </delete>
+
+    <delete id="deleteAlertLogByAlertLogIds" parameterType="String">
+        delete from iot_alert_log where alert_log_id in 
+        <foreach item="alertLogId" collection="array" open="(" separator="," close=")">
+            #{alertLogId}
+        </foreach>
+    </delete>
+</mapper>

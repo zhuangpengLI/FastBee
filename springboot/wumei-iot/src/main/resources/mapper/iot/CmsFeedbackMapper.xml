@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.CmsFeedbackMapper">
+    
+    <resultMap type="CmsFeedback" id="CmsFeedbackResult">
+        <result property="id"    column="id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="username"    column="username"    />
+        <result property="mobile"    column="mobile"    />
+        <result property="feedType"    column="feed_type"    />
+        <result property="source"    column="source"    />
+        <result property="title"    column="title"    />
+        <result property="content"    column="content"    />
+        <result property="status"    column="status"    />
+        <result property="hasPicture"    column="has_picture"    />
+        <result property="picUrls"    column="pic_urls"    />
+        <result property="reply"    column="reply"    />
+        <result property="replyTime"    column="reply_time"    />
+        <result property="addTime"    column="add_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="deleted"    column="deleted"    />
+        
+        <result property="nickName"    column="nick_name"    />
+    </resultMap>
+
+    <sql id="selectCmsFeedbackVo">
+        select id, user_id, username, mobile, feed_type, source, title, content, status, has_picture, pic_urls, reply, reply_time, add_time, update_time, deleted from cms_feedback
+    </sql>
+
+    <select id="selectCmsFeedbackList" parameterType="CmsFeedback" resultMap="CmsFeedbackResult">
+       select a.id, a.user_id, a.username, a.mobile, a.feed_type, a.source, a.title, a.content, a.status, a.has_picture, a.pic_urls, a.reply, 
+       a.reply_time, a.add_time, a.update_time, a.deleted,
+       b.nick_name as nick_name
+       from cms_feedback a
+       left join sys_user b on a.user_id=b.user_id
+        <where>  
+            <if test="source != null  and source != ''"> and a.source = #{source}</if>
+            <if test="content != null  and content != ''"> and a.content like concat('%', #{content}, '%')</if>
+            <if test="addTime != null "> and a.add_time = #{addTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectCmsFeedbackById" parameterType="Long" resultMap="CmsFeedbackResult">
+        <include refid="selectCmsFeedbackVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertCmsFeedback" parameterType="CmsFeedback" useGeneratedKeys="true" keyProperty="id">
+        insert into cms_feedback
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="username != null and username != ''">username,</if>
+            <if test="mobile != null and mobile != ''">mobile,</if>
+            <if test="feedType != null">feed_type,</if>
+            <if test="source != null">source,</if>
+            <if test="title != null">title,</if>
+            <if test="content != null and content != ''">content,</if>
+            <if test="status != null">status,</if>
+            <if test="hasPicture != null">has_picture,</if>
+            <if test="picUrls != null">pic_urls,</if>
+            <if test="reply != null">reply,</if>
+            <if test="replyTime != null">reply_time,</if>
+            <if test="addTime != null">add_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="deleted != null">deleted,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="username != null and username != ''">#{username},</if>
+            <if test="mobile != null and mobile != ''">#{mobile},</if>
+            <if test="feedType != null">#{feedType},</if>
+            <if test="source != null">#{source},</if>
+            <if test="title != null">#{title},</if>
+            <if test="content != null and content != ''">#{content},</if>
+            <if test="status != null">#{status},</if>
+            <if test="hasPicture != null">#{hasPicture},</if>
+            <if test="picUrls != null">#{picUrls},</if>
+            <if test="reply != null">#{reply},</if>
+            <if test="replyTime != null">#{replyTime},</if>
+            <if test="addTime != null">#{addTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="deleted != null">#{deleted},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCmsFeedback" parameterType="CmsFeedback">
+        update cms_feedback
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="username != null and username != ''">username = #{username},</if>
+            <if test="mobile != null and mobile != ''">mobile = #{mobile},</if>
+            <if test="feedType != null">feed_type = #{feedType},</if>
+            <if test="source != null">source = #{source},</if>
+            <if test="title != null">title = #{title},</if>
+            <if test="content != null and content != ''">content = #{content},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="hasPicture != null">has_picture = #{hasPicture},</if>
+            <if test="picUrls != null">pic_urls = #{picUrls},</if>
+            <if test="reply != null">reply = #{reply},</if>
+            <if test="replyTime != null">reply_time = #{replyTime},</if>
+            <if test="addTime != null">add_time = #{addTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="deleted != null">deleted = #{deleted},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCmsFeedbackById" parameterType="Long">
+        delete from cms_feedback where id = #{id}
+    </delete>
+
+    <delete id="deleteCmsFeedbackByIds" parameterType="String">
+        delete from cms_feedback where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

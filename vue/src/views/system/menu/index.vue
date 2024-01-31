@@ -1,16 +1,17 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch">
       <el-form-item label="菜单名称" prop="menuName">
         <el-input
           v-model="queryParams.menuName"
           placeholder="请输入菜单名称"
           clearable
+          size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="菜单状态" clearable>
+        <el-select v-model="queryParams.status" placeholder="菜单状态" clearable size="small">
           <el-option
             v-for="dict in dict.type.sys_normal_disable"
             :key="dict.value"
@@ -107,7 +108,7 @@
       <el-form ref="form" :model="form" :rules="rules" label-width="100px">
         <el-row>
           <el-col :span="24">
-            <el-form-item label="上级菜单" prop="parentId">
+            <el-form-item label="上级菜单">
               <treeselect
                 v-model="form.parentId"
                 :options="menuOptions"
@@ -127,7 +128,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="24" v-if="form.menuType != 'F'">
-            <el-form-item label="菜单图标" prop="icon">
+            <el-form-item label="菜单图标">
               <el-popover
                 placement="bottom-start"
                 width="460"
@@ -159,7 +160,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12" v-if="form.menuType != 'F'">
-            <el-form-item prop="isFrame">
+            <el-form-item>
               <span slot="label">
                 <el-tooltip content="选择是外链则路由地址需要以`http(s)://`开头" placement="top">
                 <i class="el-icon-question"></i>
@@ -195,7 +196,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12" v-if="form.menuType != 'M'">
-            <el-form-item prop="perms">
+            <el-form-item>
               <el-input v-model="form.perms" placeholder="请输入权限标识" maxlength="100" />
               <span slot="label">
                 <el-tooltip content="控制器中定义的权限字符，如：@PreAuthorize(`@ss.hasPermi('system:user:list')`)" placement="top">
@@ -206,7 +207,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12" v-if="form.menuType == 'C'">
-            <el-form-item prop="query">
+            <el-form-item>
               <el-input v-model="form.query" placeholder="请输入路由参数" maxlength="255" />
               <span slot="label">
                 <el-tooltip content='访问路由的默认传递参数，如：`{"id": 1, "name": "ry"}`' placement="top">
@@ -217,7 +218,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12" v-if="form.menuType == 'C'">
-            <el-form-item prop="isCache">
+            <el-form-item>
               <span slot="label">
                 <el-tooltip content="选择是则会被`keep-alive`缓存，需要匹配组件的`name`和地址保持一致" placement="top">
                 <i class="el-icon-question"></i>
@@ -231,7 +232,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12" v-if="form.menuType != 'F'">
-            <el-form-item prop="visible">
+            <el-form-item>
               <span slot="label">
                 <el-tooltip content="选择隐藏则路由将不会出现在侧边栏，但仍然可以访问" placement="top">
                 <i class="el-icon-question"></i>
@@ -248,7 +249,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12" v-if="form.menuType != 'F'">
-            <el-form-item prop="status">
+            <el-form-item>
               <span slot="label">
                 <el-tooltip content="选择停用则路由将不会出现在侧边栏，也不能被访问" placement="top">
                 <i class="el-icon-question"></i>

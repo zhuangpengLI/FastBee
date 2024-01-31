@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.FamilyMapper">
+    
+    <resultMap type="Family" id="FamilyResult">
+        <result property="familyId"    column="family_id"    />
+        <result property="name"    column="name"    />
+        <result property="avatarUrl"    column="avatar_url"    />
+        <result property="position"    column="position"    />
+        <result property="isEnableJoinAuth"    column="is_enable_join_auth"    />
+        <result property="isBind"    column="is_bind"    />
+        <result property="gatewaySn"    column="gateway_sn"    />
+        <result property="belongUserId"    column="belong_user_id"    />
+        <result property="createUserId"    column="create_user_id"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+        <result property="delFlag"    column="del_flag"    />
+    </resultMap>
+
+	<resultMap id="FamilyRoomResult" type="Family" extends="FamilyResult">
+        <collection property="roomList" notNullColumn="sub_room_id" javaType="java.util.List" resultMap="RoomResult" />
+    </resultMap>
+    
+    <resultMap id="FamilyFamilyUserRelaResult" type="Family" extends="FamilyResult">
+        <collection property="familyUserRelaList" notNullColumn="sub2_id" javaType="java.util.List" resultMap="FamilyUserRelaResult" />
+    </resultMap>
+	<resultMap id="FamilyAllResult" type="Family" extends="FamilyResult">
+        <collection property="roomList" notNullColumn="sub_room_id" javaType="java.util.List" resultMap="RoomResult" />
+        <collection property="familyUserRelaList" notNullColumn="sub2_id" javaType="java.util.List" resultMap="FamilyUserRelaResult" />
+    </resultMap>
+
+	<resultMap type="Room" id="RoomResult">
+        <result property="roomId"    column="sub_room_id"    />
+        <result property="familyId"    column="sub_family_id"    />
+        <result property="name"    column="sub_name"    />
+        <result property="roomOrder"    column="sub_room_order"    />
+        <result property="delFlag"    column="sub_del_flag"    />
+        <result property="createBy"    column="sub_create_by"    />
+        <result property="createTime"    column="sub_create_time"    />
+        <result property="updateBy"    column="sub_update_by"    />
+        <result property="updateTime"    column="sub_update_time"    />
+        <result property="remark"    column="sub_remark"    />
+    </resultMap>
+    
+	<resultMap type="com.ruoyi.iot.mobile.respModel.RoomStat" id="RoomStatResult">
+        <result property="roomId"    column="sub_room_id"    />
+        <result property="familyId"    column="sub_family_id"    />
+        <result property="name"    column="sub_name"    />
+        <result property="roomOrder"    column="sub_room_order"    />
+        <result property="delFlag"    column="sub_del_flag"    />
+        <result property="createBy"    column="sub_create_by"    />
+        <result property="createTime"    column="sub_create_time"    />
+        <result property="updateBy"    column="sub_update_by"    />
+        <result property="updateTime"    column="sub_update_time"    />
+        <result property="remark"    column="sub_remark"    />
+        <!-- 统计信息 -->
+        <result property="countDevice"    column="sub_count_Device"    />
+    </resultMap>
+    
+    <resultMap type="FamilyUserRela" id="FamilyUserRelaResult">
+        <result property="id"    column="sub2_id"    />
+        <result property="familyId"    column="sub2_family_id"    />
+        <result property="userId"    column="sub2_user_id"    />
+        <result property="familyUserRole"    column="sub2_family_user_role"    />
+        <result property="createTime"    column="sub2_create_time"    />
+        <!-- 用户信息 -->
+        <result property="nickName"    column="sub2_nick_name"    />
+        <result property="phonenumber"    column="sub2_phonenumber"    />
+        <result property="userIdentity"    column="sub2_user_identity"    />
+        <result property="userAvatarUrl"    column="sub2_user_avatar_url"    />
+        <!-- 家庭信息 -->
+        <result property="familyName"    column="sub2_family_name"    />
+        <result property="familyAvatarUrl"    column="sub2_family_avatar_url"    />
+        <result property="familyPosition"    column="sub2_family_position"    />
+        <result property="familyIsEnableJoinAuth"    column="sub2_family_is_enable_join_auth"    />
+        <result property="familyIsBind"    column="sub2_family_is_bind"    />
+        <result property="familyGatewaySn"    column="sub2_family_gateway_sn"    />
+    </resultMap>
+
+    <sql id="selectFamilyVo">
+        select family_id, name, avatar_url, position, is_enable_join_auth, is_bind, gateway_sn, belong_user_id, create_user_id, create_by, create_time, update_by, update_time, remark, del_flag from iot_family
+    </sql>
+
+    <select id="selectFamilyList" parameterType="Family" resultMap="FamilyResult">
+        <include refid="selectFamilyVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="isBind != null "> and is_bind = #{isBind}</if>
+            <if test="belongUserId != null "> and belong_user_id = #{belongUserId}</if>
+            <if test="params.beginCreateTime != null and params.beginCreateTime != '' and params.endCreateTime != null and params.endCreateTime != ''"> and create_time between #{params.beginCreateTime} and #{params.endCreateTime}</if>
+        </where>
+    </select>
+    
+    <resultMap type="com.ruoyi.iot.mobile.respModel.FamilyStat" id="FamilyStatResult">
+        <result property="familyId"    column="family_id"    />
+        <result property="name"    column="name"    />
+        <result property="avatarUrl"    column="avatar_url"    />
+        <result property="position"    column="position"    />
+        <result property="isEnableJoinAuth"    column="is_enable_join_auth"    />
+        <result property="isBind"    column="is_bind"    />
+        <result property="gatewaySn"    column="gateway_sn"    />
+        <result property="belongUserId"    column="belong_user_id"    />
+        <result property="createUserId"    column="create_user_id"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+        <result property="delFlag"    column="del_flag"    />
+        
+        <result property="nickName"    column="nick_name"    />
+        <result property="phonenumber"    column="phonenumber"    />
+    </resultMap>
+    <select id="selectFamilyStatList" parameterType="Family" resultMap="FamilyStatResult">
+        select a.family_id, a.name, a.avatar_url, a.position, a.is_enable_join_auth, a.is_bind, a.gateway_sn, a.belong_user_id, a.create_user_id
+        , a.create_by, a.create_time, a.update_by, a.update_time, a.remark, a.del_flag 
+        ,u.nick_name,u.phonenumber
+        from iot_family a
+        left join sys_user u on a.belong_user_id=u.user_id
+        <where>  
+            <if test="name != null  and name != ''"> and a.name like concat('%', #{name}, '%')</if>
+            <if test="isBind != null "> and a.is_bind = #{isBind}</if>
+            <if test="belongUserId != null "> and a.belong_user_id = #{belongUserId}</if>
+            <if test="params.beginCreateTime != null and params.beginCreateTime != '' and params.endCreateTime != null and params.endCreateTime != ''"> and a.create_time between #{params.beginCreateTime} and #{params.endCreateTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectFamilyOnlyByFamilyId" parameterType="Long" resultMap="FamilyResult">
+        select a.family_id, a.name, a.avatar_url, a.position, a.is_enable_join_auth, a.is_bind, a.gateway_sn, a.belong_user_id, a.create_user_id, a.create_by, a.create_time, a.update_by, a.update_time, a.remark, a.del_flag
+        from iot_family a
+        where a.family_id = #{familyId}
+    </select>
+    <select id="selectCountTotalFamily" parameterType="Long" resultType="int">
+        select count(1) 
+        from iot_family_user_rela a
+        where a.user_id = #{userId}
+    </select>
+    <select id="selectCountCreateFamily" parameterType="Long" resultType="int">
+        select count(1) 
+        from iot_family a
+        where a.belong_user_id = #{userId}
+    </select>
+    <select id="selectFamilyOnlyByGatewaySn" parameterType="String" resultMap="FamilyResult">
+        select a.family_id, a.name, a.avatar_url, a.position, a.is_enable_join_auth, a.is_bind, a.gateway_sn, a.belong_user_id, a.create_user_id, a.create_by, a.create_time, a.update_by, a.update_time, a.remark, a.del_flag
+        from iot_family a
+        where a.gateway_sn = #{gatewaySn}
+    </select>
+    <select id="selectFamilyAllByFamilyId" parameterType="Long" resultMap="FamilyAllResult">
+        select a.family_id, a.name, a.avatar_url, a.position, a.is_enable_join_auth, a.is_bind, a.gateway_sn, a.belong_user_id, a.create_user_id, a.create_by, a.create_time, a.update_by, a.update_time, a.remark, a.del_flag,
+ b.room_id as sub_room_id, b.family_id as sub_family_id, b.name as sub_name, b.room_order as sub_room_order, b.del_flag as sub_del_flag, b.create_by as sub_create_by, b.create_time as sub_create_time, b.update_by as sub_update_by, b.update_time as sub_update_time, b.remark as sub_remark,
+ c.id as sub2_id, c.family_id as sub2_family_id, c.user_id as sub2_user_id, c.family_user_role as sub2_family_user_role, c.create_time as sub2_create_time
+        from iot_family a
+        left join iot_room b on b.family_id = a.family_id
+        left join iot_family_user_rela c on c.family_id = a.family_id
+        where a.family_id = #{familyId}
+    </select>
+    
+    <!-- 只查询房间列表 -->
+    <select id="selectFamilyAndRoomByFamilyId" parameterType="Long" resultMap="FamilyRoomResult">
+        select a.family_id, a.name, a.avatar_url, a.position, a.is_enable_join_auth, a.is_bind, a.gateway_sn, a.belong_user_id, a.create_user_id, a.create_by, a.create_time, a.update_by, a.update_time, a.remark, a.del_flag,
+ b.room_id as sub_room_id, b.family_id as sub_family_id, b.name as sub_name, b.room_order as sub_room_order, b.del_flag as sub_del_flag, b.create_by as sub_create_by, b.create_time as sub_create_time, b.update_by as sub_update_by, b.update_time as sub_update_time, b.remark as sub_remark
+        from iot_family a
+        left join iot_room b on b.family_id = a.family_id
+        where a.family_id = #{familyId} order by b.room_order asc
+    </select>
+    <!-- 只查询房间列表 -->
+    <select id="selectRoomByFamilyId" parameterType="Long" resultMap="RoomResult">
+        select b.room_id as sub_room_id, b.family_id as sub_family_id, b.name as sub_name, b.room_order as sub_room_order, b.del_flag as sub_del_flag, b.create_by as sub_create_by, b.create_time as sub_create_time, b.update_by as sub_update_by, b.update_time as sub_update_time, b.remark as sub_remark
+        from iot_room b
+        where b.family_id = #{familyId} order by b.room_order asc
+    </select>
+    <!-- 查询房间 -->
+    <select id="selectRoomByRoomId" parameterType="Long" resultMap="RoomResult">
+        select b.room_id as sub_room_id, b.family_id as sub_family_id, b.name as sub_name, b.room_order as sub_room_order, b.del_flag as sub_del_flag, b.create_by as sub_create_by, b.create_time as sub_create_time, b.update_by as sub_update_by, b.update_time as sub_update_time, b.remark as sub_remark
+        from iot_room b
+        where b.room_id = #{roomId}
+    </select>
+    <!-- 只查询房间列表和房间统计信息 -->
+    <select id="selectRoomAndStatByFamilyId" parameterType="Long" resultMap="RoomStatResult">
+        select b.room_id as sub_room_id, b.family_id as sub_family_id, b.name as sub_name, b.room_order as sub_room_order, b.del_flag as sub_del_flag, b.create_by as sub_create_by, b.create_time as sub_create_time, b.update_by as sub_update_by, b.update_time as sub_update_time, b.remark as sub_remark
+        ,ifnull(device.sub_count_device,0) as sub_count_device
+        from iot_room b
+        left join (select a.belong_family_id,a.belong_room_id,count(*) as sub_count_device from iot_device a where a.belong_family_id = #{familyId} group by a.belong_room_id ) as device on  b.room_id = device.belong_room_id 
+        where b.family_id = #{familyId} order by b.room_order asc
+    </select>
+    
+    <!-- 只查询用户列表 -->
+    <select id="selectFamilyAndUserByFamilyId" parameterType="Long" resultMap="FamilyFamilyUserRelaResult">
+        select a.family_id, a.name, a.avatar_url, a.position, a.is_enable_join_auth, a.is_bind, a.gateway_sn, a.belong_user_id, a.create_user_id, a.create_by, a.create_time, a.update_by, a.update_time, a.remark, a.del_flag,
+ b.id as sub2_id, b.family_id as sub2_family_id, b.user_id as sub2_user_id, b.family_user_role as sub2_family_user_role, b.create_time as sub2_create_time
+        from iot_family a, iot_family_user_rela b
+        where a.family_id = #{familyId} and  b.family_id = a.family_id
+    </select>
+    <!-- 只查询用户列表 -->
+    <!-- 通过家庭查询的一般不重复展示家庭信息 冗余太多了先不处理  -->
+    <select id="selectUserByFamilyId" parameterType="Long" resultMap="FamilyUserRelaResult">
+        select b.id as sub2_id, b.family_id as sub2_family_id, b.user_id as sub2_user_id, b.family_user_role as sub2_family_user_role, b.create_time as sub2_create_time,
+        c.nick_name as sub2_nick_name,c.phonenumber as sub2_phonenumber,if(a.create_user_id=c.user_id,'3',if(a.belong_user_id=c.user_id,'4','1')) as sub2_user_identity        
+        from sys_user c ,iot_family_user_rela b, iot_family a
+        where b.family_id = #{familyId} and b.user_id = c.user_id and b.family_id = a.family_id
+    </select>
+    <!-- 只查询用户列表 通过家庭或用户 -->
+    <select id="selectUserListByFamilyIdAndUserId" resultMap="FamilyUserRelaResult">
+        select b.id as sub2_id, b.family_id as sub2_family_id, b.user_id as sub2_user_id, b.family_user_role as sub2_family_user_role, b.create_time as sub2_create_time,
+        c.nick_name as sub2_nick_name,c.phonenumber as sub2_phonenumber,if(a.create_user_id=c.user_id,'3',if(a.belong_user_id=c.user_id,'4','1')) as sub2_user_identity,
+        a.name as sub2_family_name, a.avatar_url as sub2_family_avatar_url, a.position as sub2_family_position, a.is_enable_join_auth as sub2_family_is_enable_join_auth, a.is_bind as sub2_family_is_bind, a.gateway_sn as sub2_family_gateway_sn,
+        c.avatar as sub2_user_avatar_url
+        from sys_user c ,iot_family_user_rela b, iot_family a
+        where  b.user_id = c.user_id  and  b.family_id = a.family_id
+        <if test="familyId != null">
+        	and b.family_id = #{familyId}
+        </if>
+        <if test="userId != null">
+        	and b.user_id=#{userId}
+        </if>
+         order by b.family_id desc
+    </select>
+    <!-- 查询唯一用户信息 -->
+    <select id="selectUserByFamilyIdAndUserId" resultMap="FamilyUserRelaResult">
+        select b.id as sub2_id, b.family_id as sub2_family_id, b.user_id as sub2_user_id, b.family_user_role as sub2_family_user_role, b.create_time as sub2_create_time,
+        c.nick_name as sub2_nick_name,c.phonenumber as sub2_phonenumber,if(a.create_user_id=c.user_id,'3',if(a.belong_user_id=c.user_id,'4','1')) as sub2_user_identity
+        from sys_user c ,iot_family_user_rela b
+        left join iot_family a on b.family_id = a.family_id
+        where b.family_id = #{familyId} and b.user_id = c.user_id and b.user_id=#{userId}
+    </select>
+    <!-- 更新家庭用户信息角色 -->
+    <update id="updateUserRoleByFamilyIdAndUserId" >
+        update iot_family_user_rela b set b.family_user_role = #{familyUserRole}
+        where b.family_id = #{familyId} and b.user_id=#{userId}
+    </update>
+    <!-- 删除家庭用户信息 -->
+    <delete id="deleteUserByFamilyIdAndUserId" >
+        delete from iot_family_user_rela b
+        where b.family_id = #{familyId} and b.user_id=#{userId}
+    </delete>
+    <!-- 查询家庭用户统计 -->
+    <select id="countFamilyUser" resultType="int" parameterType="Long" >
+        select count(*)
+        from iot_family_user_rela b  
+        where b.family_id = #{familyId}
+    </select>
+    <!-- 查询用户所属家庭统计 -->
+    <select id="countFamilyByUserId" resultType="int" parameterType="Long" >
+        select count(*)
+        from iot_family b  
+        where b.belong_user_id = #{userId}
+    </select>
+        
+    <insert id="insertFamily" parameterType="Family" useGeneratedKeys="true" keyProperty="familyId">
+        insert into iot_family
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="avatarUrl != null">avatar_url,</if>
+            <if test="position != null">position,</if>
+            <if test="isEnableJoinAuth != null">is_enable_join_auth,</if>
+            <if test="isBind != null">is_bind,</if>
+            <if test="gatewaySn != null">gateway_sn,</if>
+            <if test="belongUserId != null">belong_user_id,</if>
+            <if test="createUserId != null">create_user_id,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+            <if test="delFlag != null">del_flag,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="avatarUrl != null">#{avatarUrl},</if>
+            <if test="position != null">#{position},</if>
+            <if test="isEnableJoinAuth != null">#{isEnableJoinAuth},</if>
+            <if test="isBind != null">#{isBind},</if>
+            <if test="gatewaySn != null">#{gatewaySn},</if>
+            <if test="belongUserId != null">#{belongUserId},</if>
+            <if test="createUserId != null">#{createUserId},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+         </trim>
+    </insert>
+
+    <update id="updateFamily" parameterType="Family">
+        update iot_family
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="avatarUrl != null">avatar_url = #{avatarUrl},</if>
+            <if test="position != null">position = #{position},</if>
+            <if test="isEnableJoinAuth != null">is_enable_join_auth = #{isEnableJoinAuth},</if>
+            <if test="isBind != null">is_bind = #{isBind},</if>
+            <if test="gatewaySn != null">gateway_sn = #{gatewaySn},</if>
+            <if test="belongUserId != null">belong_user_id = #{belongUserId},</if>
+            <if test="createUserId != null">create_user_id = #{createUserId},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+        </trim>
+        where family_id = #{familyId}
+    </update>
+
+    <delete id="deleteFamilyByFamilyId" parameterType="Long">
+        delete from iot_family where family_id = #{familyId}
+    </delete>
+    
+    <update id="clearFamilyGwBindInfo" parameterType="Long">
+        update iot_family set is_bind=0,gateway_sn=null where family_id = #{familyId}
+    </update>
+
+    <delete id="deleteFamilyByFamilyIds" parameterType="String">
+        delete from iot_family where family_id in 
+        <foreach item="familyId" collection="array" open="(" separator="," close=")">
+            #{familyId}
+        </foreach>
+    </delete>
+    
+    <delete id="deleteRoomByFamilyIds" parameterType="String">
+        delete from iot_room where family_id in 
+        <foreach item="familyId" collection="array" open="(" separator="," close=")">
+            #{familyId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteRoomByFamilyId" parameterType="Long">
+        delete from iot_room where family_id = #{familyId}
+    </delete>
+    
+    <delete id="deleteRoomByFamilyIdAndRoomId">
+        delete from iot_room where family_id = #{familyId} and room_id = #{roomId}
+    </delete>
+
+    <insert id="batchRoom">
+        insert into iot_room( room_id, family_id, name, room_order, del_flag, create_by, create_time, update_by, update_time, remark) values
+		<foreach item="item" index="index" collection="list" separator=",">
+            ( #{item.roomId}, #{item.familyId}, #{item.name}, #{item.roomOrder}, #{item.delFlag}, #{item.createBy}, #{item.createTime}, #{item.updateBy}, #{item.updateTime}, #{item.remark})
+        </foreach>
+    </insert>
+    <insert id="insertRoom" parameterType="com.ruoyi.iot.domain.Room" useGeneratedKeys="true" keyProperty="roomId">
+        insert into iot_room( room_id, family_id, name, room_order, del_flag, create_by, create_time, update_by, update_time, remark) values
+        ( #{roomId}, #{familyId}, #{name}, #{roomOrder}, #{delFlag}, #{createBy}, #{createTime}, #{updateBy}, #{updateTime}, #{remark})
+    </insert>
+    <update id="updateRoom" parameterType="Family">
+        update iot_room
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="roomOrder != null">room_order = #{roomOrder},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+        </trim>
+        where room_id = #{roomId}
+    </update>
+    
+    <delete id="deleteFamilyUserRelaByFamilyIds" parameterType="String">
+        delete from iot_family_user_rela where family_id in 
+        <foreach item="familyId" collection="array" open="(" separator="," close=")">
+            #{familyId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteFamilyUserRelaByFamilyId" parameterType="Long">
+        delete from iot_family_user_rela where family_id = #{familyId}
+    </delete>
+    <delete id="deleteFamilyUserRelaByFamilyIdAndUserId">
+        delete from iot_family_user_rela where family_id = #{familyId}  and user_id=#{userId}
+    </delete>
+
+    <insert id="batchFamilyUserRela">
+        insert into iot_family_user_rela( id, family_id, user_id, family_user_role, create_time) values
+		<foreach item="item" index="index" collection="list" separator=",">
+            ( #{item.id}, #{item.familyId}, #{item.userId}, #{item.familyUserRole}, #{item.createTime})
+        </foreach>
+    </insert>
+    
+    <select id="countRoomByFamilyId" resultType="int">
+        select count(*)
+        from iot_room b
+        where b.family_id = #{familyId}
+    </select>
+    <select id="countUserByFamilyId" resultType="int">
+        select count(*)
+        from iot_family_user_rela b
+        where b.family_id = #{familyId}
+    </select>
+</mapper>

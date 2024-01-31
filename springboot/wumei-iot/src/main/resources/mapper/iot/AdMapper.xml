@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.AdMapper">
+    
+    <resultMap type="Ad" id="AdResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="link"    column="link"    />
+        <result property="url"    column="url"    />
+        <result property="position"    column="position"    />
+        <result property="content"    column="content"    />
+        <result property="enabled"    column="enabled"    />
+        <result property="addTime"    column="add_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectAdVo">
+        select id, name, link, url, position, content, enabled, add_time, update_time from iot_ad
+    </sql>
+
+    <select id="selectAdList" parameterType="Ad" resultMap="AdResult">
+        <include refid="selectAdVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="link != null  and link != ''"> and link = #{link}</if>
+            <if test="url != null  and url != ''"> and url = #{url}</if>
+            <if test="position != null "> and position = #{position}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="enabled != null "> and enabled = #{enabled}</if>
+            <if test="addTime != null "> and add_time = #{addTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectAdById" parameterType="Long" resultMap="AdResult">
+        <include refid="selectAdVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertAd" parameterType="Ad" useGeneratedKeys="true" keyProperty="id">
+        insert into iot_ad
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">name,</if>
+            <if test="link != null and link != ''">link,</if>
+            <if test="url != null and url != ''">url,</if>
+            <if test="position != null">position,</if>
+            <if test="content != null">content,</if>
+            <if test="enabled != null">enabled,</if>
+            <if test="addTime != null">add_time,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="link != null and link != ''">#{link},</if>
+            <if test="url != null and url != ''">#{url},</if>
+            <if test="position != null">#{position},</if>
+            <if test="content != null">#{content},</if>
+            <if test="enabled != null">#{enabled},</if>
+            <if test="addTime != null">#{addTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAd" parameterType="Ad">
+        update iot_ad
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="link != null">link = #{link},</if>
+            <if test="url != null and url != ''">url = #{url},</if>
+            <if test="position != null">position = #{position},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="enabled != null">enabled = #{enabled},</if>
+            <if test="addTime != null">add_time = #{addTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteAdById" parameterType="Long">
+        delete from iot_ad where id = #{id}
+    </delete>
+
+    <delete id="deleteAdByIds" parameterType="String">
+        delete from iot_ad where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

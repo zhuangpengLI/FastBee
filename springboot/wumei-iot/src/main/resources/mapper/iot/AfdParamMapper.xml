@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.AfdParamMapper">
+    
+    <resultMap type="AfdParam" id="AfdParamResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="aver"    column="aver"    />
+        <result property="wordType"    column="word_type"    />
+        <result property="aorder"    column="aorder"    />
+        <result property="deviceType"    column="device_type"    />
+        <result property="enable"    column="enable"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectAfdParamVo">
+        select id, name, aver, word_type, aorder, device_type, enable, create_by, create_time, update_by, update_time, remark from iot_afd_param
+    </sql>
+
+    <select id="selectAfdParamList" parameterType="AfdParam" resultMap="AfdParamResult">
+        <include refid="selectAfdParamVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="aver != null "> and aver = #{aver}</if>
+            <if test="wordType != null "> and word_type = #{wordType}</if>
+            <if test="aorder != null "> and aorder = #{aorder}</if>
+            <if test="deviceType != null "> and device_type = #{deviceType}</if>
+            <if test="enable != null "> and enable = #{enable}</if>
+        </where>
+    </select>
+    <select id="selectAfdParamList2" parameterType="AfdParam" resultMap="AfdParamResult">
+        <include refid="selectAfdParamVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="aver != null "> and aver = #{aver}</if>
+            <if test="wordType != null "> and word_type = #{wordType}</if>
+            <if test="aorder != null "> and aorder = #{aorder}</if>
+            <if test="deviceType != null "> and device_type = #{deviceType}</if>
+            <if test="enable != null "> and enable = #{enable}</if>
+        </where>
+        order by word_type asc,aorder asc
+    </select>
+    
+    <select id="selectAfdParamById" parameterType="Long" resultMap="AfdParamResult">
+        <include refid="selectAfdParamVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertAfdParam" parameterType="AfdParam" useGeneratedKeys="true" keyProperty="id">
+        insert into iot_afd_param
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="aver != null">aver,</if>
+            <if test="wordType != null">word_type,</if>
+            <if test="aorder != null">aorder,</if>
+            <if test="deviceType != null">device_type,</if>
+            <if test="enable != null">enable,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="aver != null">#{aver},</if>
+            <if test="wordType != null">#{wordType},</if>
+            <if test="aorder != null">#{aorder},</if>
+            <if test="deviceType != null">#{deviceType},</if>
+            <if test="enable != null">#{enable},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAfdParam" parameterType="AfdParam">
+        update iot_afd_param
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="aver != null">aver = #{aver},</if>
+            <if test="wordType != null">word_type = #{wordType},</if>
+            <if test="aorder != null">aorder = #{aorder},</if>
+            <if test="deviceType != null">device_type = #{deviceType},</if>
+            <if test="enable != null">enable = #{enable},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteAfdParamById" parameterType="Long">
+        delete from iot_afd_param where id = #{id}
+    </delete>
+
+    <delete id="deleteAfdParamByIds" parameterType="String">
+        delete from iot_afd_param where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.iot.mapper.DboxEleMapper">
+    
+    <resultMap type="DboxEle" id="DboxEleResult">
+        <result property="id"    column="id"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="eleValue"    column="ele_value"    />
+        <result property="eleTime"    column="ele_time"    />
+        <result property="year"    column="year"    />
+        <result property="month"    column="month"    />
+        <result property="day"    column="day"    />
+    </resultMap>
+
+    <sql id="selectDboxEleVo">
+        select id, device_id, ele_value, ele_time, year, month, day from iot_dbox_ele
+    </sql>
+
+    <select id="selectDboxEleList" parameterType="DboxEle" resultMap="DboxEleResult">
+        <include refid="selectDboxEleVo"/>
+        <where>  
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="eleValue != null "> and ele_value = #{eleValue}</if>
+            <if test="eleTime != null "> and ele_time = #{eleTime}</if>
+            <if test="year != null "> and year = #{year}</if>
+            <if test="month != null "> and month = #{month}</if>
+            <if test="day != null "> and day = #{day}</if>
+        </where>
+    </select>
+    
+    <select id="selectDboxEleById" parameterType="Long" resultMap="DboxEleResult">
+        <include refid="selectDboxEleVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertDboxEle" parameterType="DboxEle" useGeneratedKeys="true" keyProperty="id">
+        insert into iot_dbox_ele
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deviceId != null">device_id,</if>
+            <if test="eleValue != null">ele_value,</if>
+            <if test="eleTime != null">ele_time,</if>
+            <if test="year != null">year,</if>
+            <if test="month != null">month,</if>
+            <if test="day != null">day,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="deviceId != null">#{deviceId},</if>
+            <if test="eleValue != null">#{eleValue},</if>
+            <if test="eleTime != null">#{eleTime},</if>
+            <if test="year != null">#{year},</if>
+            <if test="month != null">#{month},</if>
+            <if test="day != null">#{day},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDboxEle" parameterType="DboxEle">
+        update iot_dbox_ele
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="deviceId != null">device_id = #{deviceId},</if>
+            <if test="eleValue != null">ele_value = #{eleValue},</if>
+            <if test="eleTime != null">ele_time = #{eleTime},</if>
+            <if test="year != null">year = #{year},</if>
+            <if test="month != null">month = #{month},</if>
+            <if test="day != null">day = #{day},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDboxEleById" parameterType="Long">
+        delete from iot_dbox_ele where id = #{id}
+    </delete>
+
+    <delete id="deleteDboxEleByIds" parameterType="String">
+        delete from iot_dbox_ele where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

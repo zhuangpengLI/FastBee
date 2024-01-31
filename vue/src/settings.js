@@ -17,7 +17,7 @@ module.exports = {
   /**
    * 是否显示 tagsView
    */
-  tagsView: false,
+  tagsView: true,
 
   /**
    * 是否固定头部
