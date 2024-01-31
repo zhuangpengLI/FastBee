@@ -181,8 +181,6 @@
                 <el-col :span="9">
                   <el-input v-model="form.specs.min" placeholder="最小值" controls-position="right" type="number"
                     style="width: 174px;" />
-                  <p v-if="!hasDecimalPoint">请输入有效的小数</p>
-                  <!-- 当没有小数时显示错误提示 -->
                 </el-col>
                 <el-col :span="2" align="center">到</el-col>
                 <el-col :span="9">
@@ -585,7 +583,7 @@ export default {
           }
           //验证输入的取值范围最大值不能小于最小值
           if (this.form.datatype == 'integer' || this.form.datatype == 'decimal') {
-            if (this.form.specs.min > this.form.specs.max) {
+            if (parseFloat(this.form.specs.min) > parseFloat(this.form.specs.max)) {
               this.$modal.msgError('请重新输入取值范围,最大值不能比最小值小!');
               return;
             }

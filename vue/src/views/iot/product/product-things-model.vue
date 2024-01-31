@@ -81,7 +81,8 @@
           <el-input v-model="form.identifier" placeholder="请输入标识符，例如：temperature" style="width: 385px" />
         </el-form-item>
         <el-form-item label="模型排序" prop="modelOrder">
-          <el-input-number v-model="form.modelOrder" placeholder="请输入排序" type="number" style="width: 386px" controls-position="right"/>
+          <el-input-number v-model="form.modelOrder" placeholder="请输入排序" type="number" style="width: 386px"
+            controls-position="right" />
         </el-form-item>
         <el-form-item label="模型类别" prop="type">
           <el-radio-group v-model="form.type" @change="typeChange(form.type)">
@@ -114,24 +115,39 @@
             <el-option key="object" label="对象" value="object" :disabled="form.isChart == 1"></el-option>
           </el-select>
         </el-form-item>
-
-        <div v-if="form.datatype == 'integer' || form.datatype == 'decimal'">
-          <el-form-item label="取值范围">
-            <el-row>
-              <el-col :span="9">
-                <el-input v-model="form.specs.min" placeholder="最小值" type="number"  style="width: 175px"/>
-              </el-col>
-              <el-col :span="2" align="center">到</el-col>
-              <el-col :span="9">
-                <el-input v-model="form.specs.max" placeholder="最大值" type="number" />
-              </el-col>
-            </el-row>
-          </el-form-item>
+        <el-form-item label="取值范围" v-if="form.datatype == 'integer'">
+              <el-row>
+                <el-col :span="9">
+                  <el-input v-model="form.specs.min" placeholder="最小值" controls-position="right" type="number"
+                    style="width: 174px;" @input="handleEdit" />
+                </el-col>
+                <el-col :span="2" align="center">到</el-col>
+                <el-col :span="9">
+                  <el-input v-model="form.specs.max" placeholder="最大值" type="number" controls-position="right"
+                    style="width: 174px;" @input="handleEditmax" />
+                </el-col>
+              </el-row>
+            </el-form-item>
+            <el-form-item label="取值范围" v-if="form.datatype == 'decimal'">
+              <el-row>
+                <el-col :span="9">
+                  <el-input v-model="form.specs.min" placeholder="最小值" controls-position="right" type="number"
+                    style="width: 174px;" />
+                </el-col>
+                <el-col :span="2" align="center">到</el-col>
+                <el-col :span="9">
+                  <el-input v-model="form.specs.max" placeholder="最大值" type="number" controls-position="right"
+                    style="width: 174px;" />
+                </el-col>
+              </el-row>
+            </el-form-item>
+          <div v-if="form.datatype == 'integer' || form.datatype == 'decimal'">
           <el-form-item label="单位">
             <el-input v-model="form.specs.unit" placeholder="请输入单位，例如：℃" style="width: 385px" />
           </el-form-item>
           <el-form-item label="步长">
-            <el-input-number v-model="form.specs.step" placeholder="请输入步长，例如：1" type="number" style="width: 386px" controls-position="right"/>
+            <el-input-number v-model="form.specs.step" placeholder="请输入步长，例如：1" type="number" style="width: 386px"
+              controls-position="right" />
           </el-form-item>
           <el-form-item label="计算公式" prop="formula">
             <template slot="label">
@@ -378,6 +394,9 @@ export default {
       total: 0,
       // 产品物模型表格数据
       modelList: [],
+       //是否为小数的判断
+       isDecimal: '',
+      isDecimalMax: '',
       // 弹出层标题
       title: '',
       // 是否显示弹出层
@@ -424,8 +443,8 @@ export default {
           },
           {
             min: 1,
-            max: 64,
-            message: '模型标识不能少于1个字符和超过64字符',
+            max: 32,
+            message: '模型标识不能少于1个字符和超过32字符',
             trigger: 'blur',
           },
         ],
@@ -435,9 +454,9 @@ export default {
             message: '模型排序不能为空',
             trigger: 'blur',
           }, {
-            type: 'number', 
+            type: 'number',
             min: -2147483648,
-            max:2147483647,
+            max: 2147483647,
             message: '排序不能超过int型的范围值( -2^31——2^31-1)',
             trigger: 'blur',
           },
@@ -668,6 +687,21 @@ export default {
                 this.$modal.msgError('参数标识 ' + arr[i] + ' 重复');
                 return;
               }
+            }
+          }
+          //验证输入的取值范围最大值不能小于最小值
+          if (this.form.datatype == 'integer' || this.form.datatype == 'decimal') {
+            if (parseFloat(this.form.specs.min) > parseFloat(this.form.specs.max)) {
+              this.$modal.msgError('请重新输入取值范围,最大值不能比最小值小!');
+              return;
+            }
+          }
+          if (this.form.datatype == 'decimal') {
+            this.hasDecimalPoint();
+            this.hasDecimalPointMax();
+            if (this.isDecimal === false || this.isDecimalMax === false) {
+              this.$modal.msgError('取值范围必须输入小数,请重新输入!');
+              return;
             }
           }
           //验证模型特性为图表展示时，数据类型是否为整数或者小数
@@ -915,6 +949,35 @@ export default {
         // 解决数组在界面中不更新问题
         this.$set(this.form.specs.params, data.index, this.form.specs.params[data.index]);
       }
+    },
+    // 在输入最小值改变时触发
+    handleEdit(e) {
+      let value = e.replace(/[^\-\d]/g, ""); // 只能输入-和数字
+      value = value.replace(/\-{2,}/g, "-"); // -只能保留一个
+      value = value.replace(/(\d)\-/g, "$1"); // 数字后面不能接-，不能出现类似-11-2,12-，11-23
+      value = value.replace(/(-)0+/g, "$1"); // 不能出现-0,-001,-0001类似
+      value = value.replace(/(-\d{10})\d*/, '$1') // 最多保留10位整数
+      this.form.specs.min = value;
+    },
+    // 在输入最大值改变时触发
+    handleEditmax(e) {
+      let value = e.replace(/[^\-\d]/g, ""); // 只能输入-和数字
+      value = value.replace(/\-{2,}/g, "-"); // -只能保留一个
+      value = value.replace(/(\d)\-/g, "$1"); // 数字后面不能接-，不能出现类似-11-2,12-，11-23
+      value = value.replace(/(-)0+/g, "$1"); // 不能出现-0,-001,-0001类似
+      value = value.replace(/(-\d{10})\d*/, '$1') // 最多保留10位整数
+      this.form.specs.max = value;
+    },
+    //数据类型为小数的校验
+    hasDecimalPoint() {
+      const regex = /^-?\d+\.\d+$/; // 使用正则表达式匹配小数点格式
+      this.isDecimal = regex.test(this.form.specs.min);
+      return this.isDecimal;
+    },
+    hasDecimalPointMax() {
+      const regex = /^-?\d+\.\d+$/; // 使用正则表达式匹配小数点格式
+      this.isDecimalMax = regex.test(this.form.specs.max);
+      return this.isDecimalMax;
     },
   },
 };
