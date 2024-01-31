@@ -5,20 +5,13 @@
         <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="75px">
           <el-form-item label="请选择设备从机:" label-width="120px" v-if="isSubDev">
             <el-select v-model="queryParams.slaveId" placeholder="请选择设备从机" @change="selectSlave">
-              <el-option v-for="slave in slaveList" :key="slave.slaveId" :label="`${slave.deviceName} (${slave.slaveId})`" :value="slave.slaveId"></el-option>
+              <el-option v-for="slave in slaveList" :key="slave.slaveId" :label="`${slave.deviceName} (${slave.slaveId})`"
+                :value="slave.slaveId"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="时间范围">
-            <el-date-picker
-              v-model="daterangeTime"
-              size="small"
-              style="width: 240px"
-              value-format="yyyy-MM-dd"
-              type="daterange"
-              range-separator="-"
-              start-placeholder="开始日期"
-              end-placeholder="结束日期"
-            ></el-date-picker>
+            <el-date-picker v-model="daterangeTime" size="small" style="width: 240px" value-format="yyyy-MM-dd"
+              type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" icon="el-icon-search" size="mini" @click="getListHistory">查询</el-button>
@@ -165,10 +158,10 @@ export default {
           },
           grid: {
             top: '80px',
-            left: '40px',
+            left: '50px',
             right: '20px',
-            bottom: '60px',
-            containLabel: true,
+            bottom: '80px',
+            // containLabel: true,
           },
           toolbox: {
             feature: {
