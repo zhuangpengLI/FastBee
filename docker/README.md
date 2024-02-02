@@ -8,6 +8,12 @@
 ```
    git clone https://gitee.com/zhuangpengli/FastBee.git
    cd FastBee/springboot
+   # 编译emqx版本 请修改fastbee-admin下面 application.yml
+   # server:  
+   #    broker:
+   #        enabled: false
+   #        openws: false
+   # 编译netty mqtt版本 保持默认配置
    mvn clean package -Dmaven.test.skip=true
    cp ./fastbee-admin/target/fastbee-admin.jar /var/data/java/fastbee-admin.jar
 ```
@@ -26,8 +32,8 @@
    cd /var/data
    setenforce 0
    chmod 777 -R /var/data 
-   #使用netty版本mqtt broker 输入该命令：
-   sudo cp -rf docker-compose-netty.yml docker-compose.yml
-   #使用emqx直接启动
+   # 使用emqx版本mqtt broker输入该命令：
+   sudo cp -rf docker-compose-emqx.yml docker-compose.yml
+   # 使用netty mqtt则使用默认脚本直接启动
    docker-compose up -d
 ```
