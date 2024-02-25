@@ -98,7 +98,7 @@
             <pagination v-show="deviceTotal>0" :total="deviceTotal" :page.sync="deviceParams.pageNum" :limit.sync="deviceParams.pageSize" @pagination="getDeviceList" />
         </div>
         <div v-if="editType=='remark'">
-            <el-input v-model="form.remark" type="textarea" rows="4" placeholder="请输入内容" />
+            <el-input v-model="form.remark" type="textarea" rows="4" placeholder="请输入内容" :maxlength="500" show-word-limit />
         </div>
         <div slot="footer" class="dialog-footer">
             <el-button type="primary" @click="submitForm">确 定</el-button>
